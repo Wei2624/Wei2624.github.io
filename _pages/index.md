@@ -7,9 +7,6 @@ permalink: /
 
 My name is Wei Zhang. I am a graduate student at Columbia Unversity. I have spent wonderful 5 years at University of Waterloo for my undergrad study. 
 
-
-test
-
 My research interests are machine learning, robot learning, computer vision and precision medicine. I am still building my homepage. 
 
 ### Additional information about myself
