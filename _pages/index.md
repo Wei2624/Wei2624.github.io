@@ -9,6 +9,10 @@ My name is Wei Zhang. I am a graduate student at Columbia Unversity. I have spen
 
 My research interests are machine learning, robot learning, computer vision and precision medicine. I am still building my homepage. 
 
+### News
+
+[2018](#link){: .btn .btn--success .btn--small} I did a presentation of a poster titled "Enhanced Recurrent Nerual Network Semantic Labeling with Point Cloud Processing." Poster is [here]({{ site.url }}/download/Enhanced Recurrent Neural Network Semantic Labeling with Point Cloud Processing.pdf).
+
 ### Additional information about myself
 
 I love to play basketball with friends during weekeneds. I also work out in order to improve my basketball skills. My favorite basketball player is Kobe Bryant. In fact, I love playing sports such as soccer, skiing and etc. 
