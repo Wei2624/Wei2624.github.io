@@ -11,7 +11,7 @@ My research interests are machine learning, robot learning, computer vision and 
 
 ### News
 
-[2018](#link){: .btn .btn--success .btn--small} I did a presentation of a poster titled "Enhanced Recurrent Nerual Network Semantic Labeling with Point Cloud Processing." Poster is [here]({{ site.url }}/download/Enhanced Recurrent Neural Network Semantic Labeling with Point Cloud Processing.pdf).
+[2018](#link){: .btn .btn--success .btn--small} I did a presentation of a poster titled "Enhanced Recurrent Nerual Network Semantic Labeling with Point Cloud Processing" at Northeast Robotics Colloquium (NERC) 2018. Poster is [here]({{ site.url }}/download/Enhanced Recurrent Neural Network Semantic Labeling with Point Cloud Processing.pdf).
 
 ### Additional information about myself
 
