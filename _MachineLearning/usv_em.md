@@ -17,3 +17,4 @@ sidebar:
 # Introduction
 
 In this section,we will introduce a new learning algorithm for density estimation, namely Expectation-Maximization (EN).
+
