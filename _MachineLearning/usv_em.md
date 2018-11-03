@@ -57,7 +57,18 @@ EM, as name suggested, has two steps, expectation and maximization. In E step, w
 
 1 E Step: for each i,j, $w_j^{(i)} = p(z^{(i)} = j\lvert x^{(i)}; \mu,\Sigma,\phi)$
 
-2 M Step: 
+2 M Step: update parameters:
 
+&nbsp;&nbsp;&nbsp;&nbsp; $$\phi_j = \frac{1}{m}\sum\limits_{i=1}^m w_j^i$$
 
+&nbsp;&nbsp;&nbsp;&nbsp; $$\mu_j = \frac{\sum\limits_{i=1}^m w_j^i x^{(i)}}{\sum\limits_{i=1}^m w_j^i}$$
 
+&nbsp;&nbsp;&nbsp;&nbsp; $$\Sigma_j = \frac{\sum\limits_{i=1}^m w_j^i (x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T}{\sum\limits_{i=1}^m w_j^i}$$
+
+How do we calculate the E step? In E step, we condition z on current setting of the parameters, which is the posterior. By using Bayes rule, we have:
+
+$$o(z^{(i)}=j\lvert x^{(i)};\phi,\mu,\Sigma) = \frac{p(x^{(i)}\lvert z^{(i)};\mu,\Sigma)p(z^{(i)};\phi)}{\sum\limits_{l=1}^k p(x^{(i)}\lvert z^{(i)}=l;\mu,\Sigma)p(z^{(i)}=l;\phi)}$$
+
+So $w_j^i$ is the soft guess for $z^{(i)}$, indicating that how likely sample i belongs to class j. This is also reflected by the updating euqation where instead of indicator funciton, we have a probablity to sum up. Indicator, on the other hand, is called hard guess. Similar to K means clustering, this algorithm is also susceptible to local optima, so initilizing paramsters several times might be a good idea. 
+
+This shows us how EM generally works. I use **mixture of Gaussain** as an example. Next, I will show why EM works. 
