@@ -6,7 +6,7 @@ toc_sticky: true
 category: Machine Learning
 tags: [notes]
 qr: machine_learning_notes.png
-title: Nerual Networks
+title: K-Means
 share: true
 permalink: /MachineLearning/usv_kmeans/
 sidebar:
