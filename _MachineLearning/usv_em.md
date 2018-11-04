@@ -72,3 +72,98 @@ $$o(z^{(i)}=j\lvert x^{(i)};\phi,\mu,\Sigma) = \frac{p(x^{(i)}\lvert z^{(i)};\mu
 So $w_j^i$ is the soft guess for $z^{(i)}$, indicating that how likely sample i belongs to class j. This is also reflected by the updating euqation where instead of indicator funciton, we have a probablity to sum up. Indicator, on the other hand, is called hard guess. Similar to K means clustering, this algorithm is also susceptible to local optima, so initilizing paramsters several times might be a good idea. 
 
 This shows us how EM generally works. I use **mixture of Gaussain** as an example. Next, I will show why EM works. 
+
+
+# The EM algorithm
+
+We have talked about EM algorithm by introducing mixture of Gaussian as an example. Now, we want to analytically show how EM works and why it works in general. 
+
+## Jensen's inequality
+
+Let's first be armed with convex function and Jensen's inequality. 
+
+**Definition:** A function f is a convex function if $f^{\ast\ast}(x)\geq 0$ for $x\in\mathcal{R}$ or its hessian H is positve semi-definite if f is a vector-values function. When both are strictly larger than zero, we call f a strictly convex function. 
+
+**Theorem:** Let f be a convex function, and let X be a random variable. Then:
+
+$$E[f(X)] \geq f(E[X])$$
+
+Moreover, if f is strictly convex, $E[f(X)] = f(E[X])$ is true iff X is constant. 
+
+What that means is that with a convex function f, and two points on X-axis with each probability of 0.5 to be selected. We can see that the function value of expected X is less or equal than the expected function value on two points. Such a concept can be visualized in below.
+
+![EM Jensen's Inequality](/images/cs229_usv_em_jensen.png)
+
+**Note** This also holds true for concave function since concave funciton is just the reverse of convex function. The inequality is also reversed. 
+
+## EM Algorithm
+
+With m training samples and a latent variable for each sample, we are trying to maxmimize the likelikhood defined as:
+
+$$\ell(\theta) = \sum\limits_{i=1}^m\log p(x;\theta) = \sum\limits_{i=1}^m\log \sum\limits_z p(x,z;\theta)$$
+
+As discussed, it is hard to calculate the derivative of this equation unless z is observed. 
+
+EM comes here to solve this issue as shown in last section. Essentially, E-step tries to set a lower bound on loss function, and M-step tries to optimize parameters based on the bound. 
+
+Let's define a distribution on class label for each sample i. We denote $q_i$ be some distribution where $\sum_z q_i(z)=1$. Then, we can extend the likelihood as:
+
+$$\begin{align}
+\sum\limits_i \log p(x^{(i)};\theta) &= \sum\limits_i\log\sum\limits_{z^i} p(x^{(i)},z^{(i)};\theta)\\
+&= \sum\limits_i\log\sum\limits_{z^i} q_i(z^{(i)}) \frac{p(x^{(i)},z^{(i)};\theta)}{q_i(z^{(i)})}\\
+&\geq \sum\limits_i\sum\limits_{z^i} q_i(z^{(i)}) \log\frac{p(x^{(i)},z^{(i)};\theta)}{q_i(z^{(i)})}
+\end{align}$$
+
+Last step is from Jensen's inequality where f is log function. Log function is a concave function and 
+
+$$\sum\limits_{z^i} q_i(z^{(i)}) \bigg[\frac{p(x^{(i)},z^{(i)};\theta)}{q_i(z^{(i)})}\bigg]$$
+
+is the expectation over the random variable defined in the square bracket. Thus, by doing this, we set the lower bound of joint lpg-likelihood. 
+
+How do we choose $q_i$? There are many ways to define this distribution as long as it is a simplex. So How do we select from them? When we fix $\theta$, we always to make the bound as tight as possible. When is it the tightest? It is when inequality becomes equality!
+
+How do we make it equal? Remember that for convex/concave function, Jensen's inequality holds with equality iff the random variable becomes constant. In this case, 
+
+$$ \frac{p(x^{(i)},z^{(i)};\theta)}{q_i(z^{(i)})} = c$$
+
+for some c that does not denpend on $z^i$. We know that if :
+
+$$q_i(z^{(i)}) \propto p(x^{(i)},z^{(i)};\theta)$$
+
+then, we can always have a constant as a result. In this case, we can select:
+
+$$\begin{align}
+q_i(z^{(i)}) &= \frac{p(x^{(i)},z^{(i)};\theta)}{\sum_z p(x^{(i)},z;\theta)}\\
+&= \frac{p(x^{(i)},z^{(i)};\theta)}{p(x^{(i)};\theta)}\\
+&= p(z^{(i)}\lvert x^{(i)};\theta)
+\end{align}$$
+
+This is just the posterior of z based on data sample and the parameters. 
+
+Let's put them all together. So we have:
+
+1 E-step: for each i, set:
+
+$$q_i(z^{(i)}) = p(z^{(i)}\lvert x^{(i)};\theta)$$
+
+2 <-step: update parameters as :
+
+$$\theta = \arg\max_{\theta} \sum\limits_i\sum\limits_{z^i} q_i(z^{(i)}) \log\frac{p(x^{(i)},z^{(i)};\theta)}{q_i(z^{(i)})}$$
+
+The question now is that does this always converge? We want to prove that $\ell(\theta^t)\leq\ell(\theta^{t+1})$. So we have:
+
+$$\begin{align}
+\ell(\theta^{t+1}) &\geq \sum\limits_i\sum\limits_{z^i} q_i^t(z^{(i)}) \log\frac{p(x^{(i)},z^{(i)};\theta^{t+1})}{q_i^t(z^{(i)})}\\
+&\geq \sum\limits_i\sum\limits_{z^i} q_i^t(z^{(i)}) \log\frac{p(x^{(i)},z^{(i)};\theta^{t})}{q_i^t(z^{(i)})}\\
+&= \ell(\theta^t)
+\end{align}$$
+
+The first inequality is from Jensen's inequality which holds for all possible q and $\theta$. The second is because $\theta^{t+1}$ is updated from $\theta^t$ towards the maximization of this likelihood. The last holds because q is chosen in a way that Jensen's inequality holds with equality. 
+
+This shows EM algorithm always converges monotonically. And it will find the optima when updating is small. 
+
+
+## Mixture of Gaussian
+
+I am still working on this subject. 
+
