@@ -17,7 +17,7 @@ A classical learning problem is called supervised learning. In this case, we usu
 
 ![Supervise Learning Intuition](/images/cs229_lec1_intuit.png)
 
-When the target output is in continuous space, we call it a regression problem. When the target output is in discrete space, we call it as a classification problem. 
+When the target output is in continuous space, we call it a **regression problem**. When the target output is in discrete space, we call it as a **classification problem**. 
 
 # 1 Linear Regression
 
@@ -25,11 +25,11 @@ A linear regression probelm can be models as :
 
 $$h(x) = \sum\limits_{i=0}^n \theta_i x_i = \theta^Tx$$
 
-We have $\theta_0$ for the bias and sometimes it is called intercept term. Image that you try to regress for a line in 2D domain, the intercept term basically determines where the line crossed y-axis. $\theta$ is called parameters which we want to learn from training data. 
+We have $\theta_0$ for the bias and sometimes it is called intercept term. Imagine that you try to regress for a line in 2D domain, the intercept term basically determines where the line crossed y-axis. $\theta$ is called parameters which we want to learn from training data. 
 
 To learn it, we also define the cost function on which we are trying to minimize:
 
-$$J(\theta) = \frac{1}{2}\sum\limits_{i=q}^m (h_{\theta}(x^{(i)}) - y^{(i)})^2$$
+$$J(\theta) = \frac{1}{2}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)}) - y^{(i)})^2$$
 
 The goal is to find such $\theta$ that minimize the cost. The question is how.
 
@@ -122,7 +122,7 @@ We also know the trace of scaler is itself. Then:
 
 $$\begin{align}
 \triangledown_{\theta}J(\theta) &= \triangledown_{\theta}\frac{1}{2}(X\theta - \overrightarrow{y})^T(X\theta - \overrightarrow{y})\\
-&= \frac{1}{2}\triangledown_{\theta} tr(\theta^TX^TX\theta - \theta^TX^T\overrightarrow{y} - \overrightarrow{y}^TX\theta + \overrightarrow{y}^T\overrightarrow{y} \\
+&= \frac{1}{2}\triangledown_{\theta} tr(\theta^TX^TX\theta - \theta^TX^T\overrightarrow{y} - \overrightarrow{y}^TX\theta + \overrightarrow{y}^T\overrightarrow{y}) \\
 &= \frac{1}{2}\triangledown_{\theta} (tr\theta^TX^TX\theta - 2tr\overrightarrow{y}^TX\theta)\\
 &= \frac{1}{2}(X^TX\theta + X^TX\theta - 2X^T\overrightarrow{y})\\
 &= X^X\theta - X^T\overrightarrow{y}
@@ -142,11 +142,11 @@ We assume that the target variable and the inputs are related as:
 
 $$y^{(i)} = \theta^Tx^{(i)} + \epsilon^{(i)}$$
 
-where $\epsilon^{(i)}$ is random variable which can capture noise and unmodeled effects. We also assume that noise are distributed IID from Gaussianw with zero mean and some variance $\sigma^2$, which is a traditional way to model. Now, we can say:
+where $\epsilon^{(i)}$ is random variable which can capture noise and unmodeled effects. We also assume that noise are distributed i.i.d. from Gaussian with zero mean and some variance $\sigma^2$, which is a traditional way to model. Now, we can say:
 
 $$p(y^{(i)} \lvert x^{(i)};\theta) = \frac{1}{\sqrt{2\pi \sigma}}\exp\big(-\frac{(y^{(i)} - \theta^Tx^{(i)})^2}{2\sigma^2}\big)$$
 
-This function can be viewed as the funciton and y and maybe x as well since it might be some randomness on feature vectors as well with fixed parameter $\theta$. Thus, we can call it likelihood function:
+This function can be viewed as the funciton of y when x is known with fixed parameter $\theta$. Thus, we can call it **likelihood function**:
 
 $$L(\theta) = \prod_{i=1}^{m} p(y^{(i)} \lvert x^{(i)};\theta)$$
 
@@ -174,7 +174,7 @@ Although this is similar to Gaussian, it has nothing to do with it. And x is the
 
 We can imagine the clssification as a special regression problem where we only regress to a set of binary values, 0 and 1. Sometimes, we use -1 and 1 notation as well. We call it negative class and positive class, respectively.
 
-However, it does not make sense that we predict any values other than 0 and 1. Therefore, we modify the hypothese function to be:
+However, if we apply regression model here, it does not make sense that we predict any values other than 0 and 1. Therefore, we modify the hypothese function to be:
 
 $$h_{\theta}(x) = g(\theta^T x) = \frac{1}{1+\exp(-\theta^Tx)}$$
 
@@ -184,7 +184,7 @@ where g is called **logistic function or sigmoid function**. A plot of logistic 
 
 It ranges from 0 to 1 as output. 
 
-let's look at what it looks like when we take derivative of logistic funciton:
+let's look at what it will be when we take derivative of logistic funciton:
 
 $$\begin{align}
 \frac{d}{dz} g(z) &= \frac{1}{(1+\exp(-z))^2}\big(\exp(-z)\big)\\
@@ -217,15 +217,15 @@ $$\begin{align}
 &= (y - h_{\theta}(x))x_j
 \end{align}$$
 
-From the fisrt line to second line, we use the derivative of logistic function derived above. This gives us the update rule for each dimension on feature vector. Although we have same algorithm as LMS in this case, the hypothesis in this cases is different. It is not surprising to have the same equation when we talk about Generalized Linearized Model. 
+From the fisrt line to second line, we use the derivative of logistic function derived above. This gives us the update rule for each dimension on feature vector. Although we have same algorithm as LMS in this case, the hypothesis in this case is different. It is not surprising to have the same equation when we talk about Generalized Linearized Model. 
 
 # 6 Digression: The Perceptron Learning Algortihm
 
 We will talk about this in Learning Theory in more detials. In short, we change our hypothesis function to be:
 
-$$g\theta^Tx) = \begin{cases} 1  \text{, if } \theta^Tx geq 0 \\ 0  \text{, otherwise} \\ \end{cases}$$
+$$g\theta^Tx) = \begin{cases} 1  \text{, if } \theta^Tx \geq 0 \\ 0  \text{, otherwise} \\ \end{cases}$$
 
-The updating equation remains the same. This is called **perceptron learning algorithm**.\
+The updating equation remains the same. This is called **perceptron learning algorithm**.
 
 # 7 Newton's Method for Maximizing
 
