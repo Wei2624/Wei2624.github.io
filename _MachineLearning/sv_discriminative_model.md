@@ -391,7 +391,7 @@ Now, we need to fit $\theta$ such that we can max the log likelihood. by definit
 
 $$\begin{align}
 L(\theta) &= \sum\limits_{i=1}^m \log(p(y^{(i)}\lvert x^{(i)};\theta)\\
-&=\sum\limits_{i=1}^m \log\prod_{l=1}^k\bigg(\frac{\exp(\theta_l^Tx)}{\sum_{j=1}^k\exp(\theta_j^Tx)}\bigg)^{\mathbb{1}{y^{(i)}=l}}
+&=\sum\limits_{i=1}^m \log\prod_{l=1}^k\bigg(\frac{\exp(\theta_l^Tx)}{\sum_{j=1}^k\exp(\theta_j^Tx)}\bigg)^{\mathbb{1}\{y^{(i)}=l}\}
 \end{align}$$
 
 We can use gradient descent or Newton's method to find the max of it. 
