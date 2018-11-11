@@ -13,11 +13,13 @@ sidebar:
   nav: "MachineLearning"
 ---
 
+In this section, we focus on how bias and varaince are correlated. We always want to have zero bias and zero variance. However, this is practically impossible. So there is tradeoff in between. 
+
 # 1 The Bias-Varaince Tradeoff
 
 Let's denote $\overset{\wedge}{f}$ be the model that is trained on some dataset and $y$ be the ground truth. Then, the mean squared error(MSE) is defined:
 
-$$\mathbb{E}_{(x,w)\sim \text{test set}} \lvert \overset{\wedge}{f}(x) - y \rvert^2$$
+$$\mathbb{E}_{(x,y)\sim \text{test set}} \lvert \overset{\wedge}{f}(x) - y \rvert^2$$
 
 We have three explanation for a high MSE:
 
@@ -33,7 +35,7 @@ Assume that samples are sampled from similar distribution which can be defined a
 
 $y_i = f(x_i) + \epsilon_i$ where the noise $\mathbb{E}[\epsilon] = 0$ and $Var(\epsilon) = \sigma^2$.
 
-Whereas our goal is to compute f, we can only obtain an estimate by looking at training samples generated from above distribution. Thus, $\overset{\wedge}{f}(x_i)$ is random since it depends on $\epsilon_i$ which is random and it is also the prediction of $y = f(x_i) + \epsilon_i$. Thus, it makes sense to get $\mathbb{E}(\overset{\wedge}{f}(x)-f(x)$.
+Whereas our goal is to compute f, we can only obtain an estimate by looking at training samples generated from above distribution. Thus, $\overset{\wedge}{f}(x_i)$ is random since it depends on $\epsilon_i$ which is random and it is also the prediction of $y = f(x_i) + \epsilon_i$. Thus, it makes sense to get $\mathbb{E}(\overset{\wedge}{f}(x)-y)$.
 
 We can now calculate the expected MSE:
 
@@ -49,13 +51,14 @@ The fisrt term is data noise which we cannot do anything. A high bias term means
 
 # 2 Error Analysis
 
-To analyze a model, we should first build a pipeline of the interests. Then, we start from plugging ground truth for each component and see how much accuracy that change makes on the model. An example can be seen below. 
+To analyze a model, we should first build a pipeline of the interests. Then, we start from plugging ground truth for each component and see how much accuracy that change makes on the model. We always try to see which componenet in ground truth is affect the most when adding to the system. An example can be seen below. 
 
 ![Error Analysis](/images/err_ana.png)
 
 # 3 Ablative Analysis
 
-Whereas error analysis tries to recognize the difference between current performance and perfect performance, Ablative Analysis tries to recognize that between baseline and current model. 
+Whereas error analysis tries to recognize the difference between current performance and perfect performance, Ablative Analysis tries to recognize that between baseline and current model. Ablation analysis is quite important, many research papers are rejected because of the missing of this part. This analysis can tell us which part of the model affects the most. 
+
 
 For example, assume that we have more add-on features that makes the model perform better. We want to see how much performance it will be reduced by eliminating one add-on feature at a time. An example can be shown below. 
 
