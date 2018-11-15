@@ -51,7 +51,7 @@ $$\varepsilon(h) = P_{(x,y)\thicksim \mathcal{D}}(h(x)\neq y)$$
 
 This quantity shows how much probability of misclassification will be if we sample one pair from the distribution $\mathcal{D}$. The above concepts are often related to **probably approximately correct(PAC)** problem, which has two most important assumption:(1)training and testing samples are from the same distribution. (2) each pair of sample is iid. **In short, the empirical risk is the error resulted from training data that we are currently holding, whereas the generalization error is the error resulted from samples drawn from the same distribution as training dataset.**
 
-Think about linear classification again. We can let $h_{\theta}(x) = \mathbb{1}\{\theta^Tx\geq 0\}$ to be our hypothesis. The goal is to find $\theta$ which can minimize the training error. Formally,
+Think about linear classification again. We can let $h_{\theta}(x) = \mathbb{1}\\{\theta^Tx\geq 0\\}$ to be our hypothesis. The goal is to find $\theta$ which can minimize the training error. Formally,
 
 $$\hat{\theta} = \arg\min_{\theta}\hat{\varepsilon}(h_{\theta})$$
 
