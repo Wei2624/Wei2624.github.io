@@ -33,7 +33,7 @@ We start off by introducing two lemmas:
 
 $$P(A_1\cup\dots\cup A_k)\leq P(A_1)+ \dots + P(A_k)$$
 
-This, Union Bound, is a comment used axiom in learning theory. The proof can be easily found online. 
+This, Union Bound, is a common used axiom in learning theory. The proof can be easily found online. 
 
 **Lemma** (Hoeffding Inequality) Let $Z_1,Z_2,\dots,Z_m$ be m iid random variables drawn from Bernoulli($\phi$) distribution. That is: $P(Z_i = 1) = \phi, P(Z_i = 0) = 1 - \phi$. Let $\hat{\phi} = \frac{1}{m}\sum_{i=1}^m Z_i$ be the mean of random variable and let $\gamma > 0$ be fixed. Then:
 
@@ -41,7 +41,7 @@ $$P(\lvert \phi - \hat{\phi}\rvert >\gamma)\leq 2\exp(-2\gamma^2m)$$
 
 This is a.k.a **Chernoff bound**. Think about what it says. If we take the mean of r.v. as the estimation of future input, then the probability of the discrepance between truth and the estimation larger than a threshold is less than a value related with the number of training samples and the threshold as well. This is frequently used in learning theory. 
 
-This lemma can be generalized to multi-class classification as well but we just focus on binary case for now. Assume that we have a training set S with m pairs of sample. Each $(x^{(i)},y^{(i)}$ pair are drawn iid from some distribution $\mathcal{D}$. For a hypothesis h, we define the **training error** or **empirical risk** to be:
+This lemma can be generalized to multi-class classification as well but we just focus on binary case for now. Assume that we have a training set S with m pairs of sample. Each $(x^{(i)},y^{(i)})$ pair are drawn iid from some distribution $\mathcal{D}$. For a hypothesis h, we define the **training error** or **empirical risk** to be:
 
 $$\hat{\varepsilon}(h) = \frac{1}{m}\sum\limits_{i=1}^m \mathbb{1}\{h(x^{(i)}\neq y^{(i)}\}$$
 
