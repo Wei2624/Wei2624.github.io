@@ -98,7 +98,7 @@ P(\neg\exists h_i\in \mathcal{H}.\lvert \varepsilon(h_i)-\hat{\varepsilon}(h_i)>
 
 This simply says that with probability at least $1-2k\exp(-2\gamma^2m)$, we have generalization error to be within the bound of empirical error for all $h\in \mathcal{H}$. It is called **uniform convergence result**.  
 
-In this case, we are really interested in 3 quantities: $m,\gamma$ and probability of error, denoted as $\delta$. The reason that we are interested in these three variables is because they are correlated in some way. For example, given $\gamma$ and some $\delta>0$, we can find m by solving $\delta = \2k\exp(-2\gamma^2m)$:
+In this case, we are really interested in 3 quantities: $m,\gamma$ and probability of error, denoted as $\delta$. The reason that we are interested in these three variables is because they are correlated in some way. For example, given $\gamma$ and some $\delta>0$, we can find m by solving $\delta = 2k\exp(-2\gamma^2m)$:
 
 $$m\geq\frac{1}{2\gamma^2}\log\frac{2k}{\delta}$$
 
