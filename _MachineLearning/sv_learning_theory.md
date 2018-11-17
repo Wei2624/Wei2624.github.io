@@ -68,9 +68,9 @@ To begin with, we first consider the case where the number of hypothesis classes
 
 So now the question is what we can say about generalization error on $\hat{h}$. For exmaple, can we give a bound on the error? If so, it implies that in any circumstances, the error rate would not exceed the bound we derived. To do so, we need (1) to show $\hat{\varepsilon}(h)$ is a good estimate of $\hat{\varepsilon}(h)$ for all h. (2) to show that this implies an upper-bound on the generalization error of $\hat{h}$.
 
-We pick $h_i$ from $\mathcal{H}$ and denote $Z=\mathbb{1}{h_i(x) \neq y}$ where $(x,y)\thicksim\mathcal{D}$. Basically, Z indicates if $h_i$ misclassifies it. And we also denote $Z_j = \mathbb{1}{h_i(x^{(i)}) \neq y^{(i)}}$. Note that since all samples are drawn from D, thus $Z$ and $Z_i$ have the same distribution. 
+We pick $h_i$ from $\mathcal{H}$ and denote $Z=\mathbb{1}\\{h_i(x) \neq y\\}$ where $(x,y)\thicksim\mathcal{D}$. Basically, Z indicates if $h_i$ misclassifies it. And we also denote $Z_j = \mathbb{1}\\{h_i(x^{(i)}) \neq y^{(i)}\\}$. Note that since all samples are drawn from D, thus $Z$ and $Z_i$ have the same distribution. 
 
-We should notice that $\mathbb{E}[Z] = \mathbb{E}[\mathbb{1}{h_i(x) \neq y}] = P_{(x,y)\thicksim \mathcal{D}}(h(x)\neq y) = \varepsilon(h)$ which also applies for $Z_j$. It represents the probability of misclassification on a random sample. Moreover, the training error can be written:
+We should notice that $\mathbb{E}[Z] = \mathbb{E}[\mathbb{1}\\{h_i(x) \neq y\\}] = P_{(x,y)\thicksim \mathcal{D}}(h(x)\neq y) = \varepsilon(h)$ which also applies for $Z_j$. It represents the probability of misclassification on a random sample. Moreover, the training error can be written:
 
 $$\hat{\varepsilon}(h_i) = \frac{1}{m}\sum\limits_{j=1}^m Z_j$$
 
@@ -98,7 +98,7 @@ P(\neg\exists h_i\in \mathcal{H}.\lvert \varepsilon(h_i)-\hat{\varepsilon}(h_i)>
 
 This simply says that with probability at least $1-2k\exp(-2\gamma^2m)$, we have generalization error to be within the bound of empirical error for all $h\in \mathcal{H}$. It is called **uniform convergence result**.  
 
-In this case, we are really interested in 3 quantities:$m,\gamma$ and probability of error, denoted as $\delta$. The reason that we are interested in these three variables is because they are correlated in some way. For example, given $\gamma$ and some $\delta>0$, we can find m by solving $\delta = \2k\exp(-2\gamma^2m):
+In this case, we are really interested in 3 quantities: $m,\gamma$ and probability of error, denoted as $\delta$. The reason that we are interested in these three variables is because they are correlated in some way. For example, given $\gamma$ and some $\delta>0$, we can find m by solving $\delta = \2k\exp(-2\gamma^2m)$:
 
 $$m\geq\frac{1}{2\gamma^2}\log\frac{2k}{\delta}$$
 
@@ -110,23 +110,23 @@ $$\lvert\hat{\varepsilon}(h) - \varepsilon(h)\rvert\leq\sqrt{\frac{1}{2m}\log\fr
 
 Assume that the uniform convergence holds for all hypotheses, can we also bound the generalization error on $\hat{h}=\arg\min_{h\in\mathcal{H}}\hat{\varepsilon(h)}$?
 
-Define $h^{ast} = \arg\min_{h\in\mathcal{h}}\varepsilon(h)$ to be the best possible hypothesis. We are trying to compare the hypothesis which achieves the best in training data and that which does the best in generalization error theorectically. We have:
+Define $h^{\ast} = \arg\min_{h\in\mathcal{h}}\varepsilon(h)$ to be the best possible hypothesis. We are trying to compare the hypothesis which achieves the best in training data and that which does the best in generalization error theorectically. We have:
 
 $$\begin{align}
-\varepsilon(\hat{h}) &\leq \hat{\varepsilon}(hat{h}) + \gamma\\
+\varepsilon(\hat{h}) &\leq \hat{\varepsilon}(\hat{h}) + \gamma\\
 &\leq \hat{\varepsilon}(h^{\ast}) + \gamma\\
 &\leq \varepsilon(h^{\ast}) + 2\gamma
 \end{align}$$
 
-The first line is by definition $\lvert \varepsilon(\hat{h}) -\hat{\varepsilon}(\hat{h})\rvert \leq gamma$, which is similar for the third line as well. From this proof, we have shown that if uniform convergence occurs, the generalization error of empirically selected h is at most $2\gamma$ worse than per generalization-error selected hypothesis in $\mathcal{H}$.
+The first line is by definition $\lvert \varepsilon(\hat{h}) -\hat{\varepsilon}(\hat{h})\rvert \leq \gamma$, which is similar for the third line as well. From this proof, we have shown that if uniform convergence occurs, the generalization error of empirically selected h is at most $2\gamma$ worse than per generalization-error selected hypothesis in $\mathcal{H}$.
 
 **Theorem** Let $\lvert \mathcal{H} \rvert = k$,and let $m,\delta$ be fixed. Then with probability at least $1-\delta$, we have:
 
 $$\varepsilon(\hat{h})\leq \bigg(\min_{h\in\mathcal{H}}\varepsilon(h)\bigg)+2\sqrt{\frac{1}{2m}\log\frac{2k}{\delta}}$$
 
-This is related to bias-variance tradeoff as well. Assum that we have a larger hypothesis class $\mathcal{H}^{\prime}$ where $\mathcal{H} \supseteq \mathcal{H}^{\prime}$. If we learn on the new hypothesis class, we have a bigger k. Thus, the second term above will be larger. That is the variance will be larger. However, the the first term is smaller. That is the bias will go down. 
+This is related to bias-variance tradeoff as well. Assum that we have a larger hypothesis class $\mathcal{H}^{\prime}$ where $\mathcal{H} \supseteq \mathcal{H}^{\prime}$. If we learn on the new hypothesis class, we have a bigger k. Thus, the second term above will be larger. That is, the variance will be larger. However, the the first term is smaller. That is the bias will go down. 
 
-**Corollary** Let $\lvert\mathcal{H}\rvert=k$ and given $\delta,gamma$, then for $\varepsilon(\hat{h})\leq\min_{h\in\mathcal{H}}\varepsilon(h) + 2\gamma$ to hold with probability at least $1-\gamma$, it suffices that:
+**Corollary** Let $\lvert\mathcal{H}\rvert=k$ and given $\delta,\gamma$, then for $\varepsilon(\hat{h})\leq\min_{h\in\mathcal{H}}\varepsilon(h) + 2\gamma$ to hold with probability at least $1-\gamma$, it suffices that:
 
 $$m\geq\frac{1}{2\gamma^2}\log\frac{2k}{\delta} = O\bigg(\frac{1}{\gamma^2}\log\frac{k}{\delta}\bigg)$$
 
@@ -138,7 +138,7 @@ For intuition, imagine that we want to parameterize the model with d parameters 
 
 However, this intuition is not technically correct. We could also have 2d parameters for the same hypothesis class which has the set of linear classifer in n dimension. Thus,we need to seek for more technical definition. 
 
-Let's define $S=\{x^{(1)},x^{(2)},\dots,x^{(d)}\}$ to be a set of points in any dimension. We say that $\mathcal{H}$ **shatters** S if $\mathcal{H}$ can realize any labeling on S. That is, for any possible set of $\{y^{(1)},y^{(2)},\dots,y^{(d)}\}$, there exists some $h\in\mathcal{H}$ so that $h(x^{(i)})=y^{(i)}$.
+Let's define $S=\\{x^{(1)},x^{(2)},\dots,x^{(d)}\\}$ to be a set of points in any dimension. We say that $\mathcal{H}$ **shatters** S if $\mathcal{H}$ can realize any labeling on S. That is, for any possible set of $\\{y^{(1)},y^{(2)},\dots,y^{(d)}\\}$, there exists some $h\in\mathcal{H}$ so that $h(x^{(i)})=y^{(i)}$.
 
 Given a hypothesis class, we define its **Vapnik-Chervonenkis dimension(VC-dimension)** to be the largest set that is shattered by $\mathcal{H}$. $VC(\mathcal{H}) = \infty$ means it can shatter any arbitrarily large sets.
 
@@ -146,11 +146,11 @@ For instance, we consider the case of three points:
 
 ![Three Points in 2D](/images/cs229_learningtheory_vc1.png)
 
-So assume that we have a hypothesis class in 2D, can this hypothesis class classify any possible labeling for these three points or shatter them? Given that $h(x) = \mathcal{1}\{\theta_0+\theta_1x_1+\theta_2x_2\}$, we can enumerate all possible labeling for these three points and draw a straight line in 2D to perfectly classify them. That is:
+So assume that we have a hypothesis class in 2D, can this hypothesis class classify any possible labeling for these three points or shatter them? Given that $h(x) = \mathcal{1}\\{\theta_0+\theta_1x_1+\theta_2x_2\\}$, we can enumerate all possible labeling for these three points and draw a straight line in 2D to perfectly classify them. That is:
 
 ![All Possible Classifier](/images/cs229_learningtheory_vc2.png)
 
-Moreover, we can prove that there is no set of 4 points that can be shattered by this hypothesis class. Thus, $VC(\mathcal{H})$=3$. 
+Moreover, we can prove that there is no set of 4 points that can be shattered by this hypothesis class. Thus, $VC(\mathcal{H})=3$. 
 
 Note that not all possible of set of 3 points can be shattered by this hypothesis class even if VC dimension is 3. The below is an example for such as case where this hypothesis class failed to classify them. 
 
@@ -158,7 +158,7 @@ Note that not all possible of set of 3 points can be shattered by this hypothesi
 
 Thus, to prove that some hypothesis class has VC dimension at least d, we just need to it can shatter at least one set of points with size d. 
 
-**Theorem** Let $\mathcal{H}$ be given and $d = VC(\mathcal{H}$. Then with porbability at least $1-\delta$, we have that for all $h\in\mathcal{H}$:
+**Theorem** Let $\mathcal{H}$ be given and $d = VC(\mathcal{H})$. Then with porbability at least $1-\delta$, we have that for all $h\in\mathcal{H}$:
 
 $$\lvert\varepsilon(h) - \lvert\hat{\varepsilon}(h)\rvert\leq O\bigg(\sqrt{\frac{d}{m}\log\frac{m}{d}+\frac{1}{m}\log\frac{1}{\delta}}\bigg)$$
 
