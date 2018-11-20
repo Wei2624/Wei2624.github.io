@@ -72,7 +72,7 @@ where KL is **Kullback-Leibler divergence**. It simply measures how different th
 
 # 3 Bayesian Statistics and regularization
 
-In the previous sectiosn, we talk about the maximum likelihood (ML) algorithm to fit model parameters as:
+In the previous section, we talk about the maximum likelihood (ML) algorithm to fit model parameters as:
 
 $$\theta_{ML} = \arg\max\prod_{i=1}^m p(y^{(i)}\lvert x^{(i)},\theta)$$
 
