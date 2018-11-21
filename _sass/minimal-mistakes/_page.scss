@@ -46,7 +46,8 @@
       float: left;
       margin-left: 0;
       margin-right: 0;
-      width: calc(100% - #{$right-sidebar-width-narrow});
+      /*width: calc(100% - #{$right-sidebar-width-narrow});*/
+      width: 100%;
       clear: both;
     }
   }
