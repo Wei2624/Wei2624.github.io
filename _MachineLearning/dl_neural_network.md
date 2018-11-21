@@ -39,7 +39,7 @@ In addition, we can have more:
 
 $$g(z) = \frac{1}{1+\exp(-z)}\quad\text{sigmoid}$$
 
-$$g(z) = \max(z,0)\quad\text{RelU}$$
+$$g(z) = \max(z,0)\quad\text{ReLU}$$
 
 $$g(z) = \frac{\exp(z) - \exp(-z)}{\exp(z) + \exp(-z)}\quad\text{tanh}$$
 
@@ -111,7 +111,7 @@ Note how each node in each layer is connected. This is called fully connected. W
 
 Before updating, we need to initialize these parameters. We CANNOT initialize them to zero since this will cause the output of first layer to be zero and further problem when we update them (gradient will be same). The workaround is to initialize them by unit Gaussian. 
 
-After initialization and one single input, we then have the prediction $\hat{y}$. We can use this value to back-propagate so that network can learn from it. If $\hat{y} = y$, then we can nothing to learn. The network does well. However, if not, we have something to ask for network to update its parameters so that it can do better next time. Is it like a human, isn't?
+After initialization and one single input, we then have the prediction $\hat{y}$. We can use this value to back-propagate so that network can learn from it. If $\hat{y} = y$, then we have nothing to learn. The network does well. However, if not, we have something to ask for network to update its parameters so that it can do better next time. Is it like a human, isn't?
 
 Let's define the loss function as :
 
@@ -129,7 +129,7 @@ where $\alpha$ is the learning rate.
 
 There are two cases that I want to discuss. 
 
-(1) What will happen if we initialize all the parameters to zeros? In this case, we can plug it back to matrix calculation, which will zero as output, which is also the input sigmoid function leading to 0.5 ALWAYS. f
+(1) What will happen if we initialize all the parameters to zeros? In this case, we can plug it back to matrix calculation, which will be zero as output. This is also the input to sigmoid function, leading to 0.5 ALWAYS. 
 
 (2) What will happen if we initialize all the parameters to the same values? In this case, from matrix calculation, we can see that this can cause that output from each node in that layer will have all the same values. This will occur to each layer. When we calculate the gradient, this will give us the same gradient in each node in a layer. It will learn the same thing for each neuron. 
 
@@ -207,7 +207,7 @@ W &= W - \alpha\frac{\partial J}{\partial W} - \alpha\frac{\lambda}{2}\frac{\par
 &= (1-\alpha\lambda)W - \alpha\frac{\partial J}{\partial W}
 \end{align}$$
 
-This means that in updating, some penalties might be included in order to optimize the new J overall. Note that this penalty encourages parameters to be small in l2 magnitude. This is becuase larger magnitude of parameters results in larger varaince. 
+This means that in updating, some penalties might be included in order to optimize the new J overall. Note that this penalty encourages parameters to be small in L2 magnitude. This is becuase larger magnitude of parameters results in larger varaince. 
 
 ## Parameter Sharing
 
