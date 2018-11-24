@@ -39,7 +39,7 @@ $$\mathcal{L}(\hat{y},y) = \frac{1}{2}(\hat{y} - y)^2$$
 
 For binary classification, we have:
 
-$$\mathcal{L}(\hat{y},y) = -(y\log\hat{y} + (1-y)\log (1-\hat{y}))$$
+$$\mathcal{L}(\hat{y},y) = -\bigg(y\log\hat{y} + (1-y)\log (1-\hat{y})\bigg)$$
 
 For multi-classification, we have:
 
