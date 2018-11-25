@@ -17,7 +17,7 @@ sidebar:
 
 The discriminative model is the model where algorithms try to directly classify a label for input such logstic regression and perceptron algorithm. The discriminative model does not have a concept of what the object might look like. They just classify. It cannot generate a new image based on the class. 
 
-Formally, it is $p(y\lvertx;\theta)$ where p can be any classification model such as logistic regression model. 
+Formally, it is $p(y\lvert x;\theta)$ where p can be any classification model such as logistic regression model. 
 
 # 2 Generative Model
 
@@ -137,8 +137,6 @@ p(y=1\lvert x) &= \frac{p(x\lvert y=1)p(y=1)}{p(x)} \\
 The above shwon example is generally good but will possibly fail where a new word which does exist in the past training samples appear in the coming email. In such case, it would cause $\phi$ for both classes to become zero because the models never see the word before. The model will fail to make prediction. 
 
 This motivates a solution called **Laplace Smoothing**, which sets each parameter as:
-
-$$\phi_j = \frac{\sum_{i=1}^{m} \mathbb{1}[z^{(i)}] + 1}{m+k}$$
 
 $$\begin{align}
 \phi_{j\lvert y=1} &= \frac{\sum_{i=1}^m \mathbb{1}\{x_j^i = 1 \text{and} y^i = 1\}+1}{\sum_{i=1}^m \mathbb{1}\{y^i = 1\}+2} \\
