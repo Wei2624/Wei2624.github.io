@@ -18,7 +18,7 @@ sidebar:
 
 In this section,we will introduce a new learning algorithm for density estimation, namely Expectation-Maximization (EN). Before we introduce what EM is, I will first talk about **mixture of Gaussian** model and build the intuition on that. 
 
-Let's denote $\{x^{(1)},\dots,x^{(m)}\}$ the training dataset without labels. We assume that each data sample is associated with a class label, say $z^{(i)} \sim Multinomial(\phi)$. So $\phi_j = p(z^{(i)} = j)$. We aslo assume that data samples in each cluster is distributed as Gaussian. That is: $x^{(i)}\lvert z^{(i)}=j\sim\mathcal{N}(\mu_j,\Sigma_j)$. Then, we joint distribution as $p(x^{(i)},z^{(i)}) = p(x^{(i)}\lvert z^{(i)})p(z^{(i)})$. This looks like k means clustering. This is called **mixture of Gaussian**. We call $^{(i)}$ **latent variable** in this case, meaning it is invisible. 
+Let's denote $\{x^{(1)},\dots,x^{(m)}\}$ the training dataset without labels. We assume that each data sample is associated with a class label, say $z^{(i)} \sim Multinomial(\phi)$. So $\phi_j = p(z^{(i)} = j)$. We aslo assume that data samples in each cluster is distributed as Gaussian. That is: $x^{(i)}\lvert z^{(i)}=j\sim\mathcal{N}(\mu_j,\Sigma_j)$. Then, we joint distribution as $p(x^{(i)},z^{(i)}) = p(x^{(i)}\lvert z^{(i)})p(z^{(i)})$. This looks like k means clustering. This is called **mixture of Gaussian**. We call $z^{(i)}$ **latent variable** in this case, meaning it is invisible. 
 
 The parameters that are to be optimized are $\phi,\mu,\Sigma$. The likelihood turns out to be:
 
@@ -146,7 +146,7 @@ Let's put them all together. So we have:
 
 $$q_i(z^{(i)}) = p(z^{(i)}\lvert x^{(i)};\theta)$$
 
-2 <-step: update parameters as :
+2 M-step: update parameters as :
 
 $$\theta = \arg\max_{\theta} \sum\limits_i\sum\limits_{z^i} q_i(z^{(i)}) \log\frac{p(x^{(i)},z^{(i)};\theta)}{q_i(z^{(i)})}$$
 
