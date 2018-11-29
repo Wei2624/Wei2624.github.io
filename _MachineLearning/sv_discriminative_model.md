@@ -50,7 +50,7 @@ $$\begin{align}
 &= (h_{\theta}(x)-y) x_j
 \end{align}$$
 
-The second line is rsulted from chain rule of derivatives. On third line, I expand $h_{\theta}(x) = \sum\limits_{i=0}^n \theta_i x_i$ by definition. On last line, since we only care about $\theta_j$, everything else is constant. 
+**Math**: The second line is rsulted from chain rule of derivatives. On third line, I expand $h_{\theta}(x) = \sum\limits_{i=0}^n \theta_i x_i$ by definition. On last line, since we only care about $\theta_j$, everything else is constant. 
 
 So the update for all the samples are:
 
