@@ -130,7 +130,7 @@ $$\begin{align}
 &= X^X\theta - X^T\overrightarrow{y}
 \end{align}$$
 
-**Math**: the second line is resulted from applying $a = tr(a)$ where a is a scaler. The third line is from the fact that (1) the derivative w.r.t. $\theta$ on \overrightarrow{y}^T\overrightarrow{y}$ is zero; (2) $tr(A+B) = tr(A) + tr(B)$;(3) $- \theta^TX^T\overrightarrow{y} - \overrightarrow{y}^TX\theta = 2\overrightarrow{y}^TX\theta$. The fourth line is resulted from using (1) the property right above where $A^T = \theta,B = B^T = X^TX, C = I$; (2)$\triangledown_A trAB = B^T$.
+**Math**: the second line is resulted from applying $a = tr(a)$ where a is a scaler. The third line is from the fact that (1) the derivative w.r.t. $\theta$ on $\overrightarrow{y}^T\overrightarrow{y}$ is zero; (2) $tr(A+B) = tr(A) + tr(B)$;(3) $- \theta^TX^T\overrightarrow{y} - \overrightarrow{y}^TX\theta = 2\overrightarrow{y}^TX\theta$. The fourth line is resulted from using (1) the property right above where $A^T = \theta,B = B^T = X^TX, C = I$; (2)$\triangledown_A trAB = B^T$.
 
 We set it to zero and we obtain normal equation:
 
