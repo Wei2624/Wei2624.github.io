@@ -12,7 +12,7 @@ sidebar:
   nav: "MachineLearning"
 ---
 
-In this long post, I mainly talk about contents from CS 229 by Prof. Andrew Ng and Machine Learning by Prof. John Paisley. This post mixes contents from both sides, and is expected to grow more. It is much like self-displined. I always try to cature the most important contents here and eliminate redundant contents. This post is supposed to be the marterial for self-study. 
+In this long post, I mainly talk about contents from CS 229 by Prof. Andrew Ng. But meanwhile I also include contents from many classed that I took at Columbia such as Prof. David Blei and Prof. Daniel Hsu. This post mixes contents from all of them, and is expected to grow more. It is much like self-displined. I always try to cature the most important contents here and eliminate redundant contents. This post is supposed to be the marterial for self-study. 
 
 The key difference of this post are that:
 
