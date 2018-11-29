@@ -50,6 +50,8 @@ $$\begin{align}
 &= (h_{\theta}(x)-y) x_j
 \end{align}$$
 
+The second line is rsulted from chain rule of derivatives. On third line, I expand $h_{\theta}(x) = \sum\limits_{i=0}^n \theta_i x_i$ by definition. On last line, since we only care about $\theta_j$, everything else is constant. 
+
 So the update for all the samples are:
 
 $$\theta_j = \theta_j + \alpha\sum\limits_{i=0}^m (y^{(i)} - h_{\theta}(x^{(i)}))x_j^{(i)}$$
@@ -128,6 +130,8 @@ $$\begin{align}
 &= X^X\theta - X^T\overrightarrow{y}
 \end{align}$$
 
+**Math**: the second line is resulted from applying $a = tr(a)$ where a is a scaler. The third line is from the fact that (1) the derivative w.r.t. $\theta$ on \overrightarrow{y}^T\overrightarrow{y}$ is zero; (2) $tr(A+B) = tr(A) + tr(B)$;(3) $- \theta^TX^T\overrightarrow{y} - \overrightarrow{y}^TX\theta = 2\overrightarrow{y}^TX\theta$. The fourth line is resulted from using (1) the property right above where $A^T = \theta,B = B^T = X^TX, C = I$; (2)$\triangledown_A trAB = B^T$.
+
 We set it to zero and we obtain normal equation:
 
 $$X^TX\theta = X^T\overrightarrow{y}$$
@@ -142,7 +146,7 @@ We assume that the target variable and the inputs are related as:
 
 $$y^{(i)} = \theta^Tx^{(i)} + \epsilon^{(i)}$$
 
-where $\epsilon^{(i)}$ is random variable which can capture noise and unmodeled effects. We also assume that noise are distributed i.i.d. from Gaussian with zero mean and some variance $\sigma^2$, which is a traditional way to model. Now, we can say:
+where $\epsilon^{(i)}$ is random variable which can capture noise and unmodeled effects. We also assume that noise are distributed i.i.d. from Gaussian with zero mean and some variance $\sigma^2$, which is a traditional way to model. It turns out that $\epsilon^{(i)}$ is a random variable of Gaussian, and $\theta^Tx^{(i)}$ is constant w.r.t. the r.v. Adding a constant to a Gaussian r.v. will lead the mean of r.v. to shift by that amount but it is still a Gaussian just with different mean and same variance.  Now, by definition of Gaussian, we can say:
 
 $$p(y^{(i)} \lvert x^{(i)};\theta) = \frac{1}{\sqrt{2\pi \sigma}}\exp\big(-\frac{(y^{(i)} - \theta^Tx^{(i)})^2}{2\sigma^2}\big)$$
 
