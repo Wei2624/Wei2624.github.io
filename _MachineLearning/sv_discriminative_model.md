@@ -84,7 +84,7 @@ $$\begin{align}
 trAB &= tr\sum\limits_{i=1}^N (AB)_{ii} \\
 &= tr\sum\limits_{i=1}^N \sum\limits_{j=1}^M A_{ij}B_{ji}  \\
 &= tr \sum\limits_{j=1}^M \sum\limits_{i=1}^N B_{ji} A_{ij}\\
-&= trBA
+&= trBA \qedhere
 \end{align}$$
 
 $$trABC = trCAB = trBCA$$
