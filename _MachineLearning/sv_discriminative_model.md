@@ -78,6 +78,15 @@ where A must be a square matrix. Now, I will list the properties of trace and wr
 
 $$trAB = trBA$$
 
+**Proof**: 
+
+$$\begin{align}
+trAB &= tr\sum\limits_{i=1}^N (AB)_{ii} \\
+&= tr\sum\limits_{i=1}^N \sum\limits_{j=1}^M A_{ij}B_{ji}  \\
+&= tr \sum\limits_{j=1}^M \sum\limits_{i=1}^N B_{ji} A_{ij}\\
+&= trBA
+\end{align}$$
+
 $$trABC = trCAB = trBCA$$
 
 $$trABCD = trDABC = trCDAB = trBCDA$$
