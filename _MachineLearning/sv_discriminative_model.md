@@ -81,17 +81,38 @@ $$trAB = trBA$$
 **Proof**: 
 
 $$\begin{align}
-trAB &= tr\sum\limits_{i=1}^N (AB)_{ii} \\
-&= tr\sum\limits_{i=1}^N \sum\limits_{j=1}^M A_{ij}B_{ji}  \\
-&= tr \sum\limits_{j=1}^M \sum\limits_{i=1}^N B_{ji} A_{ij}\\
+trAB &= \sum\limits_{i=1}^N (AB)_{ii} \\
+&= \sum\limits_{i=1}^N \sum\limits_{j=1}^M A_{ij}B_{ji}  \\
+&= \sum\limits_{j=1}^M \sum\limits_{i=1}^N B_{ji} A_{ij}\\
 &= trBA \blacksquare
 \end{align}$$
 
-$$trABC = trCAB = trBCA$$
+$$trABC = trCAB = trBCA$$\
+
+**Proof**:
+
+$$\begin{align}
+trABC &= \sum\limits_{i=1}^N (ABC)_{ii} \\
+&= \sum\limits_{i=1}^N \sum\limits_{j=1}^M \sum\limits_{p=1}^K A_{ij}B_{jk}C_{ki}  \\
+&= \sum\limits_{p=1}^K \sum\limits_{i=1}^N \sum\limits_{j=1}^M C_{ki}A_{ij}B_{jk}\\
+&= trCAB \blacksquare
+\end{align}$$
+
+The other is similar the proof above. Note that you cannot randomly shuffle the order of each matrix because of the dimensionality constraint. 
 
 $$trABCD = trDABC = trCDAB = trBCDA$$
 
+**Proof**: Similar to the above. 
+
 $$trA = trA^T$$
+
+**Proof**:
+
+$$\begin{align}
+trA &= \sum\limits_{i=1}^N A_{ii} \\
+&= \sum\limits_{i=1}^N A_{ii}^T \\
+&= trA^T \blacksquare
+\end{align}$$
 
 $$tr(A+B) = trA + trB$$
 
