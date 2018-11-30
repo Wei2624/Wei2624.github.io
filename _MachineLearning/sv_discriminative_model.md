@@ -87,7 +87,7 @@ trAB &= \sum\limits_{i=1}^N (AB)_{ii} \\
 &= trBA \blacksquare
 \end{align}$$
 
-$$trABC = trCAB = trBCA$$\
+$$trABC = trCAB = trBCA$$
 
 **Proof**:
 
