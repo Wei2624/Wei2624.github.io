@@ -246,7 +246,8 @@ let's look at what it will be when we take derivative of logistic funciton:
 
 $$\begin{align}
 \frac{d}{dz} g(z) &= \frac{1}{(1+\exp(-z))^2}\big(\exp(-z)\big)\\
-&= \frac{1}{(1+\exp(-z))}\Big(1 - \frac{1}{(1+\exp(-z))^2}\Big)\\
+&= \frac{1 + \exp(-z) - 1}{(1+\exp(-z))^2} \\
+&= \frac{1}{(1+\exp(-z))}\Big(1 - \frac{1}{1+\exp(-z)}\Big)\\
 &= g(z)(1-g(z))
 \end{align}$$
 
