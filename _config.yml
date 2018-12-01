@@ -116,7 +116,7 @@ author:
       url: "https://github.com/Wei2624"
     - label: "WeChat"
       icon: "fab fa-weixin"
-      url: "/images/WechatID.jpeg"
+      # url: "/images/WechatID.jpeg"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
