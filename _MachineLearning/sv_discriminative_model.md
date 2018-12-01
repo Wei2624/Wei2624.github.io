@@ -116,7 +116,29 @@ trA &= \sum\limits_{i=1}^N A_{ii} \\
 
 $$tr(A+B) = trA + trB$$
 
+**Proof**:
+
+Similar to the above. 
+
 $$tr\alpha A = \alpha trA$$
+
+**Proof**:
+
+Similar to the above.
+
+$$\triangledown_A trAB = B^T$$
+
+$$\begin{align}
+\triangledown_{A_ij} trAB &= \sum\limits_{i=1}^N (AB)_{ii} \\
+&= \sum\limits_{i=1}^N \sum\limits_{j=1}^M A_{ij} B_{ji} \\
+&= B_{ji}
+\end{align}$$
+
+We know that:
+
+$$\triangledown_A trAB = \begin{bmatrix} \frac{\partial trAB}{\partial A_{11}} & \frac{\partial trAB}{\partial A_{12}} & \dots & \frac{\partial trAB}{\partial A_{1M} }\\ \frac{\partial trAB}{\partial A_{21} } & \frac{\partial trAB}{\partial A_{22} } & \dots & \frac{\partial trAB}{\partial A_{2M} } \\ \vdots & \vdots & \dots & \vdots \\ \frac{\partial trAB}{\partial A_{N1} } & \frac{\partial trAB}{\partial A_{N2} } & \dots & \frac{\partial trAB}{\partial A_{NM}} \end{bmatrix}$$
+
+Plug it in, we found out:
 
 $$\triangledown_A trAB = B^T$$
 
