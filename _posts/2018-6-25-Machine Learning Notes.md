@@ -18,11 +18,12 @@ Note: Chinese version of each section is coming soon.
 
 # Coming:
 
-1 More is coming for EM Algorithm. 
+1 More is coming for [EM Algorithm](https://wei2624.github.io/MachineLearning/usv_em/). 
 
 # Recently updated:
 
 1 [Discriminative Algorithm](https://wei2624.github.io/MachineLearning/sv_discriminative_model/)
+
 &nbsp;&nbsp;&nbsp;&nbsp; Correct a typo for the derivative for logistic regression. 
 
 # What is this post?
