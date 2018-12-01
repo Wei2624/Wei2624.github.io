@@ -128,6 +128,8 @@ Similar to the above.
 
 $$\triangledown_A trAB = B^T$$
 
+**Proof**:
+
 $$\begin{align}
 \triangledown_{A_ij} trAB &= \sum\limits_{i=1}^N (AB)_{ii} \\
 &= \sum\limits_{i=1}^N \sum\limits_{j=1}^M A_{ij} B_{ji} \\
@@ -140,7 +142,7 @@ $$\triangledown_A trAB = \begin{bmatrix} \frac{\partial trAB}{\partial A_{11}} &
 
 Plug it in, we found out:
 
-$$\triangledown_A trAB = B^T$$
+$$\triangledown_A trAB = B^T \blacksquare$$
 
 $$\triangledown_{A^T}f(A) = (\triangledown_A f(A))^T$$
 
