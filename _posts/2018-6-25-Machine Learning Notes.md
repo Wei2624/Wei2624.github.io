@@ -12,18 +12,25 @@ sidebar:
   nav: "MachineLearning"
 ---
 
-In this long post, I mainly talk about contents from CS 229 by Prof. Andrew Ng. But meanwhile I also include contents from many classed that I took at Columbia such as Prof. David Blei and Prof. Daniel Hsu. This post mixes contents from all of them, and is expected to grow more. It is much like self-disciplined. I always try to cature the most important contents here and eliminate redundant contents. This post is supposed to be the marterial for self-study. 
+# What is this post?
 
-The key difference of this post are that:
+In this long post, I mainly talk about contents from CS 229 by Prof. Andrew Ng. But meanwhile I also include contents from many classed that I took at Columbia such as Prof. David Blei and Prof. Daniel Hsu. This post mixes contents from all of them, and is expected to grow more. It is much like self-disciplined. I always try to cature the most important contents here. This post is supposed to be the marterial for self-study. 
 
-1) I am trying to explain theorectical concepts in plain language and try to give the proof for theorem. 
+# Why this post?
 
-2) I am trying to make this post to be a good summary for CS 229 and ML class from both profs. 
+The key difference of this post is that:
 
+1) I am trying to explain theorectical concepts in plain language and try to give the proof for theorem. I am a student,too. I will try to make it from student's perspectives. 
+
+2) I am trying to make this post to be a good summary for CS 229 and other ML classes. Every class has its own beauty. Putting them together and making a story can make it the most beautiful. 
+
+# How to use it?
 
 You can directly go to any topic you like. Feel free to comment at the bottem of each post. I love to discuss these topics from different perspectives. Also, feel free to let me know if anything is wrong here. 
 
 It is recommended that you have some basic knowledge about probability, linear algebra and vector calculus before reading the notes. The reading can be done simply from beginning to ending or be indexed from left sidebar based on your needs. 
+
+# You like it? You share it
 
 **Note: You can share any post to social network at the bottom.**
 
