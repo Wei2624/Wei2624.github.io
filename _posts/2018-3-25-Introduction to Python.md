@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Python Class
+title: Python Class (Chinese)
 category: Teaching
 qr: python_class.png
 tags: [Python,basic]
