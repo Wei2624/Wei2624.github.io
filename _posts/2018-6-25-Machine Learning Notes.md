@@ -22,13 +22,11 @@ Note: Chinese version of each section is coming soon.
 
 # Recently updated:
 
-1 [Discriminative Algorithm](https://wei2624.github.io/MachineLearning/sv_discriminative_model/)
-
-&nbsp;&nbsp;&nbsp;&nbsp; Correct a typo for the derivative for logistic regression. 
+1 [Discriminative Algorithm](https://wei2624.github.io/MachineLearning/sv_discriminative_model/): Correct a typo for the derivative for logistic regression. 
 
 # What is this post?
 
-In this long post, I mainly talk about contents from CS 229 by Prof. Andrew Ng. But meanwhile I also include contents from many classed that I took at Columbia such as Prof. David Blei and Prof. Daniel Hsu. This post mixes contents from all of them, and is expected to grow more. It is much like self-disciplined. I always try to cature the most important contents here. This post is supposed to be the marterial for self-study. 
+In this long post, I mainly talk about contents from CS 229 by Prof. Andrew Ng. But meanwhile I also include contents from many classes that I took at Columbia such as Prof. David Blei and Prof. Daniel Hsu. This post mixes contents from all of them, and is expected to grow more. It is much like self-disciplined. I always try to cature the most important contents here. This post is supposed to be the marterial for self-study. 
 
 # Why this post?
 
@@ -46,7 +44,7 @@ It is recommended that you have some basic knowledge about probability, linear a
 
 # You like it? 
 
-**You share it**
+**You share it.**
 
 **Note: You can share any post to social network at the bottom.**
 

@@ -31,7 +31,7 @@ To learn it, we also define the cost function on which we are trying to minimize
 
 $$J(\theta) = \frac{1}{2}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)}) - y^{(i)})^2$$
 
-The goal is to find such $\theta$ that minimize the cost. The question is how.
+The goal is to find such $\theta$ that minimize the cost. The question is how. You might want to know why there is $\frac{1}{2}$. It will be clear when we derive the derivative of this cost function in the following section. In short, it is mathematical convenient to define that way. 
 
 ## Least Mean Sqaure(LMS) algorithm
 
