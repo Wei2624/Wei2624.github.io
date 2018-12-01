@@ -142,7 +142,7 @@ $$\triangledown_A trAB = \begin{bmatrix} \frac{\partial trAB}{\partial A_{11}} &
 
 Plug it in, we found out:
 
-$$\triangledown_A trAB = B^T \blacksquare$$
+$$\triangledown_A trAB = B^T$$
 
 $$\triangledown_{A^T}f(A) = (\triangledown_A f(A))^T$$
 
