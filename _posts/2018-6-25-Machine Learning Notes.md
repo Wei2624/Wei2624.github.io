@@ -42,6 +42,14 @@ You can directly go to any topic you like. Feel free to comment at the bottem of
 
 It is recommended that you have some basic knowledge about probability, linear algebra and vector calculus before reading the notes. The reading can be done simply from beginning to ending or be indexed from left sidebar based on your needs. 
 
+# How to track it?
+
+You can bookmark this page. I will update this page to show where I have made changes of the notes and what might be coming next. 
+
+# Found error or interested in other topics?
+
+Please let me know. You can email me or directly comment below. 
+
 # You like it? 
 
 **You share it.**
