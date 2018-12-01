@@ -8,6 +8,11 @@ tags: [Python,basic]
 In this post, I wll mainly post the supplementary materials for the class I am teaching, including shell script, code and etc. I will update it regularly. 
 
 ## First Class(2018-3-26)
+
+The slides presented in class can be found at [here][4]
+
+[4]:{{ site.url }}/download/Python和人工智能基础课程(第一课).pdf
+
 1 By using {% highlight python %}cd{% endhighlight %} command in both Wdinows and Mac, one can switch path. 
 
 2 "Hello World" example:
@@ -32,6 +37,7 @@ print "Your age is:" + age
 
 
 ## Second Class(2018-4-01)
+
 The slides presented in class can be found at [here][1]
 
 [1]:{{ site.url }}/download/Python基础和人工智能课程(第二讲).pdf
