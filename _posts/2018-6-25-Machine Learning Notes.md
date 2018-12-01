@@ -12,6 +12,10 @@ sidebar:
   nav: "MachineLearning"
 ---
 
+Note: viewing this page on mobile phone might hurt your experience.
+
+Note: Chinese version of each section is coming soon. 
+
 # What is this post?
 
 In this long post, I mainly talk about contents from CS 229 by Prof. Andrew Ng. But meanwhile I also include contents from many classed that I took at Columbia such as Prof. David Blei and Prof. Daniel Hsu. This post mixes contents from all of them, and is expected to grow more. It is much like self-disciplined. I always try to cature the most important contents here. This post is supposed to be the marterial for self-study. 
@@ -30,7 +34,9 @@ You can directly go to any topic you like. Feel free to comment at the bottem of
 
 It is recommended that you have some basic knowledge about probability, linear algebra and vector calculus before reading the notes. The reading can be done simply from beginning to ending or be indexed from left sidebar based on your needs. 
 
-# You like it? You share it
+# You like it? 
+
+**You share it**
 
 **Note: You can share any post to social network at the bottom.**
 
