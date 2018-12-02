@@ -13,9 +13,13 @@ sidebar:
   nav: "MachineLearning"
 ---
 
-A classical learning problem is called supervised learning. In this case, we usually have an input called features and output called target. The goal is that given some features we ask the trained model to predict the output. To do so, we collect a training dataset in which we have a number of pairs of training sample composing of a feature vector and its corresponding output. Since we have ground truth for every single input, we call this type of learning as supervised learning and the learned model as hypothesis. An example can be shown in the table below. 
+A classical learning paradigm is called supervised learning. In this case, we usually have an input called features and output called target. The goal is that given some features we ask the trained model to predict the output. 
+
+To do so, we collect a training dataset in which we have a number of pairs of training sample composing of a feature vector denoted $\mathcal{X}$ and its corresponding output denoted $\mathcal{Y}$. Since we have ground truth for every single input, we call this type of learning as supervised learning and the learned model as hypothesis. An example can be shown in the table below. 
 
 ![Supervise Learning Intuition](/images/cs229_lec1_intuit.png)
+
+In this case, we have living areas as features and price as output. The task is that given a new input of living area, the model can predict the price of it. 
 
 When the target output is in continuous space, we call it a **regression problem**. When the target output is in discrete space, we call it as a **classification problem**. 
 
@@ -31,7 +35,7 @@ To learn it, we also define the cost function on which we are trying to minimize
 
 $$J(\theta) = \frac{1}{2}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)}) - y^{(i)})^2$$
 
-The goal is to find such $\theta$ that minimize the cost. The question is how. You might want to know why there is $\frac{1}{2}$. It will be clear when we derive the derivative of this cost function in the following section. In short, it is mathematical convenient to define that way. 
+The goal is to find such $\theta$ that minimize the cost. The question is how. You might want to know why there is $\frac{1}{2}$. It will be clear when we derive the derivative of this cost function in the following section. In short, it is mathematically convenient to define that way. 
 
 ## Least Mean Sqaure(LMS) algorithm
 
@@ -56,15 +60,15 @@ So the update for all the samples are:
 
 $$\theta_j = \theta_j + \alpha\sum\limits_{i=0}^m (y^{(i)} - h_{\theta}(x^{(i)}))x_j^{(i)}$$
 
-where m is the number of training examples and j can span the dimension of feature vector. This algorithm takes all the factors from every single training sample. We call it **batch gradient descent**. This method is senstive to the local minimum (i.e. might arrive at saddle point) where we generally assume that the cost function has only global minimum which is the case(J is convex). An graphical illustration can be shown below. 
+where m is the number of training samples and j can span the dimension of feature vector. This algorithm takes all the factors from every single training sample. We call it **batch gradient descent**. This method is senstive to the local minimum (i.e. might arrive at saddle point) where we generally assume that the cost function has only global minimum which is the case (J is convex). An graphical illustration can be shown below. 
 
 ![Batch Gradient Descent](/images/cs229_lec1_bgd.png)
 
-Note that in the updating, we run through all the samples to make one step forward to local min. This step is computationally expensive if m is very large. Thus,in this case, we introduce a similar algortihm called **stochastic gradient descent** where only a small part of samples are fed into the algorithm. By doing this, we can converge faster although it might oscillate a lot. It will produce good approximation to the global minimum. Thus, we use this often in reality. 
+Note that in the updating, we run through all the samples to make one step forward to local min. This step is computationally expensive if m is very large. Thus,in this case, we introduce a similar algortihm called **stochastic gradient descent** where only a small part of samples are fed into the algorithm at one time. By doing this, we can converge faster although it might oscillate a lot. It will produce good approximation to the global minimum. Thus, we use this often in reality. 
 
 # 2 Normal Equations
 
-In the section above, we use the iterative algorithm to find the minimum. This method is used usually when the solution to the derivative equal to zero is intractable. If we are able to find the derivative and solve when it is zero, we can explicitly calculate the local minimum. Before going through, we need the memory refresher for the math!
+In the section above, we use the iterative algorithm to find the minimum. This method is used usually when the solution of the derivative w.r.t. parameters equal to zero is intractable (i.e. cannot be solved easily). If we are able to find the derivative and solve when it is zero, we can explicitly calculate the local minimum. Before going through, we need the memory refresher for the math!
 
 ## Matrix derivatives
 
@@ -196,11 +200,13 @@ $$\theta = (X^TX)^{-1}X^T\overrightarrow{y}$$
 
 # 3 Probabilistic interpretation
 
+The Normal equation is a deterministic way to find the solution. Let's see how we can interpretate it probabilistically. It should end up with the same result. 
+
 We assume that the target variable and the inputs are related as:
 
 $$y^{(i)} = \theta^Tx^{(i)} + \epsilon^{(i)}$$
 
-where $\epsilon^{(i)}$ is random variable which can capture noise and unmodeled effects. We also assume that noise are distributed i.i.d. from Gaussian with zero mean and some variance $\sigma^2$, which is a traditional way to model. It turns out that $\epsilon^{(i)}$ is a random variable of Gaussian, and $\theta^Tx^{(i)}$ is constant w.r.t. the r.v. Adding a constant to a Gaussian r.v. will lead the mean of r.v. to shift by that amount but it is still a Gaussian just with different mean and same variance.  Now, by definition of Gaussian, we can say:
+where $\epsilon^{(i)}$ is random variable which can capture noise and unmodeled effects. This is generally probability model for liear regression. We also assume that noise are distributed i.i.d. from Gaussian with zero mean and some variance $\sigma^2$, which is a traditional way to model. It turns out that $\epsilon^{(i)}$ is a random variable of Gaussian, and $\theta^Tx^{(i)}$ is constant w.r.t. the r.v. Adding a constant to a Gaussian r.v. will lead the mean of r.v. to shift by that amount but it is still a Gaussian just with different mean and same variance.  Now, by definition of Gaussian, we can say:
 
 $$p(y^{(i)} \lvert x^{(i)};\theta) = \frac{1}{\sqrt{2\pi \sigma}}\exp\big(-\frac{(y^{(i)} - \theta^Tx^{(i)})^2}{2\sigma^2}\big)$$
 
@@ -222,7 +228,7 @@ Maximizing this with respect to $\theta$ will give the same answer as minimizing
 
 # 4 Locally Weighted Linear Rgression
 
-In the regression method discussed above, we treat the cost resulted from training samples equally in the process. However, this might not be proper since some outliers should placed less weights. We implement this idea by placing weights to each sample with respect to the querying point. For example, such a weight can be:
+In the regression method discussed above, we treat the cost resulted from training samples equally in the process. However, this might not be proper since some outliers should be placed less weights. We implement this idea by placing weights to each sample with respect to the querying point. For example, such a weight can be:
 
 $$w^{(i)} = \exp\big(-\frac{(x^{(i)} - x)^2}{2r^2}\big)$$
 
@@ -240,7 +246,7 @@ where g is called **logistic function or sigmoid function**. A plot of logistic 
 
 ![Logistic Function](/images/cs229_lec1_logistic.png)
 
-It ranges from 0 to 1 as output. 
+It ranges from 0 to 1 as output. This intuitively explains why we call it regression since it outputs in a continuous space. However, the value indicates the probability of belonging to certain class. So essentially it is a classifier. 
 
 let's look at what it will be when we take derivative of logistic funciton:
 
@@ -264,7 +270,7 @@ L(\theta) &= \prod_{i=1}^{m} p(y^{(i)}\lvert x^{(i)};\theta)\\
 &= \prod_{i=1}^{m} (h_{\theta}(x^{(i)}))^{y^{(i)}} (1 - h_{\theta}(x^{(i)}))^{1-y^{(i)}}
 \end{align}$$
 
-using log likelihood, we can have:
+Applying log, we can have:
 
 $$\log L(\theta) = \sum\limits_{i=1}^m y^{(i)}\log h(x^{(i)}) + (1-y^{(i)}\log(1-h(x^{(i)})$$
 
@@ -306,7 +312,7 @@ Alhtough it converges in quadratic, each updating is more costly than gradient d
 
 # 8 Generalized Linear Models and Exponential Family
 
-Remeber that we have "coincidence" where the updating of logistic regression and least mean square regress ends up with same form. They are special cases in the big family called GLM. The reason why it is called linear is because every distribution in this family places a linear relationship between varaibles and their weights. 
+Remeber that we have "coincidence" where the updating of logistic regression and least mean square regression ends up with same form. They are special cases in the big family called GLM. The reason why it is called linear is because every distribution in this family places a linear relationship between varaibles and their weights. 
 
 Before going to GML, we fisrt talk about exponential family distributions as the foundation to GLM. We define that a class of distribution is in the exponential family if it can be written in the form:
 
@@ -348,7 +354,7 @@ $$a(\eta) = \mu^2/2 = \eta^2/2$$
 
 $$b(y) = (1/\sqrt{2\pi})\exp(-y^2/2)$$
 
-Other exponential distribution: Multinomial, Possion, gamma and exponential, beta and Dirichlet. Since they are all in exponential family, what we can do is to study exponential family in general form and vary $\eta$ to model differently. 
+Other exponential distribution: Multinomial, Possion, gamma and exponential, beta and Dirichlet. Since they are all in exponential family, what we can do is to study exponential family in general form and vary $\eta$ to model differently. I will open another section on exponential family. 
 
 # 9 Constructing GLM
 
@@ -380,7 +386,7 @@ where the first equation is from assumption (2); the second is by definition; th
 In this setting, we predict either 1 or 0 for class label. Recall that, in Bernoulli, we had $\phi=1/(1+e^{\eta}$. Thus, we can derive the following equation as:
 
 $$\begin{align}
-h_{\theta}(x) = \mathbb{E}[y\lvert x;\theta]\\
+h_{\theta}(x) &= \mathbb{E}[y\lvert x;\theta]\\
 &= \phi\\
 &= 1/(1+e^{-\eta}) \\
 &= 1/(1+e^{=-\theta^Tx})
@@ -451,7 +457,9 @@ Now, we need to fit $\theta$ such that we can max the log likelihood. by definit
 
 $$\begin{align}
 L(\theta) &= \sum\limits_{i=1}^m \log(p(y^{(i)}\lvert x^{(i)};\theta)\\
-&=\sum\limits_{i=1}^m \log\prod_{l=1}^k\bigg(\frac{\exp(\theta_l^Tx)}{\sum_{j=1}^k\exp(\theta_j^Tx)}\bigg)^{\mathbb{1}\{y^{(i)}=l}\}
+&=\sum\limits_{i=1}^m \log\prod_{l=1}^k\bigg(\frac{\exp(\theta_l^Tx)}{\sum_{j=1}^k\exp(\theta_j^Tx)}\bigg)^{\mathbb{1}\{y^{(i)}=l\}}
 \end{align}$$
 
 We can use gradient descent or Newton's method to find the max of it. 
+
+**Note**: logistic regression is binary case of softmax regression. Sigmoid function is binary case of sigmoid function. 
