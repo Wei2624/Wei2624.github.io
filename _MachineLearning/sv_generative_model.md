@@ -78,7 +78,8 @@ Plug in each distribution with a class k:
 
 $$\begin{align}
 \ell(\phi,\mu_k,\Sigma) &= \sum\limits_{i=1}^m \log p(x^{(i)}\lvert y^{(i)};\mu_k,\Sigma) p(y^{(i)};\phi)\\
-&= \sum\limits_{i=1}^m \bigg[-\frac{n}{2}\log 2\pi-\frac{1}{2}\log\lvert\Sigma\rvert -\frac{1}{2}(x^i-\mu_k)^T\Sigma^{-1}(x^i-\mu_k) + y^i\log\phi (1-y^i)\log(1-\phi)\bigg]\\
+&= \sum\limits_{i=1}^m \bigg[-\frac{n}{2}\log 2\pi-\frac{1}{2}\log\lvert\Sigma\rvert -\frac{1}{2}(x^i-\mu_k)^T\Sigma^{-1}(x^i-\mu_k)\\
+& + y^i\log\phi+(1-y^i)\log(1-\phi)\bigg]\\
 \end{align}$$
 
 Now, we need to take derivative w.r.t. each parameter and set to zero to find the argmax. Some formules might be useful for the derivation. 
@@ -103,8 +104,8 @@ For $\mu_k$:
 $$\begin{align}
 \frac{\partial \ell(\phi,\mu_k,\Sigma)}{\partial \mu_k} &= \sum\limits_{i=1}^m (-0-0-\frac{1}{2}2(x_k^i-\mu_k)^T\Sigma^{-1}\mathbb{1}\{y^i=k\})=0\\
 &\Rightarrow \sum\limits_{i=1}^m x_k^i\mathbb{1}\{y^i=k\} - \mu_k \mathbb{1}\{y^i=k\} = 0\\
-&\Rightarrow \mu_0 &= \frac{\sum_{i=1}^m\mathbb{1}\{y^{(i)}=0\}x^{(i)}}{\sum_{i=1}^m\mathbb{1}\{y^{(i)}=0\}}\\
-&\Rightarrow \mu_1 &= \frac{\sum_{i=1}^m\mathbb{1}\{y^{(i)}=1\}x^{(i)}}{\sum_{i=1}^m\mathbb{1}\{y^{(i)}=1\}}
+&\Rightarrow \mu_0 = \frac{\sum_{i=1}^m\mathbb{1}\{y^{(i)}=0\}x^{(i)}}{\sum_{i=1}^m\mathbb{1}\{y^{(i)}=0\}}\\
+&\Rightarrow \mu_1 = \frac{\sum_{i=1}^m\mathbb{1}\{y^{(i)}=1\}x^{(i)}}{\sum_{i=1}^m\mathbb{1}\{y^{(i)}=1\}}
 \end{align}$$
 
 For $\Sigma$:
@@ -114,7 +115,7 @@ $$\begin{align}
 &\Rightarrow \sum\limits_{i=1}^m (1-\Sigma^{-T}(x_k^i-\mu_k)(x_k^i-\mu_k)^T) = 0\\
 &\Rightarrow m - \sum\limits_{i=1}^m \Sigma^{-T}(x_k^i-\mu_k)(x_k^i-\mu_k)^T = 0\\
 &\Rightarrow m\Sigma = \sum\limits_{i=1}^m (x_k^i-\mu_k)(x_k^i-\mu_k)^T\\
-&\Rightarrow \Sigma &= \frac{1}{m}\sum\limits_{i=1}^m (x^{(i)} - \mu_{y^{(i)}})(x^{(i)} - \mu_{y^{(i)}})^T
+&\Rightarrow \Sigma = \frac{1}{m}\sum\limits_{i=1}^m (x^{(i)} - \mu_{y^{(i)}})(x^{(i)} - \mu_{y^{(i)}})^T
 \end{align}$$
 
 The results can be shown as:
