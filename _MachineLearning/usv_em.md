@@ -31,7 +31,7 @@ The standard way is to set its derivatives to zero and solve it with respect to 
 
 let's take a look at this equation again. It is hard to solve because we have z variable there. $z^{(i)}$ indicates what class a data sample might belong to. We integrate this out, which makes it hard to calculate. If we knew what value z is, we can easily calcualte the likelihood as:
 
-$$\ell(\phi,\mu,\Sigma) = \sum\limits_{i=1}^m \log p(x^{(i)})\lvert z^{(i);\mu,\Sigma} + \log p(z^{(i)};\phi)$$
+$$\ell(\phi,\mu,\Sigma) = \sum\limits_{i=1}^m \log p(x^{(i)}\lvert z^{(i)};\mu,\Sigma) + \log p(z^{(i)};\phi)$$
 
 We set the derivative of this to zero, and then we can update them as:
 
