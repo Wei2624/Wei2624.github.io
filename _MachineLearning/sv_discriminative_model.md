@@ -60,7 +60,7 @@ So the update for all the samples are:
 
 $$\theta_j = \theta_j + \alpha\sum\limits_{i=0}^m (y^{(i)} - h_{\theta}(x^{(i)}))x_j^{(i)}$$
 
-where m is the number of training samples and j can span the dimension of feature vector. This algorithm takes all the factors from every single training sample. We call it **batch gradient descent**. This method is senstive to the local minimum (i.e. might arrive at saddle point) where we generally assume that the cost function has only global minimum which is the case (J is convex). An graphical illustration can be shown below. 
+where m is the number of training samples and j can span the dimension of feature vector. This algorithm takes all the factors from every single training sample. We call it **batch gradient descent**. This method is sensitive to the local minimum (i.e. might arrive at saddle point) where we generally assume that the cost function has only global minimum which is the case (J is convex). An graphical illustration can be shown below. 
 
 ![Batch Gradient Descent](/images/cs229_lec1_bgd.png)
 
