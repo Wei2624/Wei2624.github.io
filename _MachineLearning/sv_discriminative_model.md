@@ -72,7 +72,7 @@ In the section above, we use the iterative algorithm to find the minimum. This m
 
 ## Matrix derivatives
 
-Some of the concepts are discussed in the other post,which you can find it [here](https://wei2624.github.io/Useful-Formulas-for-Math/).
+Some of the concepts are discussed in the other post,which you can find it [here](https://wei2624.github.io/math/Useful-Formulas-for-Math/).
 
 In this subsection, I will talk about trace operator in linear algebra. Basically, the trace operation is defined as:
 
