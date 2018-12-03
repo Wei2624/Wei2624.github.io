@@ -68,7 +68,7 @@ So we seek for an alternative way to this loss function, which is coordinate des
 
 So the loss function is:
 
-$$\mathcal{L} &= \sum\limits_{i=1}^m\sum\limits_{k=1}^K \mathbb{1}\{c_i=k\} \lvert\lvert x_i-\mu_k\rvert\rvert^2$$
+$$\mathcal{L} = \sum\limits_{i=1}^m\sum\limits_{k=1}^K \mathbb{1}\{c_i=k\} \lvert\lvert x_i-\mu_k\rvert\rvert^2$$
 
 Although we cannot find the best $\mu$ and c at the same time, we can:
 

@@ -18,15 +18,15 @@ Note: Chinese version of each section is coming soon.
 
 # Coming:
 
-1 More is coming for [K-means Cluster](https://wei2624.github.io/MachineLearning/usv_kmeans/)
-
-2 More is coming for [EM Algorithm](https://wei2624.github.io/MachineLearning/usv_em/). 
+1 More is coming for [EM Algorithm](https://wei2624.github.io/MachineLearning/usv_em/). 
 
 # Recently updated:
 
-1 [Discriminative Algorithm](https://wei2624.github.io/MachineLearning/sv_discriminative_model/): Correct a typo for the derivative for logistic regression. 
+1 [Discriminative Algorithm](https://wei2624.github.io/MachineLearning/sv_discriminative_model/): More proofs
 
 2 [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/): Add proof for GDA and Logistic Regression
+
+3 [K-means](https://wei2624.github.io/MachineLearning/usv_kmeans/): Add more details about kmeans story. 
 
 
 # What is this post?
