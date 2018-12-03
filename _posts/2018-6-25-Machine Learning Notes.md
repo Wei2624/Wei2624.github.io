@@ -24,6 +24,9 @@ Note: Chinese version of each section is coming soon.
 
 1 [Discriminative Algorithm](https://wei2624.github.io/MachineLearning/sv_discriminative_model/): Correct a typo for the derivative for logistic regression. 
 
+2 [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/): Add proof for GDA and Logistic Regression
+
+
 # What is this post?
 
 In this long post, I mainly talk about contents from CS 229 by Prof. Andrew Ng. But meanwhile I also include contents from many classes that I took at Columbia such as Prof. David Blei and Prof. Daniel Hsu. This post mixes contents from all of them, and is expected to grow more. It is much like self-disciplined. I always try to cature the most important contents here. This post is supposed to be the marterial for self-study. 
