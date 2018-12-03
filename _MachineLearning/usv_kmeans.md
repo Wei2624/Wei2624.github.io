@@ -33,9 +33,9 @@ $c=(c_1,c_2,\dots,c_m)$ where $c_i\in\{1,\dots,K\}$
 
 $\mu=(\mu_1,\mu_2,\dots,\mu_k)$ where $\mu_k\in\mathbb{R}^n$
 
-Then, we need to define an objective function that will give us good c and $\mu# and is easy to optimize. 
+Then, we need to define an objective function that will give us good c and $\mu$ and is easy to optimize. 
 
-An intuitive way is to use Euclidean distance as a measurement. The goal is just to find good centroids with corresponding assignment. Formally, we want:
+An intuitive way is to use Euclidean distance as a measurement. The goal is just to find good centroids with corresponding assignments for each sample. Formally, we want:
 
 $$\mu^{\ast},c^{\ast} = \arg\min_{\mu,c}\sum\limits_{i=1}^m\sum\limits_{k=1}^K \mathbb{1}\{c_i=k\} \lvert\lvert x_i-\mu_k\rvert\rvert^2$$
 
@@ -78,7 +78,7 @@ Although we cannot find the best $\mu$ and c at the same time, we can:
 
 The next step is to come up with a formula for updating each parameter. 
 
-For updating c:
+**For updating c:**
 
 We rewrite the loss function as:
 
@@ -90,7 +90,7 @@ $$c^i = \arg\min_j\lvert\lvert x^i - \mu_j\rvert\rvert^2$$
 
 Because c is discrete, there is no derivative. We simply calculate all the possible values for $c_i$ and pick the smallest. 
 
-For updating $\mu$:
+**For updating $\mu$:**
 
 This time, we rewrite the loss function as:
 
