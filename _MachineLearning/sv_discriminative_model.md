@@ -157,12 +157,22 @@ Assume $f:\mathbb{R}^{M\times N}\rightarrow\mathbb{R}$, we have:
 $$\begin{align}
 \triangledown_{A^T} f(A) &= \begin{bmatrix} \frac{\partial f}{\partial (A^T)_{11}} & \frac{\partial f}{\partial (A^T)_{12}} & \dots & \frac{\partial f}{\partial (A^T)_{1M} }\\ \frac{\partial f}{\partial (A^T)_{21} } & \frac{\partial f}{\partial (A^T)_{22} } & \dots & \frac{\partial f}{\partial (A^T)_{2M} } \\ \vdots & \vdots & \dots & \vdots \\ \frac{\partial f}{\partial (A^T)_{N1} } & \frac{\partial f}{\partial (A^T)_{N2} } & \dots & \frac{\partial f}{\partial (A^T)_{NM}} \end{bmatrix} \\
 &= \Bigg(\begin{bmatrix} \frac{\partial f}{\partial A_{11}} & \frac{\partial f}{\partial A_{12}} & \dots & \frac{\partial f}{\partial A_{1N} }\\ \frac{\partial f}{\partial A_{21}} & \frac{\partial f}{\partial A_{22} } & \dots & \frac{\partial f}{\partial A_{2N} } \\ \vdots & \vdots & \dots & \vdots \\ \frac{\partial f}{\partial A_{M1} } & \frac{\partial f}{\partial A_{M2} } & \dots & \frac{\partial f}{\partial A_{MN}} \end{bmatrix}\Bigg)^T\\
-&= (\triangledown_{A} f(A))^T
+&= (\triangledown_{A} f(A))^T \blacksquare
 \end{align}$$
 
-
-
 $$\triangledown_A trABA^TC = CAB + C^TAB^T$$
+
+**Proof**:
+
+We know trace can only work on square matrix. Thus, we can conclude that $A\in\mathbb{R}^{N\times M},B\in\mathbb{R}^{M\times M},C\in\mathbb{R}^{N\times N}$
+
+$$\begin{align}
+\triangledown_A trABA^TC &= \begin{bmatrix} \frac{\partial trABA^TC}{\partial A_{11}} & \frac{\partial trABA^TC}{\partial A_{12}} & \dots & \frac{\partial trABA^TC}{\partial A_{1M} }\\ \frac{\partial trABA^TC}{\partial A_{21}} & \frac{\partial trABA^TC}{\partial A_{22} } & \dots & \frac{\partial trABA^TC}{\partial A_{2M} } \\ \vdots & \vdots & \dots & \vdots \\ \frac{\partial trABA^TC}{\partial A_{N1} } & \frac{\partial trABA^TC}{\partial A_{N2} } & \dots & \frac{\partial trABA^TC}{\partial A_{NM}} \end{bmatrix} \\
+&= \begin{bmatrix} \frac{\partial \sum\limits_{i=1}^N(ABA^TC)_{ii}}{\partial A_{11}} & \frac{\partial \sum\limits_{i=1}^N(ABA^TC)_{ii}}{\partial A_{12}} & \dots & \frac{\partial \sum\limits_{i=1}^N(ABA^TC)_{ii}}{\partial A_{1M}}\\ \frac{\partial \sum\limits_{i=1}^N(ABA^TC)_{ii}}{\partial A_{21}} & \frac{\partial \sum\limits_{i=1}^N(ABA^TC)_{ii}}{\partial A_{22} } & \dots & \frac{\partial \sum\limits_{i=1}^N(ABA^TC)_{ii}}{\partial A_{2M} } \\ \vdots & \vdots & \dots & \vdots \\ \frac{\partial \sum\limits_{i=1}^N(ABA^TC)_{ii}}{\partial A_{N1} } & \frac{\partial \sum\limits_{i=1}^N(ABA^TC)_{ii}}{\partial A_{N2} } & \dots & \frac{\partial \sum\limits_{i=1}^N(ABA^TC)_{ii}}{\partial A_{NM}} \end{bmatrix} \\
+&= \begin{bmatrix} \frac{\partial \sum\limits_{i=j=k=h=1}^{N,M,M,N} A_{ij}B_{jk}A_{hk}C_{hi}}{\partial A_{11}} & \frac{\partial \sum\limits_{i=j=k=h=1}^{N,M,M,N} A_{ij}B_{jk}A_{hk}C_{hi}}{\partial A_{12}} & \dots & \frac{\partial \sum\limits_{i=j=k=h=1}^{N,M,M,N} A_{ij}B_{jk}A_{hk}C_{hi}}{\partial A_{1M}}\\ \frac{\partial \sum\limits_{i=j=k=h=1}^{N,M,M,N} A_{ij}B_{jk}A_{hk}C_{hi}}{\partial A_{21}} & \frac{\partial \sum\limits_{i=j=k=h=1}^{N,M,M,N} A_{ij}B_{jk}A_{hk}C_{hi}}{\partial A_{22} } & \dots & \frac{\partial \sum\limits_{i=j=k=h=1}^{N,M,M,N} A_{ij}B_{jk}A_{hk}C_{hi}}{\partial A_{2M} } \\ \vdots & \vdots & \dots & \vdots \\ \frac{\partial \sum\limits_{i=j=k=h=1}^{N,M,M,N} A_{ij}B_{jk}A_{hk}C_{hi}}{\partial A_{N1} } & \frac{\partial \sum\limits_{i=j=k=h=1}^{N,M,M,N} A_{ij}B_{jk}A_{hk}C_{hi}}{\partial A_{N2} } & \dots & \frac{\partial \sum\limits_{i=j=k=h=1}^{N,M,M,N} A_{ij}B_{jk}A_{hk}C_{hi}}{\partial A_{NM}} \end{bmatrix}\\
+&=\begin{bmatrix} \sum\limits_{k,h}^{M,N} B_{1k}A_{hk}C_{h1} + \sum\limits_{i,j}^{N,M} A_{ij}B_{j1}C_{1i} & \sum\limits_{k,h}^{M,N} B_{2k}A_{hk}C_{h1} + \sum\limits_{i,j}^{N,M} A_{ij}B_{j2}C_{1i} & \dots & \sum\limits_{k,h}^{M,N} B_{Mk}A_{hk}C_{h1} + \sum\limits_{i,j}^{N,M} A_{ij}B_{jM}C_{1i}\\ \sum\limits_{k,h}^{M,N} B_{1k}A_{hk}C_{h2} + \sum\limits_{i,j}^{N,M} A_{ij}B_{j1}C_{2i} & \sum\limits_{k,h}^{M,N} B_{2k}A_{hk}C_{h2} + \sum\limits_{i,j}^{N,M} A_{ij}B_{j2}C_{2i} & \dots & \sum\limits_{k,h}^{M,N} B_{Mk}A_{hk}C_{h2} + \sum\limits_{i,j}^{N,M} A_{ij}B_{jM}C_{2i} \\ \vdots & \vdots & \dots & \vdots \\ \sum\limits_{k,h}^{M,N} B_{1k}A_{hk}C_{hN} + \sum\limits_{i,j}^{N,M} A_{ij}B_{j1}C_{Ni} & \sum\limits_{k,h}^{M,N} B_{2k}A_{hk}C_{hN} + \sum\limits_{i,j}^{N,M} A_{ij}B_{j2}C_{1N} & \dots & \sum\limits_{k,h}^{M,N} B_{Mk}A_{hk}C_{hN} + \sum\limits_{i,j}^{N,M} A_{ij}B_{jM}C_{Ni} \end{bmatrix}\\
+&= C^TAB^T + CAB \blacksquare
+\end{align}$$
 
 $$\triangledown_A \lvert A \rvert = \lvert A \rvert(A^{-1})^T$$
 
