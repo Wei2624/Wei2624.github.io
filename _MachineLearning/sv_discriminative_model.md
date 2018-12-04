@@ -150,6 +150,18 @@ $$\triangledown_A trAB = B^T$$
 
 $$\triangledown_{A^T}f(A) = (\triangledown_A f(A))^T$$
 
+**Proof**:
+
+Assume $f:\mathbb{R}^{M\times N}\rightarrow\mathbb{R}$, we have:
+
+$$\begin{align}
+\triangledown_{A^T} f(A) &= \begin{bmatrix} \frac{\partial f}{\partial (A^T)_{11}} & \frac{\partial f}{\partial (A^T)_{12}} & \dots & \frac{\partial f}{\partial (A^T)_{1M} }\\ \frac{\partial f}{\partial (A^T)_{21} } & \frac{\partial f}{\partial (A^T)_{22} } & \dots & \frac{\partial f}{\partial (A^T)_{2M} } \\ \vdots & \vdots & \dots & \vdots \\ \frac{\partial f}{\partial (A^T)_{N1} } & \frac{\partial f}{\partial (A^T)_{N2} } & \dots & \frac{\partial f}{\partial (A^T)_{NM}} \end{bmatrix} \\
+&= \Bigg(\begin{bmatrix} \frac{\partial f}{\partial A_{11}} & \frac{\partial f}{\partial A_{12}} & \dots & \frac{\partial f}{\partial A_{1N} }\\ \frac{\partial f}{\partial A_{21}} & \frac{\partial f}{\partial A_{22} } & \dots & \frac{\partial f}{\partial A_{2N} } \\ \vdots & \vdots & \dots & \vdots \\ \frac{\partial f}{\partial A_{M1} } & \frac{\partial f}{\partial A_{M2} } & \dots & \frac{\partial f}{\partial A_{MN}} \end{bmatrix}\Bigg)^T\\
+&= (\triangledown_{A} f(A))^T
+\end{align}$$
+
+
+
 $$\triangledown_A trABA^TC = CAB + C^TAB^T$$
 
 $$\triangledown_A \lvert A \rvert = \lvert A \rvert(A^{-1})^T$$
