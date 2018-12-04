@@ -49,7 +49,7 @@ Now,we can solve the partial derivative with respect to one sample as :
 
 $$\begin{align}
 \frac{\partial}{\partial \theta_j}J(\theta) &= \frac{\partial}{\partial \theta_j} \frac{1}{2} (h_{\theta}(x)-y)^2\\
-&= 2\frac{1}{2}(h_{\theta}(x)-y) \frac{\partial}{\partial \theta_j} \frac{1}{2} (h_{\theta}(x)-y)\\
+&= 2\frac{1}{2}(h_{\theta}(x)-y) \frac{\partial}{\partial \theta_j} (h_{\theta}(x)-y)\\
 &= (h_{\theta}(x)-y) \frac{\partial}{\partial \theta_j}(\sum\limits_{i=0}^n \theta_i x_i - y) \\
 &= (h_{\theta}(x)-y) x_j
 \end{align}$$
