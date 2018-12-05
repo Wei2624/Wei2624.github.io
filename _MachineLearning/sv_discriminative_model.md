@@ -232,9 +232,9 @@ We assume that the target variable and the inputs are related as:
 
 $$y^{(i)} = \theta^Tx^{(i)} + \epsilon^{(i)}$$
 
-where $\epsilon^{(i)}$ is random variable which can capture noise and unmodeled effects. This is generally probability model for liear regression. We also assume that noise are distributed i.i.d. from Gaussian with zero mean and some variance $\sigma^2$, which is a traditional way to model. It turns out that $\epsilon^{(i)}$ is a random variable of Gaussian, and $\theta^Tx^{(i)}$ is constant w.r.t. the r.v. Adding a constant to a Gaussian r.v. will lead the mean of r.v. to shift by that amount but it is still a Gaussian just with different mean and same variance.  Now, by definition of Gaussian, we can say:
+where $\epsilon^{(i)}$ is random variable which can capture noise and unmodeled effects. This is generally probability model for linear regression. We also assume that noise are distributed i.i.d. from Gaussian with zero mean and some variance $\sigma^2$, which is a traditional way to model. It turns out that $\epsilon^{(i)}$ is a random variable of Gaussian, and $\theta^Tx^{(i)}$ is constant w.r.t. the r.v. Adding a constant to a Gaussian r.v. will lead the mean of r.v. to shift by that amount but it is still a Gaussian just with different mean and same variance.  Now, by definition of Gaussian, we can say:
 
-$$p(y^{(i)} \lvert x^{(i)};\theta) = \frac{1}{\sqrt{2\pi \sigma}}\exp\big(-\frac{(y^{(i)} - \theta^Tx^{(i)})^2}{2\sigma^2}\big)$$
+$$p(y^{(i)} \lvert x^{(i)};\theta) = \frac{1}{\sqrt{2\pi}\sigma}\exp\big(-\frac{(y^{(i)} - \theta^Tx^{(i)})^2}{2\sigma^2}\big)$$
 
 This function can be viewed as the funciton of y when x is known with fixed parameter $\theta$. Thus, we can call it **likelihood function**:
 
@@ -245,9 +245,9 @@ We need to find such $\theta$ so that with the chosen $\theta$ the probability o
 
 $$\begin{align}
 \ell &= \log L(\theta)\\
-&= \log \prod_{i=1}^{m} \frac{1}{\sqrt{2\pi \sigma}}\exp\big(-\frac{(y^{(i)} - \theta^Tx^{(i)})^2}{2\sigma^2}\big)\\
-&= \sum\limits_{i=1}^{m} \log \frac{1}{\sqrt{2\pi \sigma}}\exp\big(-\frac{(y^{(i)} - \theta^Tx^{(i)})^2}{2\sigma^2}\big)\\
-&= m\log\frac{1}{\sqrt{2\pi\sigma}} - \frac{1}{\sigma^2}\frac{1}{2}\sum\limits_{i=1}^{m}(y^{(i)} - \theta^T x^{(i)})^2
+&= \log \prod_{i=1}^{m} \frac{1}{\sqrt{2\pi}\sigma}\exp\big(-\frac{(y^{(i)} - \theta^Tx^{(i)})^2}{2\sigma^2}\big)\\
+&= \sum\limits_{i=1}^{m} \log \frac{1}{\sqrt{2\pi}\sigma}\exp\big(-\frac{(y^{(i)} - \theta^Tx^{(i)})^2}{2\sigma^2}\big)\\
+&= m\log\frac{1}{\sqrt{2\pi}\sigma} - \frac{1}{\sigma^2}\frac{1}{2}\sum\limits_{i=1}^{m}(y^{(i)} - \theta^T x^{(i)})^2
 \end{align}$$
 
 Maximizing this with respect to $\theta$ will give the same answer as minimizing J. That means we can justify what we have done in LMS in probabilitic point of view. 
@@ -298,13 +298,14 @@ L(\theta) &= \prod_{i=1}^{m} p(y^{(i)}\lvert x^{(i)};\theta)\\
 
 Applying log, we can have:
 
-$$\log L(\theta) = \sum\limits_{i=1}^m y^{(i)}\log h(x^{(i)}) + (1-y^{(i)}\log(1-h(x^{(i)})$$
+$$\log L(\theta) = \sum\limits_{i=1}^m y^{(i)}\log h(x^{(i)}) + (1-y^{(i)})\log(1-h(x^{(i)})$$
 
 Then, we can use graident descent to optimize the likelihood. In updating, we should have $\theta = \theta + \alpha\triangledown_{\theta}L(\theta)$. Note we have plus sign instead of minus sign since we are finding max not min. To find the derivative, 
 
 $$\begin{align}
 \frac{\partial}{\partial\theta_j}L(\theta) &= \bigg(y\frac{1}{g(\theta^Tx)}-(1-y)\frac{1}{1-g(^Tx)}\bigg)\frac{\partial}{\partial\theta_j}g(\theta^Tx)\\
-&= \bigg(y\frac{1}{g(\theta^Tx)}-(1-y)\frac{1}{1-g(^Tx)}\bigg) g(\theta^Tx)(1 - g(\theta^Tx))\frac{\partial}{\partial\theta_j}\theta^Tx\\
+&= \bigg(y\frac{1}{g(\theta^Tx)}-(1-y)\frac{1}{1-g(^Tx)}\bigg) g(\theta^Tx)* \\
+&(1 - g(\theta^Tx))\frac{\partial}{\partial\theta_j}\theta^Tx\\
 &= (y - h_{\theta}(x))x_j
 \end{align}$$
 
@@ -314,7 +315,7 @@ From the fisrt line to second line, we use the derivative of logistic function d
 
 We will talk about this in Learning Theory in more detials. In short, we change our hypothesis function to be:
 
-$$g\theta^Tx) = \begin{cases} 1  \text{, if } \theta^Tx \geq 0 \\ 0  \text{, otherwise} \\ \end{cases}$$
+$$g(\theta^Tx) = \begin{cases} 1  \text{, if } \theta^Tx \geq 0 \\ 0  \text{, otherwise} \\ \end{cases}$$
 
 The updating equation remains the same. This is called **perceptron learning algorithm**.
 
