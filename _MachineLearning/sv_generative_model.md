@@ -23,7 +23,7 @@ Formally, it is $p(y\lvert x;\theta)$ where p can be any classification model su
 
 On the other hand, the generative model is the models that fisrt try to learn what each object might look like. Then, based on input, it gives a probability of the input being this class. It has the concepts on what the object might look like. It can generate a new image based on the past knowledge. 
 
-The classical example is naive Bayes classifier. In this case, we have a class prior. With class prior, we can use Bayes rule to calculate the probability of being each class and then take the one with a bigger value. Meanwhile, with a certain prior, we can generate features based on the chosen prior. This is generative process. 
+The classical example is naive Bayes classifier. In this case, we have a class prior. A prior distribution is basically the knowledge that we assume for the data distribution. We just assume that the model we select as prior is a proper model for explaining hidden information in dataset. From dataset, we can know what parameters are the best fit for the model we selected. With calculated class prior model, we can use Bayes rule to calculate the probability of being each class and then take the one with a bigger value. Meanwhile, with a certain prior, we can generate a new sample from prior model and then generate new features based on the chosen prior. This is so-called generative process. 
 
 # 3 Gaussian Discriminant Analysis 
 
@@ -74,7 +74,7 @@ $$\begin{align}
 &= \sum\limits_{i=1}^m \log p(x^{(i)}\lvert y^{(i)};\mu_0,\mu_1,\Sigma) p(y^{(i)};\phi)
 \end{align}$$
 
-Plug in each distribution with a class k:
+In the above equation, we plug in each distribution without specifying a class. We just abstract it as k. Then, we have:
 
 $$\begin{align}
 \ell(\phi,\mu_k,\Sigma) &= \sum\limits_{i=1}^m \log p(x^{(i)}\lvert y^{(i)};\mu_k,\Sigma) p(y^{(i)};\phi)\\
@@ -126,9 +126,9 @@ Note that we have shared covariance so the shape of two contours are the same bu
 
 ## 4.2 GDA and Logistic Regression
 
-If $P(x\lvert y)$ is multivariate gaussian with shared covariance, then $P(y\lvert x)$ follows a logistic function. If $P(x\lvert y)$ is Possion with different $\lambda$, then $P(y\lvert x)$ also follows a logistic function. It means that GDA requires a strong assumption that data of each class can be modeled with a gaussian with shared covariance. However, GDA will fit better and train faster if assumptions are correct. 
+How is GDA is related with logistic regression? We can see that if $P(x\lvert y)$ above is multivariate gaussian with shared covariance, then we can calculate $P(y\lvert x)$ and find out that it follows a logistic function. Similarly, if $P(x\lvert y)$ is Possion with different $\lambda$, then $P(y\lvert x)$ also follows a logistic function. It means that GDA requires a strong assumption that data of each class can be modeled with a gaussian with shared covariance. However, GDA will fit better and train faster if this assumption is correct. 
 
-On the other side, if assumption cannot be made, logistic regression is less sensitive. For example, Poisson can be replaced with gaussian also leading to logistic regression. 
+On the other side, if assumption cannot be made, logistic regression is less sensitive. So you can directly use logistic regression without touching Gaussian assumption or Possion assumption. 
 
 # 5 Naive Bayes
 
@@ -169,11 +169,11 @@ p(y=1\lvert x) &= \frac{p(x\lvert y=1)p(y=1)}{p(x)} \\
 
 **Ext**: In this case, we model $P(x_i\lvert y)$ as Bernouli since it is binary valued. That is, it can be either 'have that word' or 'not have that word'. Bernouli takes class label as input and models its probability but it has to binary. To deal with non-binary valued $x_i$, we can model it as Multinomial distribution, which can be parameterized with multiple classes. 
 
-**Summary:** Naive Bayes is for discrete space. GDA is for continous space. We can alsway discretize it. 
+**Summary:** Naive Bayes is for discrete space. GDA is for continuous space. We can alsway discretize our random variable from continuous to discrete space. 
 
 # 6 Laplace smoothing
 
-The above shwon example is generally good but will possibly fail where a new word which does exist in the past training samples appear in the coming email. In such case, it would cause $\phi$ for both classes to become zero because the models never see the word before. The model will fail to make prediction. 
+The above shwon example is generally good but will possibly fail where a new word which does not exist in the past training samples appear in the coming email. In such case, it would cause $\phi$ for both classes to become zero because the models never see the word before. The model will fail to make prediction. 
 
 This motivates a solution called **Laplace Smoothing**, which sets each parameter as:
 
