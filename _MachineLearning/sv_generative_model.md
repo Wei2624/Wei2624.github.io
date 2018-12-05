@@ -86,9 +86,39 @@ Now, we need to take derivative w.r.t. each parameter and set to zero to find th
 
 $$\frac{\partial x^TAx}{\partial x} = 2x^TA$$ iff A is symmetric and independent of x
 
-$$\frac{\partial \log\lvert X\rvert}{\partial X} = X^{-1}$$
+**Proof**: A is symmetric so $A=A^T$ and assume the dimension is n.
 
-$$\frac{\partial a^TX^{-1}b}{\partial X} = -X^{-1}ab^Tx^{-1}$$
+$$\begin{align}
+\frac{\partial x^TAx}{\partial x} &= \begin{bmatrix} \frac{\partial x^TAx}{\partial x_{1}} \\ \frac{\partial x^TAx}{\partial x_{2}} \\ \vdots \\
+\frac{\partial x^TAx}{\partial x_{n}}\end{bmatrix} \\
+&= \begin{bmatrix} \frac{\partial \sum\limits_{i=1}^n\sum\limits_{j=1}^n x_iA_{ij}x_j }{\partial x_{1}} \\ \frac{\partial \sum\limits_{i=1}^n\sum\limits_{j=1}^n x_iA_{ij}x_j}{\partial x_{2}} \\ \vdots \\
+\frac{\partial \sum\limits_{i=1}^n\sum\limits_{j=1}^n x_iA_{ij}x_j}{\partial x_{n}} \end{bmatrix} \\
+&= \begin{bmatrix} \frac{\partial \sum\limits_{i=1}^n A_{i1}x_i +\sum\limits_{j=1}^n A_{1j}x_j }{\partial x_{1}} \\ \frac{\partial \sum\limits_{i=1}^n A_{i2}x_i +\sum\limits_{j=1}^n A_{2j}x_j}{\partial x_{2}} \\ \vdots \\
+\frac{\partial \sum\limits_{i=1}^n A_{in}x_i +\sum\limits_{j=1}^n A_{nj}x_j}{\partial x_{n}} \end{bmatrix} \\
+&= (A + A^T)x \\
+&= 2x^TA \blacksquare
+\end{align}$$
+
+$$\frac{\partial \log\lvert X\rvert}{\partial X} = X^{-T}$$
+
+Jacobi's formula:
+
+$$\frac{\partial \lvert X\rvert}{X_{ij}} = adj^T(X)_{ij}$$
+
+**Proof**:
+
+$$\begin{align}
+\frac{\partial \log\lvert X\rvert}{\partial X}&=\frac{1}{\lvert X\rvert} \frac{\partial \lvert X\rvert}{\partial X} \\
+&= \frac{1}{\lvert X\rvert} * adj^T (X)_{ij} \\
+&= \frac{1}{\lvert X^T\rvert} * adj^T (X)_{ij} \\
+&= X^{-T} \blacksquare
+\end{align}$$
+
+$$\frac{\partial a^TX^{-1}b}{\partial X} = -X^{-1}ab^TX^{-1}$$
+
+**Proof**:
+
+
 
 For $\phi$:
 
