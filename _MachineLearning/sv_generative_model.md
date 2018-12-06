@@ -158,7 +158,7 @@ where F means Frobenius inner product.
 Then, plug it back:
 
 $$\begin{align}
-frac{\partial a^TX^{-1}b}{\partial X} &= frac{\partial < ab^T, X^{-1} >_F}{\partial X} \\
+\frac{\partial a^TX^{-1}b}{\partial X} &= \frac{\partial < ab^T, X^{-1} >_F}{\partial X} \\
 &= < ab^T, \frac{\partial X^{-1}}{X} >_F \\
 &= < ab^T, \frac{\partial X^{-1}}{X} >_F \\
 &= < ab^T, X^{-1}X^{\prime}X^{-1} >_F  \\
