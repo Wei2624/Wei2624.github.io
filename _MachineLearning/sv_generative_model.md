@@ -178,23 +178,36 @@ On the other side, if assumption cannot be made, logistic regression is less sen
 
 In GDA, random variables are supposed to be continuous-valued. In Naive Bayes, it is for learning discrete valued random variables like text classification. Text classification is to classify text based on the words in it to a binary class. In text classification, a word vector is used for training. A word vector is like a dictionary. The length of the vector is the number of words. A word is represented by a 1 on certain position and elsewhere with 0's in the vector. 
 
-However, this might not work. Say, if we have 50000 words and try to model it as multinominal, then the dimension of parameter is $2^50000-1$, which is too large. Thus, to solve it, we make **Naive Bayes Assumption:**
+For example, a vector of an email can be:
+
+$$x = \begin{bmatrix} 1 \\ 1 \\ 0 \\ \vdots \\ 1 \\ \vdots  \end{bmatrix}$$
+
+where first two words might refer to "sport" and "basketball". 
+
+However, this might not work. Say, if we have 50000 words (len(x)=50000) and try to model it as multinomial. Formally, we can model $p(x\lvert y)$ in this case where p is a multinomial. Since each word is either there or not there, which is binary case. For multinomial, we have to model all the possibility, which means the number of class is all the combinations of possible outcomes for an email. In this way, for a given class, each word can be either dependent and independent. It does not matter. We model it into Multinomial. But the dimension of parameter is $2^{50000}-1$, which is too large. Thus, to solve it, we make **Naive Bayes Assumption:**
 
 Each word is conditionally independent to each other based on given class. 
 
+What it means is that if, say, an email is known in the class of sport, the appearance of word "basketball" is independent of that of word "dunk". In this way, we can model each word indepently since we assume they are independent given a class. We can then model it as Bernoulli. We know this might not be true. That's why we call it naive. However, based on my experience, this will give you fairly good results. Removing this assumption requires a lot of additional calculations on dependency. 
+
 Then, we have:
 
-$$P(x_1,...,x_50000\lvert y) = P(x_1\lvert y)P(x_2\lvert y,x_1)...P(x_50000\lvert y,x_1,x_2,...,x_49999) $$
-
-$$= \prod\limits_{i=1}^{n} P(x_i\lvert y)$$
+$$\begin{align}
+P(x_1,...,x_{50000}\lvert y) &=P(x_1\lvert y)P(x_2\lvert y,x_1)\\
+&...P(x_{50000}\lvert y,x_1,x_2,...,x_{49999}) \\
+&=\prod\limits_{i=1}^{n} P(x_i\lvert y)
+\end{align}$$
 
 We apply **probability law of chain rule** for the first step and naive basyes assumption for the second step. 
 
 After finding the max of **log joint likelihood**, which is:
 
-$$\mathcal{L}(\phi_y,\phi_{j\lvert y=0},\phi_{j\lvert y=1}) = \prod\limits_{i=1}^{m} P(x^{(i)},y^{(i)}) $$
+$$\begin{align}
+\mathcal{L}(\phi_y,\phi_{j\lvert y=0},\phi_{j\lvert y=1}) &= \prod\limits_{i=1}^{m} P(x^{(i)},y^{(i)}) \\
+&=\prod\limits_{i=1}^{m} P(x^{(i)} \lvert y^{(i)}) P(y^{(i)})
+\end{align}$$
 
-where $\phi_{j\lvert y=1} = P(x_j = 1 \lvert y = 1)$, $\phi_{j\lvert y=0} = P(x_j = 1 \lvert y = 0)$ and $\phi_y = p(y=1)$. Those are the parameters that we want to learn. 
+where $\phi_{j\lvert y=1} = P(x_j = 1 \lvert y = 1)$, $\phi_{j\lvert y=0} = P(x_j = 1 \lvert y = 0)$ and $\phi_y = p(y=1)$. Those are the parameters that we want to learn. All three parameters are the parameters of Bernoulli. 
 
 We can find the derivative and solve them:
 
@@ -203,6 +216,8 @@ $$\begin{align}
 \phi_{j\lvert y=0} &= \frac{\sum_{i=1}^m \mathbb{1}\{x_j^i = 1 \text{and} y^i = 0\}}{\sum_{i=1}^m \mathbb{1}\{y^i = 0\}} \\
 \phi_y &= \frac{\sum_{i=1}^m \mathbb{1}\{y^i = 1\}}{m} \\
 \end{align}$$
+
+Now, the number of parameters are around 100000 since 50000 parameters are learned for each given class. This is much much less than before. 
 
 To predict for a new sample, we can use **Bayes Rule** to calculate $P(y=1\lvert x)$ and compare which is higher. 
 

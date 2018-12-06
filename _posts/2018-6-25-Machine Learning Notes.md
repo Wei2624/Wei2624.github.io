@@ -28,6 +28,8 @@ Note: Chinese version of each section is coming soon.
 
 3 [K-means](https://wei2624.github.io/MachineLearning/usv_kmeans/): Add more details about kmeans story. 
 
+4 [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/): Add more intuitions for Naive Bayes
+
 
 # What is this post?
 
