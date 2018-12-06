@@ -123,7 +123,15 @@ $$\frac{\partial a^TX^{-1}b}{\partial X} = -X^{-1}ab^TX^{-1}$$
 
 **Proof**:
 
-<!-- Before starting the proof, let's prepare to find the derivative of inverse matrix. That is, $\frac{\partial X^{-1}}{\partial X}$.
+This proof is a bit complicated. You should know Kronecker delta and Frobenius inner product beforehand. 
+
+For a matrix X, we can write:
+
+$$\frac{\partial X_{ij}}{\partial X_{kl}} = \delta_{ik}\delta{jl} = \mathcal{H}_{ijkl}$$
+
+You can think of $\mathcal{H}$ as a identity element for the Frobenius product. 
+
+Before starting the proof, let's prepare to find the derivative of inverse matrix. That is, $\frac{\partial X^{-1}}{\partial X}$.
 
 $$\begin{align}
 I^{\prime} &= (XX^{-1})^{\prime}  \\
@@ -133,10 +141,34 @@ I^{\prime} &= (XX^{-1})^{\prime}  \\
 
 So we can solve it as:
 
-$$X(X^{-1})^{\prime} = -X^{\prime}X^{-1} \rightarrow (X^{-1})^{\prime} = X^{-1}X^{\prime}X^{-1} = X^{-1}X^{-1}$$
+$$X(X^{-1})^{\prime} = -X^{\prime}X^{-1} \rightarrow (X^{-1})^{\prime} = X^{-1}X^{\prime}X^{-1}$$
 
-Then, back to the original: -->
+Then, back to the original:
 
+$$\begin{align}
+a^TX^{-1}b &= \sum\limits_{i,j=1}^{n,n} a_ib_j(X^{-1})_{ij} \\
+&= \sum\limits_{i,j=1}^{n,n} (ab^T)_{ij}(X^{-1})_{ij} \\
+&= \sum\limits_{i,j=1}^{n,n} ((ab^T)^T)_{ji}(X^{-1})_{ij} \\
+&= tr(ab^T\cdot X^{-1}) \\ 
+&= < ab^T, X^{-1}>_F
+\end{align}$$
+
+where F means Frobenius inner product.
+
+Then, plug it back:
+
+$$\begin{align}
+frac{\partial a^TX^{-1}b}{\partial X} &= frac{\partial < ab^T, X^{-1} >_F}{\partial X} \\
+&= < ab^T, \frac{\partial X^{-1}}{X} >_F \\
+&= < ab^T, \frac{\partial X^{-1}}{X} >_F \\
+&= < ab^T, X^{-1}X^{\prime}X^{-1} >_F  \\
+&= < ab^T, (X^{-T})^T X^{\prime}(X^{-T})^T >_F \\
+&= < X^{-T}ab^TX^{-T},X^{\prime} >_F \\
+&= < X^{-T}ab^TX^{-T},\mathcal{H} >_F \\
+&= X^{-T}ab^TX^{-T} \blacksquare
+\end{align}$$
+
+Now, we are good to go for finding gradient for each parameter. 
 
 For $\phi$:
 

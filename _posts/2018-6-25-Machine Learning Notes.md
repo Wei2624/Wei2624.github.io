@@ -24,7 +24,7 @@ Note: Chinese version of each section is coming soon.
 
 1 [Discriminative Algorithm](https://wei2624.github.io/MachineLearning/sv_discriminative_model/): More proofs before Least Square revisited
 
-2 [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/): Add proof for GDA and Logistic Regression
+2 [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/): Add proof to fomula
 
 3 [K-means](https://wei2624.github.io/MachineLearning/usv_kmeans/): Add more details about kmeans story. 
 
