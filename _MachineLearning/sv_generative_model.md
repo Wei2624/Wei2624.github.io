@@ -78,7 +78,8 @@ In the above equation, we plug in each distribution without specifying a class. 
 
 $$\begin{align}
 \ell(\phi,\mu_k,\Sigma) &= \sum\limits_{i=1}^m \log p(x^{(i)}\lvert y^{(i)};\mu_k,\Sigma) p(y^{(i)};\phi)\\
-&= \sum\limits_{i=1}^m \bigg[-\frac{n}{2}\log 2\pi-\frac{1}{2}\log\lvert\Sigma\rvert -\frac{1}{2}(x^i-\mu_k)^T\Sigma^{-1}(x^i-\mu_k)\\
+&= \sum\limits_{i=1}^m \bigg[-\frac{n}{2}\log 2\pi-\frac{1}{2}\log\lvert\Sigma\rvert \\
+&-\frac{1}{2}(x^i-\mu_k)^T\Sigma^{-1}(x^i-\mu_k)\\
 & + y^i\log\phi+(1-y^i)\log(1-\phi)\bigg]\\
 \end{align}$$
 
@@ -118,6 +119,19 @@ $$\frac{\partial a^TX^{-1}b}{\partial X} = -X^{-1}ab^TX^{-1}$$
 
 **Proof**:
 
+<!-- Before starting the proof, let's prepare to find the derivative of inverse matrix. That is, $\frac{\partial X^{-1}}{\partial X}$.
+
+$$\begin{align}
+I^{\prime} &= (XX^{-1})^{\prime}  \\
+&= X^{\prime}X^{-1} + X(X^{-1})^{\prime} \\
+&= 0
+\end{align}$$
+
+So we can solve it as:
+
+$$X(X^{-1})^{\prime} = -X^{\prime}X^{-1} \rightarrow (X^{-1})^{\prime} = X^{-1}X^{\prime}X^{-1} = X^{-1}X^{-1}$$
+
+Then, back to the original: -->
 
 
 For $\phi$:
