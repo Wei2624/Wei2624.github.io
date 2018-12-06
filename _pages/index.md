@@ -17,7 +17,7 @@ My research interests are machine learning, robot learning, computer vision and 
 
 ### Blog
 
-I write a [Machine Learning blog](https://wei2624.github.io/machine%20learning/Machine-Learning-Notes/). 
+I write a tech blog [Machine Learning notes](https://wei2624.github.io/machine%20learning/Machine-Learning-Notes/). I summarize what I have learned in several machine learning classes. 
 
 ### Additional information about myself
 
