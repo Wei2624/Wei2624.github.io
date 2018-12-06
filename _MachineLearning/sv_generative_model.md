@@ -66,7 +66,11 @@ $$x\lvert y=0 \sim \mathcal{N}(\mu_0,\Sigma)$$
 
 $$x\lvert y=1 \sim \mathcal{N}(\mu_1,\Sigma)$$
 
-where $\phi, \mu_0,\mu_1,\Sigma$ is the parameters that we want to find out. Note that although we have different mean for different classes, we have shared covariance between different classes. Then, the log likelihood of data is:
+where $\phi, \mu_0,\mu_1,\Sigma$ is the parameters that we want to find out. Note that although we have different mean for different classes, we have shared covariance between different classes. 
+
+Why is it a generative model? In short, we have a class prior on y, which is a Bernoulli. The generative process is to (1) sample a class from Bernoulli. (2) Based on the class label, we sample a x from corresponding distribution. This is generative process. 
+
+Then, the log likelihood of data is:
 
 $$\begin{align}
 \ell(\phi,\mu_0,\mu_1,\Sigma) &= \log \prod_{i=1}^m p(x^{(i)}, y^{(i)};\phi,\mu_0,\mu_1,\Sigma) \\
