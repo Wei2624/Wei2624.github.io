@@ -15,6 +15,10 @@ My research interests are machine learning, robot learning, computer vision and 
 [2018](#link){: .btn .btn--success .btn--small} I did a presentation of a poster titled "Enhanced Recurrent Nerual Network Semantic Labeling with Point Cloud Processing" at Northeast Robotics Colloquium (NERC) 2018. [Poster]({{ site.url }}/download/Enhanced Recurrent Neural Network Semantic Labeling with Point Cloud Processing.pdf){: .btn .btn--info .btn--small}
 [Demo](https://www.youtube.com/watch?v=T7zllZbtm2A){: .btn .btn--info .btn--small}
 
+### Blog
+
+I write a [Machine Learning blog](https://wei2624.github.io/machine%20learning/Machine-Learning-Notes/). 
+
 ### Additional information about myself
 
 I love to play basketball with friends during weekeneds. I also work out in order to improve my basketball skills. My favorite basketball player is Kobe Bryant. In fact, I love playing sports such as soccer, skiing and etc. 
