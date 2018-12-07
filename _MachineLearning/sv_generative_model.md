@@ -206,7 +206,19 @@ Note that we have shared covariance so the shape of two contours are the same bu
 
 ## 4.2 GDA and Logistic Regression
 
-How is GDA is related with logistic regression? We can see that if $P(x\lvert y)$ above is multivariate gaussian with shared covariance, then we can calculate $P(y\lvert x)$ and find out that it follows a logistic function. Similarly, if $P(x\lvert y)$ is Possion with different $\lambda$, then $P(y\lvert x)$ also follows a logistic function. It means that GDA requires a strong assumption that data of each class can be modeled with a gaussian with shared covariance. However, GDA will fit better and train faster if this assumption is correct. 
+How is GDA is related with logistic regression? We can see that if $P(x\lvert y)$ above is multivariate gaussian with shared covariance, then we can calculate $P(y\lvert x)$ and find out that it follows a logistic function. To see this,
+we can have:
+
+$$\begin{align}
+p(y=1\lvert x;\phi,\mu_0,\mu_1,\Sigma) &= \frac{p(x,y=1,;\phi,\mu_0,\mu_1,\Sigma)}{p(x;\phi,\mu_0,\mu_1,\Sigma)} \\
+&=\frac{p(y=1\lvert x;\phi)p(x\lvert \mu_1,\Sigma)}{p(y=1\lvert x;\phi)p(x\lvert \mu_1,\Sigma) + p(y=0\lvert x;\phi)p(x\lvert \mu_0,\Sigma)} \\
+&= \frac{\phi\mathcal{N}(x\lvert \mu_1,\Sigma)}{\phi\mathcal{N}(x\lvert \mu_1,\Sigma) + (1- \phi)\mathcal{N}(x\lvert \mu_0,\Sigma)} \\
+&= \frac{1}{1 + \frac{(1- \phi)\mathcal{N}(x\lvert \mu_0,\Sigma)}}{\phi\mathcal{N}(x\lvert \mu_1,\Sigma)}} \\
+\end{align}$$
+
+Since Gaussian is member of Exponential family, we can eventually turn the ratio in the denominator to $exp(\theta^Tx)$ where $\theta$ is a function of $\phi,\mu_0,\mu_1,\Sigma$. 
+
+Similarly, if $P(x\lvert y)$ is Possion with different $\lambda$, then $P(y\lvert x)$ also follows a logistic function. It means that GDA requires a strong assumption that data of each class can be modeled with a gaussian with shared covariance. However, GDA will fit better and train faster if this assumption is correct. 
 
 On the other side, if assumption cannot be made, logistic regression is less sensitive. So you can directly use logistic regression without touching Gaussian assumption or Possion assumption. 
 
