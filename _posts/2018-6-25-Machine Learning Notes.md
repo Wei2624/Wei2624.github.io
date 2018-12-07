@@ -24,11 +24,13 @@ Note: Chinese version of each section is coming soon.
 
 1 [Discriminative Algorithm](https://wei2624.github.io/MachineLearning/sv_discriminative_model/): More proofs before Least Square revisited
 
-2 [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/): Add proof to fomula
+2 [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/): Add proof to fomula for GDA
 
 3 [K-means](https://wei2624.github.io/MachineLearning/usv_kmeans/): Add more details about kmeans story. 
 
 4 [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/): Add more intuitions for Naive Bayes
+
+5 [EM Algorithm](https://wei2624.github.io/MachineLearning/usv_em/): Add more intuition on EM
 
 
 # What is this post?
@@ -51,7 +53,9 @@ It is recommended that you have some basic knowledge about probability, linear a
 
 # How to track it?
 
-You can bookmark this page. I will update this page to show where I have made changes of the notes and what might be coming next. 
+One way is that you can bookmark this page. I will update this page to show where I have made changes of the notes and what might be coming next. 
+
+The other way is that you can follow my github. I will give formal comments in push when I made some important changes to this post. 
 
 # Found error or interested in other topics?
 
