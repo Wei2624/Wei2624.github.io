@@ -31,7 +31,7 @@ The standard way is to set its derivatives to zero and solve it with respect to 
 
 let's take a look at this equation again. It is hard to solve because we have z variable there. $z^{(i)}$ indicates what class a data sample might belong to. We have to integrate this out, which makes it hard to calculate. If we knew what value z is at the beginning, we can easily calcualte the likelihood as:
 
-$$\ell(\phi,\mu,\Sigma) = \sum\limits_{i=1}^m \log p(x^{(i)}\lvert z^{(i)};\mu_{z^{(i)},\Sigma_{z^{(i)}) + \log p(z^{(i)};\phi)$$
+$$\ell(\phi,\mu,\Sigma) = \sum\limits_{i=1}^m \log p(x^{(i)}\lvert z^{(i)};\mu_{z^{(i)}},\Sigma_{z^{(i)}}) + \log p(z^{(i)};\phi)$$
 
 We set the derivative of this to zero, and then we can update them as:
 
@@ -151,6 +151,8 @@ $$q_i(z^{(i)}) = p(z^{(i)}\lvert x^{(i)};\theta)$$
 2 M-step: update parameters as :
 
 $$\theta = \arg\max_{\theta} \sum\limits_i\sum\limits_{z^i} q_i(z^{(i)}) \log\frac{p(x^{(i)},z^{(i)};\theta)}{q_i(z^{(i)})}$$
+
+We can say that by the end, EM will tell us a point estimate of the best model variables. 
 
 The question now is that does this always converge? We want to prove that $\ell(\theta^t)\leq\ell(\theta^{t+1})$. So we have:
 
