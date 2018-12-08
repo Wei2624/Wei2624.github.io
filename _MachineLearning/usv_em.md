@@ -210,7 +210,7 @@ $$\begin{align}
 &- \int q(\phi)\ln p(\phi\lvert X,\theta)d\phi + \int q(\phi)\ln q(\phi)d\phi 
 \end{align}$$
 
-$$\ln p(X,\theta) &= \int q(\phi)\ln \frac{p(X,\theta,\phi)}{q(\phi)} d\phi + \int q(\phi)\ln \frac{q(\phi)}{p(\phi\lvert X,\theta)}d\phi $$
+$$\ln p(X,\theta) = \int q(\phi)\ln \frac{p(X,\theta,\phi)}{q(\phi)} d\phi + \int q(\phi)\ln \frac{q(\phi)}{p(\phi\lvert X,\theta)}d\phi $$
 
 The final equation is called EM master equation. This will help us know what to do and how it works for EM algorithm. 
 
