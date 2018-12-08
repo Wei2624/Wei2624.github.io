@@ -43,7 +43,7 @@ MachineLearning:
         url: /MachineLearning/dl_propagtion/
   - title: Unsupervised Learning
     children: 
-      - title: "K-means Clutering"
+      - title: "K-means Clustering"
         url: /MachineLearning/usv_kmeans/
       - title: "EM Algorithm"
         url: /MachineLearning/usv_em/
