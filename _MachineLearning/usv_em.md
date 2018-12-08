@@ -202,13 +202,15 @@ $$q(\phi)\ln p(X,\theta) = q(\phi)\ln p(X,\theta,\phi) - q(\phi)\ln p(\phi\lvert
 Apply integral here:
 
 $$\begin{align}
-\int q(\phi)\ln p(X,\theta) d\phi &= \int q(\phi)\ln p(X,\theta,\phi) d\phi - \int q(\phi)\ln p(\phi\lvert X,\theta)d\phi \\
+\int q(\phi)\ln p(X,\theta) d\phi &= \int q(\phi)\ln p(X,\theta,\phi) d\phi \\
+&- \int q(\phi)\ln p(\phi\lvert X,\theta)d\phi \\
 \ln p(X,\theta) \int q(\phi) d\phi&= \int q(\phi)\ln p(X,\theta,\phi) d\phi - \int q(\phi)\ln q(\phi)d\phi \\
 &- \int q(\phi)\ln p(\phi\lvert X,\theta)d\phi + \int q(\phi)\ln q(\phi)d\phi \\
 \ln p(X,\theta) &= \int q(\phi)\ln p(X,\theta,\phi) d\phi - \int q(\phi)\ln q(\phi)d\phi \\
-&- \int q(\phi)\ln p(\phi\lvert X,\theta)d\phi + \int q(\phi)\ln q(\phi)d\phi \\
-\ln p(X,\theta) &= \int q(\phi)\ln \frac{p(X,\theta,\phi)}{q(\phi)} d\phi + \int q(\phi)\ln \frac{q(\phi)}{p(\phi\lvert X,\theta)}d\phi 
+&- \int q(\phi)\ln p(\phi\lvert X,\theta)d\phi + \int q(\phi)\ln q(\phi)d\phi 
 \end{align}$$
+
+$$\ln p(X,\theta) &= \int q(\phi)\ln \frac{p(X,\theta,\phi)}{q(\phi)} d\phi + \int q(\phi)\ln \frac{q(\phi)}{p(\phi\lvert X,\theta)}d\phi $$
 
 The final equation is called EM master equation. This will help us know what to do and how it works for EM algorithm. 
 
@@ -216,7 +218,7 @@ Let's look at this master equation term by term:
 
 1 $\ln p(X,\theta)$: This is the objective function that we want to optimize. 
 
-2 $\mathcal{L} = \int q(\phi)\ln \frac{p(X,\theta,\phi)}{q(\phi)} d\phi$ :This is loss function we will discuss later.
+2 $\mathcal{L}(\theta) = \int q(\phi)\ln \frac{p(X,\theta,\phi)}{q(\phi)} d\phi$ :This is loss function we will discuss later.
 
 3 $KL(q\lvert\rvert p) = \int q(\phi)\ln \frac{q(\phi)}{p(\phi\lvert X,\theta)}$: This is Kullback-Leibler divergence. 
 
@@ -224,7 +226,7 @@ KL divergence is a measure of "distance" of two distritbutions on the same suppo
 
 Let's look at the master equation:
 
-$$\ln p(X,\theta) = \underbrace{\int q(\phi)\ln \frac{p(X,\theta,\phi)}{q(\phi)} d\phi}_{\mathcal{L}(\theta)} + \underbrace{\int q(\phi)\ln \frac{q(\phi)}{p(\phi\lvert X,\theta)}d\phi}_{KL{q\lvert\rvert p}}$$
+$$\ln p(X,\theta) = \underbrace{\int q(\phi)\ln \frac{p(X,\theta,\phi)}{q(\phi)} d\phi}_{\mathcal{L}(\theta)} + \underbrace{\int q(\phi)\ln \frac{q(\phi)}{p(\phi\lvert X,\theta)}d\phi}_{KL(q\lvert\rvert p)}$$
 
 We can see that changing $q(\phi)$ does not change the final value since LHS does not involve $q(\phi)$, and it only changes how much each part on RHS contributes to the final value. When KL is zero, then loss function is our objective function where $q(\phi) = p(\phi\lvert X,\theta)$. We can use similar form of this to set for q but not exact this one. This is because if we set $q(\phi) = p(\phi\lvert X,\theta)$, then KL diveregnce is always gone for each iteration. There is no point of doing this. It will not help reduce the computational complexity. However, we can take advatange of this form and use q to update $\theta$ and vice versa. 
 
