@@ -208,8 +208,10 @@ Note that we have shared covariance so the shape of two contours are the same bu
 
 How is GDA is related with logistic regression? We can see that if $P(x\lvert y)$ above is multivariate gaussian with shared covariance, then we can calculate $P(y\lvert x)$ and find out that it follows a logistic function. To see this, we can have:
 
+
+$$p(y=1\lvert x;\phi,\mu_0,\mu_1,\Sigma) = \frac{p(x,y=1,;\phi,\mu_0,\mu_1,\Sigma)}{p(x;\phi,\mu_0,\mu_1,\Sigma)}$$
+
 $$\begin{align}
-p(y=1\lvert x;\phi,\mu_0,\mu_1,\Sigma) &= \frac{p(x,y=1,;\phi,\mu_0,\mu_1,\Sigma)}{p(x;\phi,\mu_0,\mu_1,\Sigma)} \\
 &=\frac{p(y=1\lvert x;\phi)p(x\lvert \mu_1,\Sigma)}{p(y=1\lvert x;\phi)p(x\lvert \mu_1,\Sigma) + p(y=0\lvert x;\phi)p(x\lvert \mu_0,\Sigma)} \\
 &= \frac{\phi\mathcal{N}(x\lvert \mu_1,\Sigma)}{\phi\mathcal{N}(x\lvert \mu_1,\Sigma) + (1- \phi)\mathcal{N}(x\lvert \mu_0,\Sigma)} \\
 &= \frac{1}{1 + \frac{(1- \phi)\mathcal{N}(x\lvert \mu_0,\Sigma)}{\phi\mathcal{N}(x\lvert \mu_1,\Sigma)}} \\
