@@ -15,7 +15,7 @@ sidebar:
 
 # 1 Discriminative Model
 
-The discriminative model is the model where algorithms try to directly classify a label for input such logstic regression and perceptron algorithm. The discriminative model does not have a concept of what the object might look like. They just classify. It cannot generate a new image based on the class. 
+The discriminative model is the model where algorithms try to directly classify a label for input such as logstic regression and perceptron algorithm. The discriminative model does not have a concept of what the object might look like. They just classify. It cannot generate a new image based on the class. 
 
 Formally, it is $p(y\lvert x;\theta)$ where p can be any classification model such as logistic regression model. 
 
