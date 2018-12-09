@@ -332,8 +332,10 @@ Then, we have:
 
 $$\begin{align}
 \mathcal{L}(\pi,\mu,\Sigma) &= \sum\limits_{i=1}^n\mathbb{E}_{q(c^i)}[\ln p(x^i,c^i\lvert \pi,\mu,\Sigma)] + \text{const.}\\
-&= \sum\limits_{i=1}^n \sum\limits_{j=1}^K q(c^i=j)[\ln p(x^i\lvert c^i=j,\mu,\Sigma) + \ln p(c^i=j\lvert \pi)] + \text{const.}\\
-&= \sum\limits_{i=1}^n \sum\limits_{j=1}^K \phi_i(j)[\frac{1}{2}\ln\lvert\Sigma_j\rvert -\frac{1}{2}(x^i-\mu_j)^T\Sigma_j(x^i-\mu_j) + \ln\pi_j]+ \text{const.}
+&= \sum\limits_{i=1}^n \sum\limits_{j=1}^K q(c^i=j)[\ln p(x^i\lvert c^i=j,\mu,\Sigma) + \ln p(c^i=j\lvert \pi)] \\
+&+ \text{const.}\\
+&= \sum\limits_{i=1}^n \sum\limits_{j=1}^K \phi_i(j)[\frac{1}{2}\ln\lvert\Sigma_j\rvert -\frac{1}{2}(x^i-\mu_j)^T\Sigma_j(x^i-\mu_j) + \ln\pi_j] \\
+&+ \text{const.}
 \end{align}$$
 
 
