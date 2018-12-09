@@ -268,5 +268,115 @@ By far, I have shown how EM algorithm developes from another perspective, which 
 
 # Mixture of Gaussian
 
-I am still working on this subject. 
+Let's get back to mixture of Gaussian model, a.k.a **Gaussian Mixture Model (GMM)**. I will give a general model for GMM here. 
 
+Model: for each $x^i \in \mathbb{R}^d$, given $\pi,\mu,\Sigma$, we have:
+
+$$c^i \sim Discrete(\pi), x^i\lvert c^i \sim \mathcal{N}(\mu_{c^i},\Sigma_{c^i})$$
+
+where $c^i$ is the class assignment and we can assign a class index to it. As discussed before, we select the class assignment as our latent variable. 
+
+For EM, we always start with:
+
+$$\ln p(x\lvert\pi,\mu,\Sigma) = \sum\limits_c q(c)\ln\frac{p(x,c\lvert \pi,\mu,\Sigma)}{q(c)} + \sum\limits_c q(c)\ln\frac{q(c)}{p(c\lvert x,\pi,\mu,\Sigma)}$$
+
+I want to talk about several points here. First, $c=(c^1,c^2,\dots,c^n)$ is a vector and discrete. Thus, we have summations instead of integral. Second, the summation is over all possible values of c, which has $K^n$ possibility. It can easily blow up your memory. It means we need to simplify this, otherwise it has no option of doing this. 
+
+EM algorithm says:
+
+E step:
+
+1 Set $q(c) = p(c\lvert x,\pi,\mu,\Sigma)$
+
+2 Calculate $\sum_c q(c)\ln p(x,c\lvert \pi,\mu,\Sigma)$
+
+M step:
+
+We then maximize the above over $\pi,\mu,\Sigma$.
+
+E step:
+
+Use Bayes rule to calculate the conditional posterior:
+
+$$\begin{align}
+p(c\lvert x,\pi,\mu,\Sigma) &\propto p(x\lvert c,\mu,\Sigma)p(c\lvert\pi) \\
+&\propto\prod\limits_{i=1}^n p(x^i\lvert c^i,\mu,\Sigma)p(c^i\lvert\pi)
+\end{align}$$
+
+We need to normalize it with each individual sample:
+
+$$\begin{align}
+p(c\lvert x,\pi,\mu,\Sigma) &= \prod\limits_{i=1}^n \frac{p(x^i\lvert c^i,\mu,\Sigma)p(c^i\lvert\pi)}{Z_i} \\
+&=\prod\limits_{i=1}^n p(c^i\lvert x^i,\pi,\mu,\Sigma)
+\end{align}$$
+
+where
+
+$$\begin{align}
+p(c^i=k \lvert x^i,\pi,\mu,\Sigma) &= \frac{p(x^i\lvert c^i = k,\mu,\Sigma)p(c^i = k\lvert\pi)}{\sum_{j=1}^K p(x^i\lvert c^i = j,\mu,\Sigma)p(c^i = j\lvert\pi)} \\
+&=\frac{\pi_k \mathcal{N}(x^i\lvert\mu_k,\Sigma_k)}{\sum_{j=1}^K \pi_j \mathcal{N}(x^i\lvert\mu_j,\Sigma_j)} 
+\end{align}$$
+
+Then, for the loss function:
+
+$$\begin{align}
+\mathcal{L}(\pi,\mu,\Sigma) &= \sum\limits_{i=1}^n\mathbb{E}_{q(c)}[\ln p(x^i,c^i\lvert \pi,\mu,\Sigma)] + \text{const.} \\
+&= \sum\limits_{i=1}^n\mathbb{E}_{q(c^1,\dots,c^n)}[\ln p(x^i,c^i\lvert \pi,\mu,\Sigma)] + \text{const.}\\
+&= \sum\limits_{i=1}^n\mathbb{E}_{q(c^i)}[\ln p(x^i,c^i\lvert \pi,\mu,\Sigma)]+ \text{const.}
+\end{align}$$
+
+So the assumption applied here is that each sample with its class assignment is i.i.d. Then the expectation of q(c) with i-th sample is just the expectation of $q(c^i)$ for that sample. By doing this, we do not have to go over all the possibility of c. Instead, we just have Kn terms to deal with. You can see how convenient it is by simply assuming it is iid. 
+
+
+Then, we have:
+
+$$\begin{align}
+\mathcal{L}(\pi,\mu,\Sigma) &= \sum\limits_{i=1}^n\mathbb{E}_{q(c^i)}[\ln p(x^i,c^i\lvert \pi,\mu,\Sigma)] + \text{const.}\\
+&= \sum\limits_{i=1}^n \sum\limits_{j=1}^K q(c^i=j)[\ln p(x^i\lvert c^i=j,\mu,\Sigma) + \ln p(c^i=j\lvert \pi)] + \text{const.}\\
+&= \sum\limits_{i=1}^n \sum\limits_{j=1}^K \phi_i(j)[\frac{1}{2}\ln\lvert\Sigma_j\rvert -\frac{1}{2}(x^i-\mu_j)^T\Sigma_j(x^i-\mu_j) + \ln\pi_j]+ \text{const.}
+\end{align}$$
+
+
+M step:
+
+We want to take the derivative and set to zero. 
+
+For $\mu_j$:
+
+$$\triangledown_{\mu_j}\mathcal{L} = -\sum\limits_{i=1}^n \phi_i(j)(\Sigma_j\mu_j - \Sigma_j x^i) = 0$$
+
+$$\mu_j = \frac{\sum_{i=1}^n\phi_i(j)x^i}{\sum_{i=1}^n\phi_i(j)}$$
+
+For $\Sigma_j$:
+
+$$\triangledown_{\Sigma_j}\mathcal{L} = \sum\limits_{i=1}^n \phi_i(j)(\frac{1}{2}\Sigma_j - \frac{1}{2}(x^i-\mu_j)(x^i-\mu_j)^T) $$
+
+$$\Sigma_j = \frac{\sum_{i=1}^n\phi_i(j)(x^i-\mu_j)(x^i-\mu_j)^T}{\sum_{i=1}^n\phi_i(j)}$$
+
+For $\pi$:
+
+This step requires the sum over $\pi$ must be 1. We need to apply Lagrange multipliers to do this. 
+
+$$\mathcal{L} = \sum\limits_{i=1}^n \sum\limits_{j=1}^K \phi_i(j)\ln\pi_j$$
+
+with the constraint $\sum_{j=1}^K \pi_j = 1$. Then, we construct the Lagrangian as:
+
+$$\mathcal{L} = \sum\limits_{i=1}^n \sum\limits_{j=1}^K \phi_i(j)\ln\pi_j +\beta (\sum\limits_{j=1}^K \pi_j -1)$$
+
+Take the derivative, we have:
+
+$$\sum\limits_{i=1}^n \frac{\phi_i(j)}{\pi_j} + \beta = 0$$
+
+Then, solve it as:
+
+$$\pi_j = \frac{\sum_{i=1}^n \phi_i(j)}{-\beta}$$
+
+Using the constraint $\sum_{j=1}^K \pi_j = 1$, we can find:
+
+$$-\beta = \sum\limits_{i=1}^n \sum\limits_{j=1}^K \phi_i(j) = \sum\limits_{i=1}^n 1 = n$$
+
+So the update is:
+
+$$\pi_j = \frac{\sum_{i=1}^n \phi_i(j)}{n}$$
+
+This concludes our EM algorithm for GMM. 

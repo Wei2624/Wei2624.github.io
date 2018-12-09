@@ -138,3 +138,11 @@ For example, $f(x,y,z) = x^2 + y^2 + z^2$ could be an example for practice.
 ## Negation of Logic Summary
 
 ![Negation Summary](/images/MathFormula_negation.png)
+
+## Product of Sum
+
+In general, we have:
+
+$$(\sum\limits_{i=1}^n x_i)(\sum\limits_{j=1}^m y_j) = \sum\limits_{i,j}^{n,m} x_i y_j$$
+
+It cannot be recersed. 
