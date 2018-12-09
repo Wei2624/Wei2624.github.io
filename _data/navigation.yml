@@ -47,3 +47,7 @@ MachineLearning:
         url: /MachineLearning/usv_kmeans/
       - title: "EM Algorithm"
         url: /MachineLearning/usv_em/
+  - title: Bayesian Model 
+    children: 
+      - title: "Variational Inference"
+        url: /MachineLearning/bayes_vi/

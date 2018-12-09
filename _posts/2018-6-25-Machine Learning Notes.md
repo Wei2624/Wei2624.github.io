@@ -20,7 +20,6 @@ Note: Chinese version of each section is coming soon.
 
 1 More is coming for Variational Inference. 
 
-2 More is coming for [EM Algorithm](https://wei2624.github.io/MachineLearning/usv_em/). 
 
 # Recently updated:
 
@@ -32,9 +31,8 @@ Note: Chinese version of each section is coming soon.
 
 4 [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/): Add more intuitions for Naive Bayes
 
-5 [EM Algorithm](https://wei2624.github.io/MachineLearning/usv_em/): Add more intuition on EM and math proof for EM 
+5 [EM Algorithm](https://wei2624.github.io/MachineLearning/usv_em/): More contents on EM and exmaple as well. 
 
-6 [EM Algorithm](https://wei2624.github.io/MachineLearning/usv_em/): Add EM for GMM with complete proof. 
 
 
 # What is this post?

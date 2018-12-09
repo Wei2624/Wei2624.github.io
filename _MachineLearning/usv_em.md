@@ -382,3 +382,70 @@ So the update is:
 $$\pi_j = \frac{\sum_{i=1}^n \phi_i(j)}{n}$$
 
 This concludes our EM algorithm for GMM. 
+
+# EM for missing data
+
+In this section, I will talk about another example that we can use EM to solve it. It is called missing data problem. In general, we are given the dataset where some of the dataset are observed while others are mising. In this case, we model the missing data with a random variable. This is our latent variable. 
+
+Let's see an example. 
+
+![Missing Data](/images/cs229_em_missingdata.png)
+
+Consider each column as a data sample. We have a couple of missing entries in the data matrix. We can model each column with iid assumption as:
+
+$$x^i\sim \mathcal{N}(\mu,\Sigma)$$
+
+We will try to use EM algorithm to fill the missing data intelligently. 
+
+As always, we write out the EM master equation with missing data as latent variable. Let's denote $x_i^o$ as the observed data dimension and $x_i^m$ as the missing data dimension. Then, we have:
+
+$$\sum\limits_{i=1}^m\ln p(x_i^o\lvert \mu,\Sigma) = \sum\limits_{i=1}^m \int q(x_i^m)\ln\frac{p(x_i^o,x_i^m\lvert\mu,\Sigma)}{q(x_i^m)} dx_i^m + \sum\limits_{i=1}^m \int q(x_i^m)\ln\frac{q(x_i^m)}{p(x_i^m\lvert x_i^o,\mu,\Sigma)}$$
+
+E step:
+
+1 Set $q(x_i^m) = p(x_i^m\lvert x_i^o,\mu,\Sigma)$ using the most recent $\mu,\Sigma$. We can further think of missing and observed data sample as:
+
+$$x_i = \begin{bmatrix} x_i^o \\ x_i^m \end{bmatrix} \sim \mathcal{N}(\begin{bmatrix} \mu_i^o \\ \mu_i^m \end{bmatrix},\begin{bmatrix} \Sigma_i^{oo} & \Sigma_i^{om} \\ \Sigma_i^{mo} & \Sigma_i^{mm} \end{bmatrix})$$
+
+Then, we can show (I will write proof for this if time permitted) that:
+
+$$p(x_i^m\lvert x_i^o,\mu,\Sigma) = \mathcal{N}(\hat{\mu}_i,\hat{\Sigma}_i)$$
+
+where
+
+$$\hat{\mu}_i = \mu_i^m + \Sigma_i^{mo}(\Sigma_i^{oo})^{-1}(x_i^o-\mu_i^o)$$
+
+$$\hat{\Sigma}_i = \Sigma_i^{mm} - \Sigma_i^{mo}(\Sigma_i^{oo})^{-1}\Sigma_i^{om}$$
+
+2 Calculate objective function:
+
+$$\begin{align}
+\mathbb{E}_{q(x_i^m)}[\ln p(x_i^o,x_i^m\lvert\mu,\Sigma)] &= \mathbb{E}_{q(x_i^m)} [(x_i-\mu)] \\
+&=\mathbb{E}_{q(x_i^m)}[(x_i-\mu)^T\Sigma^{-1}(x_i-\mu)] \\
+&=\mathbb{E}_{q(x_i^m)}[tr(\Sigma^{-1}(x_i-\mu)(x_i-\mu)^T)] \\
+&=tr(\Sigma^{-1}\mathbb{E}_{q(x_i^m)}[(x_i-\mu)(x_i-\mu)^T])
+\end{align}$$
+
+Recall that $q(x_i^m) =\mathcal{N}(\hat{\mu}_i,\hat{\Sigma}_i). We define:
+
+$\hat{x}_i$: A vector where we replace the missing values in $x_i$ with $\hat{\mu}_i$.
+
+$\hat{V}_i$: A zero matrix plus $\hat{\Sigma}_i$.
+
+M step:
+
+We want to maximize $\sum_{i=1}^m \mathbb{E}_{q(x_i^m)}[\ln p(x_i^o,x_i^m\lvert \mu,\Sigma)]$. The updating can be done:
+
+$$\mu_{new} = \frac{1}{m} \sum\limits_{i=1}^m \hat{x}_i$$
+
+$$\Sigma_{new} = \frac{1}{m}\sum\limits_{i=1}^m [(\hat{x}_i - \mu_{new})(\hat{x}_i - \mu_{new}) + \hat{V}_i]$$
+
+Then, we return the E step to calculate the new posterior with new $\mu$ and $\Sigma$. 
+
+This is just a short example of applying EM in reality. 
+
+# Summary
+
+ EM algorithm is an algorithm which can help reduce the computational load by introducing a new hidden variable. It give us an point estimate of the best possible value for the parameters using iterative optimization. When we say the best, we really mean the best values for maximum likelihood or maximum a posterior. It depends on if we have a model prior in the definition. EM works in both. 
+
+ The procedure is as follow. First, we select a proper latent variable, which is based on experience. The key is to check the marginal distribution is still correct with the selected latent variable. Second, we caluclate the posterior of this latent variable conditioning on data and current mode parameters. Third, we calculate our objective function using latent variable. This is our E step. At M step, we maximize each model parameter by finding its gradient. We repeat this process until the objective function has converged. 
