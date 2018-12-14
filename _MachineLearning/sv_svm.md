@@ -192,7 +192,7 @@ To find the dual form of this problem, we first find min of loss with respect to
 
 $$\triangledown_{w}\mathcal{L}(w,b,\alpha) = w - \sum\limits_{i=1}^m \alpha_i y^{(i)}x^{(i)} = 0\tag{2}$$
 
-$$w = \sum\limits_{i=1}^m \alpha_i y^{(i)}x^{(i)}tag{3}$$
+$$w = \sum\limits_{i=1}^m \alpha_i y^{(i)}x^{(i)}\tag{3}$$
 
 $$\frac{\partial}{\partial b}\mathcal{L}(w,b,\alpha) = \sum\limits_{i=1}^m \alpha_i y^{(i)} = 0 \tag{4}$$
 

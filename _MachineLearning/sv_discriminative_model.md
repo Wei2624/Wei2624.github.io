@@ -410,13 +410,13 @@ where the first equation is from assumption (2); the second is by definition; th
 
 ## 9.2 Logistic Regression
 
-In this setting, we predict either 1 or 0 for class label. Recall that, in Bernoulli, we had $\phi=1/(1+e^{\eta}$. Thus, we can derive the following equation as:
+In this setting, we predict either 1 or 0 for class label. Recall that, in Bernoulli, we had $\phi=1/(1+e^{\eta})$. Thus, we can derive the following equation as:
 
 $$\begin{align}
 h_{\theta}(x) &= \mathbb{E}[y\lvert x;\theta]\\
 &= \phi\\
 &= 1/(1+e^{-\eta}) \\
-&= 1/(1+e^{=-\theta^Tx})
+&= 1/(1+e^{-\theta^Tx})
 \end{align}$$
 
 This partially explains why we came up with the form like sigmoid function. Because we assume that y follows from Bernoulli given x, it is natural to have sigmoid function resulted from exponential family. To predict, we think that expected value of $T(y)$ with respect to $\eta$ is a reasonable guess, namely **canonical response function or inverse of link function**. In general, response function is the function of $\eta$ and gives the relationships between $\eta$ and distribution parameters, while link function produces $\eta$ as a function of distribution parameter. The inversion means to express one in terms of the other, which has nothing to do with mathematical meaning of inversion.  From the derivation above, we know that the canonical response function of Bernoulli is logistic function and that of Gaussian is mean function. 
