@@ -16,6 +16,10 @@ Note: viewing this page on mobile phone might hurt your experience.
 
 Note: Chinese version of each section is coming soon. 
 
+# Chinese Versions
+
+1 A Chinese version of [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/) can be found [here](https://air-yan.github.io/machine%20learning/Generative-Learning-Algorithm/)
+
 # Coming:
 
 1 More is coming for Variational Inference. 
