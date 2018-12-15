@@ -13,6 +13,8 @@ sidebar:
   nav: "MachineLearning"
 ---
 
+A Chinese version can be found [here](https://air-yan.github.io/machine%20learning/Generative-Learning-Algorithm/)
+
 # 1 Discriminative Model
 
 The discriminative model is the model where algorithms try to directly classify a label for input such as logstic regression and perceptron algorithm. The discriminative model does not have a concept of what the object might look like. They just classify. It cannot generate a new image based on the class. 
