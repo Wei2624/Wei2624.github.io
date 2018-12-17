@@ -489,4 +489,4 @@ L(\theta) &= \sum\limits_{i=1}^m \log(p(y^{(i)}\lvert x^{(i)};\theta)\\
 
 We can use gradient descent or Newton's method to find the max of it. 
 
-**Note**: logistic regression is binary case of softmax regression. Sigmoid function is binary case of sigmoid function. 
+**Note**: logistic regression is binary case of softmax regression. Sigmoid function is binary case of softmax function. 
