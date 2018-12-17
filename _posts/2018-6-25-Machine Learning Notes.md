@@ -41,7 +41,7 @@ Note: Chinese version of each section is coming soon.
 
 # What is this post?
 
-In this long post, I mainly talk about contents from CS 229 by Prof. Andrew Ng. But meanwhile I also include contents from many classes that I took at Columbia such as Prof. John Paisley, Prof. David Blei, and Prof. Daniel Hsu. This post mixes contents from all of them, and is expected to grow more. It is much like self-disciplined. I always try to cature the most important contents here. This post is supposed to be the marterial for self-study. 
+In this long post, I mainly talk about contents from many machine learning classes that I have learned such as CS 229 by Prof. Andrew Ng. at Stanford and classes at Columbia taught by Prof. John Paisley, Prof. David Blei, and Prof. Daniel Hsu. This post mixes contents from all of them, and is expected to grow more. It is much like self-disciplined. I always try to cature the most important contents here. This post is supposed to be the marterial for self-study. 
 
 # Why this post?
 
