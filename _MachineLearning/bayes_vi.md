@@ -73,11 +73,50 @@ We can use coordinate descent algorithm to optimize each parameter. However, thi
 
 3 We can do marginal likelihood as:
 
-$$p(y\lvert w x) = \int p(y,\alpha\lvert w,x) d\alpha$$
+$$p(y\lvert w x) = \int p(y,w, \alpha\lvert x) d\alpha$$
 
 With this marginal likelihood, we can:
 
 (1) try to find posterior inference for $p(w\lvert y,x)\propto p(y\lvert w,x)p(w)$. However, this will not work out since $p(y\lvert w,x)$ is resulted from the integral of $\alpha$, which is not a Gaussian anymore. Rather, it is student-t distribution. This is not conjugate with prior anymore. So it does not work. 
 
 (2) Another option is to maximize $p(y,w\lvert x)$ over w using MAP using gradient method. This is where EM could possibly come in. 
+
+## EM for Model V2
+
+So we want to treat $\alpha$ as the latent variable. We are trying to find a point estimate of w to maximize the marginal distribution $p(y,w\lvert x)=\int p(y,w,\alpha\lvert x)\alpha$. 
+
+Based on the above discussion, we can write EM master equation:
+
+$$\ln p(y,w\lvert x)=\underbrace{\int q(\alpha)\ln\frac{p(y,w,\alpha\lvert x)}{q(\alpha)}d\alpha}_{\mathcal{L}(w)} + \underbrace{\int q(\alpha)\ln\frac{q(\alpha)}{p(\alpha\lvert y,w,x)}d\alpha}_{KL(p\lvert\lvert q)}$$
+
+E-step:
+
+$$\begin{align}
+p(\alpha\lvert y,w,x) &\propto \prod_{i=1}^N p(y_i\lvert \alpha.w,x_i)p(\alpha) \\
+&\propto \alpha^{\frac{N}{2}}\exp(-\frac{\alpha}{2}\sum\limits_{i=1}^N (y_i-x_i^Tw)^2)\times \alpha^{a-1}\exp(-b\alpha) \\
+&=Gamma(a+\frac{N}{2},b+\frac{1}{2}\sum\limits_{i=1}^N (y_i-x_i^Tw)^2)
+\end{align}$$ 
+
+Now, we should set $q_t(\alpha) = p(\alpha\lvert y,w_{t-1},x)$, and then calculate the loss function:
+
+$$\begin{align}
+\mathcal{L}(w) &= \mathbb{E}_q [\ln p(y,\alpha\lvert w,x)p(w)] + \mathbb{E}_q [\ln q(\alpha)] \\
+&= -\frac{\mathbb{E}_{q_t} [\alpha]}{2} \sum\limits_{i=1}^N (y_i -x_i^Tw)^2 - \frac{\lambda}{2}w^Tw + \text{const. w.r.t. w}
+\end{align}$$
+
+M-step:
+
+Then, we have to make sure that we can maximize the loss function in a closed form. Otherwise, there is no point of doing this. We can try and find (I will give the math later):
+
+$$w_t = (\lambda I + \mathbb{E}_{q_t} [\alpha]\sum\limits_{i=1}^N x_i x_i^T)^{-1}(\sum\limits_{i=1}^N \mathbb{E}_{q_t}[\alpha]y_i x_i)$$
+
+We can plug $\mathbb{E}_{q_t}[\alpha]$ into the above so that we get the updating form of w. 
+
+
+Note that there are a few things that are different than we did EM last time.
+
+(1) In the previous case, we introduced a latent variable to reduce the math complexity. However, in this case, the latent variable $\alpha$ has the interpretation, which is related to the observation noise. So this latent varibale has its own meaning. 
+
+(2) In this case, we have w and $\alpha$ to learn. However, we make a compromise by learning a point estimate and a conditional posterior of $a\lpha$. It is hard for us to learn point estimates of two variables. Surly, you could have done the reverse. That is, you can learn a point estimate of $\alpha$ and a conditional posterior of w. 
+
 
