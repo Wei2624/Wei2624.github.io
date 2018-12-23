@@ -120,3 +120,79 @@ Note that there are a few things that are different than we did EM last time.
 (2) In this case, we have w and $\alpha$ to learn. However, we make a compromise by learning a point estimate and a conditional posterior of $a\lpha$. It is hard for us to learn point estimates of two variables. Surly, you could have done the reverse. That is, you can learn a point estimate of $\alpha$ and a conditional posterior of w. 
 
 
+## Model V3
+
+The EM algorithm works in model version 2. Let's see a new version of model, namely version 3. In this setup, we have one more variable to work with. 
+
+$$ y_i \sim \mathcal{N}(x_i^Tw, \alpha^{-1}), w\sim \mathcal{N}(0,\lambda I),\alpha\sim Gamma(a,b),\lambda\sim Gamma(e,f)$$
+
+Then, the marginal distribution is:
+
+$$p(y,w\lvert x) = \int\int p(y,w,\alpha,\lambda\lvert x)d\alpha d\lambda$$
+
+## EM for Model V3
+
+Note that we have two latent variables now instead of one in V2. The EM master equation is:
+
+$$\begin{align}
+\ln p(y,w\lvert x) &= \int\int q(\alpha,\lambda)\ln\frac{p(y,w,\alpha,\lambda\lvert x)}{q(\alpha,\lambda)}d\alpha d\lambda + \\
+& \int\int q(\alpha,\lambda)\ln\frac{q(\alpha,\lambda)}{p(\alpha,\lambda\lvert y,w,x)}
+\end{align}$$
+
+Note that $\ln p(y,w\lvert x)$ in this model setup is different from the one in V2, although the form is the same. That is, the underlying distribution is essentially different. 
+
+E-step:
+
+As usual, we have:
+
+$$\begin{align}
+p(\alpha,\lambda\lvert y,w,x) &= \frac{p(y\lvert w,\alpha,x)p(\alpha)p(w\lvert\lambda)p(\lambda)}{\int\int p(y\lvert w,\alpha,x)p(\alpha)p(w\lvert\lambda)p(\lambda) d\lambda d\alpha} \\
+&= \underbrace{\frac{p(y,\alpha\lvert w,x)}{\int p(y,\alpha\lvert w,x)d\alpha}}_{p(\alpha\lvert y,w,x)}\underbrace{\frac{p(w,\lambda)}{\int p(w,\lambda)d\lambda}}_{p(\lambda\lvert w)}
+\end{align}$$
+
+We can calculate the conditional posterior of both parameters:
+
+$$p(\alpha\lvert,y,w,x) = Gamma(a+\frac{N}{2},b+\frac{1}{2}\sum\limits_{i=1}^N (y_i-x_i^Tw)^2)$$
+
+$$p(\lambda\lvert w) = Gamma(e+\frac{d}{2},f+\frac{1}{2}w^Tw)$$
+
+M-step:
+
+We have the same form for the updating as:
+
+$$w_t = (\mathbb{E}_{q_t}[\lambda] I + \mathbb{E}_{q_t} [\alpha]\sum\limits_{i=1}^N x_i x_i^T)^{-1}(\sum\limits_{i=1}^N \mathbb{E}_{q_t}[\alpha]y_i x_i)$$
+
+The only difference is that we have the expectation for $\lambda$ as well. This worked out since we can factorize the full conditional posteriors of the two variables as:
+
+$$q(\alpha,\lambda) = p(\alpha,\lambda\lvert y,w,x) = p(\alpha\lvert y,w,x)p(\lambda\lvert w) = q(\alpha)q(\lambda)$$
+
+This is not always true. In this case, we just make it factorizeable. Eventually, we will have a point estimate and full posterior of variables. 
+
+The question is that what if we cannot factorize or find the posterior of the variables. In this case, we have the problem. If we cannot calculate or factorize the posterior, we cannot move on with the EM algorithm. This is where VI might come in. 
+
+# From EM to VI
+
+In EM, we can learn posteriors of all variables except for the one that is learned as point estimate. So let's make it learn all variables in posteriors. For model V3, we can have:
+
+$$p(y\lvert x) = \int\int\int p(y,w,\alpha,\lambda) d\alpha d\lambda dw$$
+
+Note that different from EM, there is nothing to optimize on the left hand side. We can further write:
+
+$$\begin{align}
+\ln p(y\lvert x) &= \int\int\int q(\alpha,\lambda,w)\ln \frac{p(y,w,\alpha,\lambda\lvert x)}{q(\alpha,\lambda,w)}d \alpha d\lambda dw + \\
+& \int\int\int q(\alpha,\lambda,w)\ln \frac{q(\alpha,\lambda,w)}{p(\alpha,\lambda,w\lvert y,x)}d \alpha d\lambda dw
+\end{align}$$
+
+Again, there is nothing to optimize on the left hand side. In addition, we cannot complete our E-step since we cannot calculate the full posterior:
+
+$$q(\alpha,\lambda, w) = p(\alpha,\lambda, w\lvert y,x)$$
+
+So let's look at the VI equation:
+
+$$\begin{align}
+\ln p(y\lvert x) &= \int\int\int q(\alpha,\lambda,w)\ln \frac{p(y,w,\alpha,\lambda\lvert x)}{q(\alpha,\lambda,w)}d \alpha d\lambda dw + \\
+& \int\int\int q(\alpha,\lambda,w)\ln \frac{q(\alpha,\lambda,w)}{p(\alpha,\lambda,w\lvert y,x)}d \alpha d\lambda dw
+\end{align}$$
+
+In EM, we want to have a proper q distribution to find out an point estimate of w. Both left and right hand side of EM equation are optimized. In VI, there is nothing to optimize on the left hand side. Thus, in VI, we view this equation differently. In particular, we are more interested in q distributions and how to pick them up. 
+

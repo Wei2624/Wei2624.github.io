@@ -37,6 +37,8 @@ Note: Chinese version of each section is coming soon.
 
 5 [EM Algorithm](https://wei2624.github.io/MachineLearning/usv_em/): More contents on EM and exmaple as well. 
 
+6 [VI Algorithm](https://wei2624.github.io/MachineLearning/bayes_vi/): Transition from EM to VI
+
 
 
 # What is this post?
