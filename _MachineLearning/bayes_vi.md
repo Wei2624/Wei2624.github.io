@@ -196,3 +196,65 @@ $$\begin{align}
 
 In EM, we want to have a proper q distribution to find out an point estimate of w. Both left and right hand side of EM equation are optimized. In VI, there is nothing to optimize on the left hand side. Thus, in VI, we view this equation differently. In particular, we are more interested in q distributions and how to pick them up. 
 
+Let's look at each term in the VI equation individually. 
+
+(1) $\ln p(y\lvert x)$: This is the marginal likelihood of the data given the model. We cannot find this. If we can, we can then find:
+
+$$p(\alpha,\lambda,w\lvert y,x)=\frac{p(y,\alpha,w,\lambda\lvert x)}{p(y\lvert x)}$$
+
+So we cannot explicitly calculate $p(y\lvert x)$. However, given data and model, we know that this value is always constant no matter how we change the model variables. 
+
+(2) $KL(p\lvert\rvert q): Again, we do not know how to calcuate this KL. However, we do know that this is a non-negative number and equals to zero iff p = q. 
+
+(3) Objective function: In this term, we pick up a good q so that we can calculate this term by completing the integral. 
+
+The goal of VI is to pick a good q that can be as close as possible to the posterior distribution $p(w,\alpha,\lambda\lvert y,x)$. There are some other ways to do it. For example, we can use Laplace approximation. However, in this case, we are more interested in inference algorithm. 
+
+To measure the closeness, we can keep using KL divergence as the tool. In other words, we want to minimize the KL value. It is clear that we cannot caluclate the KL directly. However, we know that the left hand side of VI equation is constant, and KL is a non-negative number. Thus, to minimize KL, on the other hand, we can maximize the VI objective function, which is the middle term in the VI equation. This also shows that in VI, we care about the q distribution not the latent variable in EM. 
+
+## VI for Model V3 
+
+Let's step back to the model setup version 3 to see how VI works there. In this case, we need to:
+
+(1) define q distribution family over $\alpha, w, \lambda$. The parameters of q are supposed to be optimized. Note that in EM, we find q such that the marginal likelihood is correct. 
+
+(2) construct variational objective function:
+
+$$\mathcal{L} (\theta) = \mathbb{E}_q [\ln p(y,w,\lambda,\alpha\lvert x)] - \mathbb{E}_q [\ln q(\alpha,\lambda,w)]$$
+
+where $\theta$ is the symbol of all parameters that are to be optimized. In this case, there is no $w,\alpha,\lambda$ by the end since it will be integrated out. 
+
+In EM, we have different story where the objective function $\mathcal{L}$ is the function over model variable. We can do MAP inference or ML inference on it depending if we have the prior of model variable. Also, the parameters of q distribution on the latent variable in EM are always known since we force them to some certain values. On the other hand, in VI, the parameters of q distributions are unknown and instead they are the parameters in the objective function that we are trying to optimize. The key point here is that although EM and VI have the similar form of objective function, they are completely different things in this case. 
+
+Now, we need to define q distributions. In general, we use something called "mean-field" assumption. In this approach, we can have:
+
+$$q(\alpha,w,\lambda) = q(\alpha)q(w)q(\lambda)$$
+
+Then, we can handle them one at a time. Note that if w is a vector, we can also write $q(w)=\prod_j q(w_j)$.
+
+We will talk about how to define the best optimal one for each of them. The algorithm should still work no matter what distributions we define. In this case, we can define them the same as their priors. 
+
+$$q(\alpha) = Gamma(a^{\ast},b^{\ast}), q(\lambda) = Gamma(e^{\ast},f^{\ast}), q(w) = Normal(\mu^{\ast},\Sigma^{\ast})$$
+
+We optimize them to be the best values that can make q to be as close as possible to the full posterior by optimizing the variational objective function. 
+
+The reason that we are doing the factorization is that it is hard to find a good distribution family for multiple parameters that have different support. For example, $\alpha$ is only valid in postive real number while w is valid in the whole real number domain. How do we define a distribution that take both as support? So it is better to consider them one by one. 
+
+Recall that in model setup version v2, we had $\lambda$ and $\alpha$ conditionally independent given w, which happened to let us write $q(\alpha,\lambda) = q(\alpha)q(lambda)$. It is no longer valid now since we use mean-field assumption. That means:
+
+$$q(\alpha)q(w)q(\lambda) \neq p(\alpha,\lambda,w\lvert y,x)$$
+
+It indicates that KL is always larger than zero in VI.
+
+Then, we should calulcate the objective function:
+
+$$\begin{align}
+\mathcal{L} &= \mathbb{E}_q [\ln p(y,w,\alpha,\lambda\lvert x)] - \mathbb{E}_q [\ln q(\alpha,\lambda,w)] \\
+& = \frac{\mathbb{E}_q [\alpha]}{2}\sum\limits_{i=1}^N \mathbb{E}_q [(y_i-x_i^Tw)^2] + \frac{1}{2}\mathbb{E}_q [\ln \alpha] - \frac{\mathbb{E}_q[\lambda]}{2}\mathbb{E}_q[w^Tw] \\
+& + \frac{d}{2}\mathbb{E}_q [\ln\lambda] + (a-1)\mathbb{E}_q[\ln\alpha] - b\mathbb{E}_q[\alpha] + (e-1)\mathbb{E}_q[\ln\lambda]-f\mathbb{E}_q [\lambda] \\
+& -\mathbb{E}_q [\ln q(\alpha)] -\mathbb{E}_q [\ln q(\lambda)] - \mathbb{E}_q [\ln q(w)] + \text{const.}
+\end{align}$$
+
+You can see how complicated this is. Note that the independent assumption that we made has helped us a lot in this case since each expectation is only w.r.t. the variable of itnerest. So we can move expectation inwards to make calculation easier. 
+
+The next step is to take derivative w.r.t. $a^{\ast},b^{\ast},e^{\ast},f^{\ast}, \mu^{\ast},\Sigma^{\ast}$ and use graident descent to optimize them one at a time. 
