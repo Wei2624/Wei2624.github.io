@@ -310,7 +310,8 @@ Since we only care about $\theta_i$ and $\psi_i$, we can treat the vartional obj
 $$\begin{align}
 \mathcal{L} &= \int q(\theta_i\lvert\psi_i)\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)] d\theta_i \\
 & -\int q(\theta_i\lvert\psi_i) \ln q(\theta_i\lvert\psi_j) d\theta_i + \text{const. w.r.t. } \theta_i \\
-&= \int q(\theta_i\lvert\psi_i)\ln\frac{\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])}{q(\theta_i\lvert\psi_i)} d\theta_i + \text{const. w.r.t. }\theta_i
+&= \int q(\theta_i\lvert\psi_i)\ln\frac{\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])}{q(\theta_i\lvert\psi_i)} d\theta_i \\
+& + \text{const. w.r.t. }\theta_i
 \end{align}$$
 
 **Math:** From the first line to second line, we first merge two integrals. Then, we factor off $q(theta_i\lvert\psi_i)$. Last but not least, in order to use the property of ln function, we first exponential and take ln of joint log likelihood. 
@@ -325,15 +326,18 @@ $$Z = \int \exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])d\th
 
 We can add and substract $\ln Z$ on the variational objective:
 
-$$\mathcal{L} = \int q(\theta_i\lvert\psi_i)\ln\frac{\frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])}{q(\theta_i\lvert\psi_i)} d\theta_i + \ln Z + \text{const. w.r.t. }\theta_i$$
+$$\begin{align}
+\mathcal{L} &= \int q(\theta_i\lvert\psi_i)\ln\frac{\frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])}{q(\theta_i\lvert\psi_i)} d\theta_i + \ln Z \\
+& + \text{const. w.r.t. }\theta_i
+\end{align}$$
 
 where:
 
-$$\frac{\frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])$$
+$$\frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])$$
 
 is a distribution of $\theta_i$. We can further write the objective as:
 
-$$\int q(\theta_i\lvert\psi_i)\ln\frac{\frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])}{q(\theta_i\lvert\psi_i)} d\theta_i = -KL(q_i\lvert\rvert \frac{\frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)]))$$
+$$\int q(\theta_i\lvert\psi_i)\ln\frac{\frac{1}{Z}\exp(\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])}{q(\theta_i\lvert\psi_i)} d\theta_i = -KL(q_i\lvert\rvert \frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)]))$$
 
 When can we get the max value of the above variational objective function? The answer is when those two distributions are the same. Thus, for a particular i, we should set:
 
