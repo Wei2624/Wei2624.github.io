@@ -18,7 +18,7 @@ Note: Chinese version of each section is coming soon.
 
 # Chinese Versions
 
-1 A Chinese version of [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/) can be found [here](https://air-yan.github.io/machine%20learning/Generative-Learning-Algorithm/)
+1 A Chinese version of [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/) is available online. 
 
 # Coming:
 
