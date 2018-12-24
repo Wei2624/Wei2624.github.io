@@ -124,7 +124,9 @@ Note that there are a few things that are different than we did EM last time.
 
 The EM algorithm works in model version 2. Let's see a new version of model, namely version 3. In this setup, we have one more variable to work with. 
 
-$$ y_i \sim \mathcal{N}(x_i^Tw, \alpha^{-1}), w\sim \mathcal{N}(0,\lambda I),\alpha\sim Gamma(a,b),\lambda\sim Gamma(e,f)$$
+$$ y_i \sim \mathcal{N}(x_i^Tw, \alpha^{-1}), w\sim \mathcal{N}(0,\lambda I)$$
+
+$$\alpha\sim Gamma(a,b),\lambda\sim Gamma(e,f)$$
 
 Then, the marginal distribution is:
 
@@ -284,7 +286,194 @@ $$\begin{align}
 & - \sum\limits_{i=1}^m \int q(\theta_i\lvert\psi_i)\ln q(\theta_i\lvert\psi_i) d\theta_i
 \end{align}$$
 
-We are trying to optimize all the $\psi_i$. There are two ways to make variational inference work out: direct method and optimal method. We will see how direct method works and appareciate the effectiveness of optimal method. 
+We are trying to optimize all the $\psi_i$. There are two ways to make variational inference work out: direct method and optimal method. We will see how direct method works and appareciate the effectiveness of optimal method. Before that, we need to figure out what distribution family we should pick up for each q distribution. 
+
+## Picking $q(\theta_i\lvert\psi_i)$
+
+Essentially, we are facing with two key problems here:
+
+1 How do we choose each $q_i = q(\theta_i\lvert\psi_i)$?
+
+2 How do we get the best $\psi_i$ for each i. 
+
+**Setup**: we have a joint likelihood $p(X,\theta_1,\dots,\theta_m)$ and the mean-field assumption says that $p(\theta_1,\dots,\theta_m) \approx \prod_{i=1}^m q(\theta_i\lvert\psi_i)$
+
+Let's randomly pick $i\in [1,\dots,m]$ and correspondingly $q(\theta_i\lvert\psi_i)$. We expand our variational objective function as:
+
+$$\begin{align}
+\mathcal{L} &= \int q(\theta_i\lvert\psi_i) \underbrace{\int (\prod_{j\neq i} q(\theta_j\lvert\psi_j))\ln p(X,\theta_1,\dots,\theta_m)d\theta_{j\neq i}}_{\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)]} d\theta_i \\
+& -\int q(\theta_i\lvert\psi_i)\ln q(\theta_i\lvert\psi_i)d\theta_i - \sum\limits_{j\neq i} \int q(\theta_j\lvert\psi_j)\ln q(\theta_j\lvert\psi_j)d\theta_j
+\end{align}$$
+
+Since we only care about $\theta_i$ and $\psi_i$, we can treat the vartional objective as the function of these two parameters. Then, we can further write:
+
+$$\begin{align}
+\mathcal{L} &= \int q(\theta_i\lvert\psi_i)\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)] d\theta_i \\
+& -\int q(\theta_i\lvert\psi_i) \ln q(\theta_i\lvert\psi_j) d\theta_i + \text{const. w.r.t. } \theta_i \\
+&= \int q(\theta_i\lvert\psi_i)\ln\frac{\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])}{q(\theta_i\lvert\psi_i)} d\theta_i + \text{const. w.r.t. }\theta_i
+\end{align}$$
+
+**Math:** From the first line to second line, we first merge two integrals. Then, we factor off $q(theta_i\lvert\psi_i)$. Last but not least, in order to use the property of ln function, we first exponential and take ln of joint log likelihood. 
+
+Let's look at this variational objective function for a second. We are trying to figure out how we can pick up a proper $q(\theta_i\lvert\psi_i)$ so that the variational objective function can be maximized. For this goal, what we have done so far is taking only $q_i$ and re-write the variational objective function in terms of $q_i$. Thus, given that we only care about $q_i$, the goal turns out to be that how we can maximize the above variational objective function. 
+
+If we look at this form of variational objective function, we can see that this somewhat looks like KL divergenceexcept that the numerator is not a distribution and the order of numerator and denominator is reversed. For the frist issue, if it is not a distribution, we can make it a distribution by normailizing it. For the second issue, we can put a negative multuplier on ln. By doing these two things, we make up a KL divergence. 
+
+In particular, let's define:
+
+$$Z = \int \exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])d\theta_i$$
+
+We can add and substract $\ln Z$ on the variational objective:
+
+$$\mathcal{L} = \int q(\theta_i\lvert\psi_i)\ln\frac{\frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])}{q(\theta_i\lvert\psi_i)} d\theta_i + \ln Z + \text{const. w.r.t. }\theta_i$$
+
+where:
+
+$$\frac{\frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])$$
+
+is a distribution of $\theta_i$. We can further write the objective as:
+
+$$\int q(\theta_i\lvert\psi_i)\ln\frac{\frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])}{q(\theta_i\lvert\psi_i)} d\theta_i = -KL(q_i\lvert\rvert \frac{\frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)]))$$
+
+When can we get the max value of the above variational objective function? The answer is when those two distributions are the same. Thus, for a particular i, we should set:
+
+$$q(\theta_i\lvert\psi_i) = \frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])$$
+
+This gives us the optimal distribution family we should take no matter what parameters are. Since i is arbitrary, we can say this works for any i. In addition, when we can write out the full distribution of each i, we can also find out what the optimal parameters are for each i. This sovles our second question as well. 
+
+On a high level, the general variational inference algorithm can be described as:
+
+For iteration t:
+
+1 For model variable index $i=1,\dots,m$, we set:
+
+$$q(\theta_i\lvert\psi_i) = \frac{\exp(\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])}{\int \exp(\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])} d\theta_i$$
+
+2 Evaluate the varational objective function using the updating q:
+
+$$\mathcal{L}_t = \mathbb{E}_q [\ln p(X,\theta_1,\dots,\theta_m)] - \sum\limits_{i=1}^m \mathbb{E}_{q_i}[\ln q(\theta_i\lvert\psi_i)]$$
+
+3 If the increase between $\mathcal{L}_t$ and $\mathcal{L}_{t-1}$ is below some threahold value, we terminate the process. 
+
+Next, we look at two different methods to complete our variational inference. 
 
 ## Direct Method
 
+In this method, we explicitly define each $q_i$ and optimize objective function. This is a more complciated method than optimal method. If you don't want to see the difference, you can skip tp optimal method. 
+
+**Setup**: 
+
+$$y_i\sim\mathcal{N}(x_i^Tw,\alpha),w\sim\mathcal{N}(0,\lambda I),\alpha\sim Gamma(a,b)$$
+
+The joint likelihood:
+
+$$p(y,w,\alpha\lvert x) = p(\alpha)p(w)\prod_{i=1}^N p(y_i\lvert x_i,w,\alpha)$$
+
+We can approximate the full posterior by picking up:
+
+$$q(\alpha,w) = q(\alpha)q(w) = Gamma(\alpha\lvert a^{\prime,b^\prime})\mathcal{N}(w\lvert\mu^{\prime},\Sigma^{\prime})$$
+
+Then, we can write our varitional objective function as:
+
+$$begin{align}
+\mathcal{L}(a^{\prime},b^{\prime},\mu^{\prime},\Sigma^{\prime}) &= \int_0^{\infty}\int_{\mathbb{R}^d}q(w,\alpha)\ln \frac{p(y,w,\alpha\lvert x)}{q(\alpha,w)}dwd\alpha \\
+&= \int q(\alpha)\ln p(\alpha)d\alpha + \int q(w)\ln p(w)dw \\
+& +\sum\limits_{i=1}^N \int\int q(\alpha)q(w)\ln p(y_i\lvert x_i,w,\alpha)dwd\alpha \\
+& -\int q(\alpha)\ln q(\alpha)d\alpha - \int q(w)\ln q(w)dw
+\end{align}$$
+
+You can realize how complicated it has been and how complex it will be after we plug everyting in. 
+
+$$\begin{align}
+\mathcal{L}(a^{\prime},b^{\prime},\mu^{\prime},\Sigma^{\prime}) &= (a-1)(\psi(a^{\prime}) - \ln b^{\prime}) - b\frac{a^{\prime}}{b^{\prime}} + \text{const.} \\
+& -\frac{\lambda}{2}(\mu^{\prime T}\mu^{\prime} + tr(\Sigma^{\prime})) + \text{const.} \\
+& +\frac{N}{2}(\psi(a^{\prime})-\ln b^{\prime}) - \sum\limits_{i=1}^N \frac{a^{\prime}}{2b^{\prime}}((y_i - x_i^T\mu^{\prime})^2+x_i^T\Sigma^{\prime}x_i) + \text{const.} \\
+& +a^{\prime} - \ln b^{\prime} + \ln\Gamma(a^{\prime}) + (1 - a^{\prime})\psi(a^{\prime}) \\
+& +\frac{1}{2}\ln\lvert\Sigma^{\prime}\lvert + \text{const.}
+\end{align}$$
+
+You can see how complicated it is. The next step is to take derivative of each variables that we are optimizing for. We can then use gradient descent algorithm for each optimization problem. 
+
+However, as said, this is too complicated to handle with. In practice, it is more encouraged to use the optimal method for variational inference. 
+
+## Optimal Method
+
+**Setup**:
+
+$$y_i\sim\mathcal{N}(x_i^Tw,\alpha),w\sim\mathcal{N}(0,\lambda I),\alpha\sim Gamma(a,b)$$
+
+Based on the mean-field assumption, we can factorize the q as:
+
+$$q(\alpha,w) = q(\alpha)q(w) \approx p(\alpha,w\lvert y,x)$$
+
+As indicated in our general variational procedure, we should then pick up the distribution family for each model variable.
+
+For $q(\alpha)$:
+
+$$begin{align}
+q(\alpha) &\propto \exp(\mathbb{E}_{q(w)}[\ln p(y\lvert x,\alpha,w) + \ln p(\alpha) + \ln p(w)]) \\
+&\propto \exp(\mathbb{E}_{q(w)}[\ln p(y\lvert x,\alpha,w) + \ln p(\alpha)]) \\
+&\propto \exp(\sum\limits_{i=1}^N\mathbb{E}_{q(w)}[\ln p(y_i\lvert x_i,\alpha,w)]) p(\alpha) \\
+&\propto (\prod\limits_{i=1}^N \alpha^{\frac{1}{2}}\exp(-\frac{\alpha}{2}\mathbb{E}_{q(w)}[(y_i-x_i^Tw)^2]))\alpha^{a-1}\exp(-b\alpha)
+\end{align}$$
+
+Since we haven't calulated $q(w)$, we have to carry this over fot the calculation. However, we can recognize that:
+
+$$\begin{align}
+q(\alpha) &= Gamma(a+\frac{N}{2},b+\frac{1}{2}\sum\limits_{i=1}^N\mathbb{E}_{q(w)}[(y_i-x_i^Tw)^2]) \\
+& = Gamma(a^{\prime},b^{\prime})
+\end{align}$$
+
+For $q(w)$:
+
+$$\begin{align}
+q(w) &\propto \exp(\mathbb{E}_{q(\alpha)}[\ln p(y\lvert x,\alpha,w) + \ln p(\alpha) + \ln p(w)]) \\
+&\propto \exp(\mathbb{E}_{q(\alpha)}[\ln p(y\lvert x,\alpha,w) + \ln p(w)])  \\
+&\propto \exp(\sum\limits_{i=1}^N \mathbb{E}_{q(\alpha)}[\ln p(y_i\lvert x_i,\alpha,w)])p(w) \\
+&\propto (\prod_{i=1}^N \exp(\frac{1}{2}\mathbb{E}[\ln\alpha])\exp(-\frac{\mathbb{E}_{q(\alpha)}}{2}(y_i -x_i^Tw)^2))\exp(-\frac{\lambda}{2}w^Tw)
+\end{align}$$
+
+So again we just carry over $q(\alpha)$ for now. We realize that:
+
+$$\begin{align}
+q(w) &= Normal(\Sigma^{\prime}(\mathbb{E}_{q(\alpha)}[\alpha]\sum\limits_{i=1}^Ny_i x_i),\lambda I+\mathbb{E}_{q(\alpha)}[\alpha]\sum\limits_{i=1}^N x_i x_i^T) \\
+&= Normal(\mu^{\prime},\Sigma^{\prime})
+\end{align}$$
+
+We now know $q(w)$ is a Gaussian and $q(\alpha)$ is a Gamma. We can plug the respective expectation back to the formula we found and solve for the final expression. 
+
+By looking up online, we can find out that:
+
+$$\mathbb{E}_{q(\alpha)}[\alpha] = \frac{a^{\prime}}{b^{\prime}}$$
+
+$$\mathbb{E}_{q(w)}[(y_i-x_i^Tw)^2] = (y_i - x_i^T\mu^{\prime})^2 + x_i^T\Sigma^{\prime}x_i$$
+
+Put them all together:
+
+**VI for Bayesian Linear regression with unknown noise precision**
+
+1 Initialize $a_0^{\prime},b_0^{\prime},\mu_0^{\prime},\Sigma_0^{\prime}$ ranomly
+
+2 For iteration $t = 1,\dots$:
+
+- Update $q(\alpha)$ by setting:
+
+$$a_t^{\prime} = a + \frac{N}{2}$$
+
+$$b_t^{\prime} = b + \frac{1}{2}\sum\limits_{i=1}^N (y_i - x_i^T\mu_{t-1}^{\prime})^2 + x_i^T\Sigma_{t-1}^{\prime}x_i$$
+
+- Update $q(w)$ by setting:
+
+$$\Sigma_t^{\prime} = \lambda I + \frac{a_t^{\prime}}{b_t^{\prime}}\sum\limits_{i=1}^N x_i x_i^T$$
+
+$$\mu_t^{\prime} = \Sigma_t^{\prime}(\frac{a_t^{\prime}}{b_t^{\prime}}\sum\limits_{i=1}^Ny_i x_i)$$
+
+- Evaluate $\mathcal{L}$ so assess convergence. 
+
+A few comments can be made here:
+
+1 The order of updating each parameter shoudl not matter. Eventually, they will converge to whatever they should end up with. 
+
+2 It is sometimes unavoidable that we have to calculate the variational objective function which we have seen as fairly complicated. However, to check the convergence, we have to do so. 
+
+3 In EM, we get a point estimate of the model variable that we want to learn from data. In VI, we get the full distribution with each model varaible. 
