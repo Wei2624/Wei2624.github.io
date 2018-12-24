@@ -382,14 +382,12 @@ $$q(\alpha,w) = q(\alpha)q(w) = Gamma(\alpha\lvert a^{\prime},,b^{\prime})\mathc
 
 Then, we can write our varitional objective function as:
 
-$$begin{align}
+$$\begin{align}
 \mathcal{L}(a^{\prime},b^{\prime},\mu^{\prime},\Sigma^{\prime}) &= \int_0^{\infty}\int_{\mathbb{R}^d} q(w,\alpha)\ln \frac{p(y,w,\alpha\lvert x)}{q(\alpha,w)}dwd\alpha \\
-&= \int q(\alpha)\ln p(\alpha)d\alpha + \int q(w)\ln p(w)dw \\
+& = \int q(\alpha)\ln p(\alpha)d\alpha + \int q(w)\ln p(w)dw \\
 & +\sum\limits_{i=1}^N \int\int q(\alpha)q(w)\ln p(y_i\lvert x_i,w,\alpha)dwd\alpha \\
 & -\int q(\alpha)\ln q(\alpha)d\alpha - \int q(w)\ln q(w)dw
 \end{align}$$
-
-$$\mathcal{L}(a^{\prime},b^{\prime},\mu^{\prime},\Sigma^{\prime}) = \int_0^{\infty}\int_{\mathbb{R}^d} q(w,\alpha)\ln \frac{p(y,w,\alpha\lvert x)}{q(\alpha,w)}dwd\alpha$$
 
 You can realize how complicated it has been and how complex it will be after we plug everyting in. 
 
@@ -419,7 +417,7 @@ As indicated in our general variational procedure, we should then pick up the di
 
 For $q(\alpha)$:
 
-$$begin{align}
+$$\begin{align}
 q(\alpha) &\propto \exp(\mathbb{E}_{q(w)}[\ln p(y\lvert x,\alpha,w) + \ln p(\alpha) + \ln p(w)]) \\
 &\propto \exp(\mathbb{E}_{q(w)}[\ln p(y\lvert x,\alpha,w) + \ln p(\alpha)]) \\
 &\propto \exp(\sum\limits_{i=1}^N\mathbb{E}_{q(w)}[\ln p(y_i\lvert x_i,\alpha,w)]) p(\alpha) \\
