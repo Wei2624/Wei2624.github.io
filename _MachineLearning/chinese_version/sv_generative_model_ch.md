@@ -10,6 +10,7 @@ excerpt: "This post is a translation for one of posts in his machine learning no
 title: Generative Learning Algorithm in Chinese
 share: true
 qr: machine_learning_notes.png
+author_profile: true
 permalink: /MachineLearning/sv_generative_model_ch/
 ---
 
@@ -35,23 +36,23 @@ permalink: /MachineLearning/sv_generative_model_ch/
 
 在多元正态分布中，一个随机变量是一个R<sub>n</sub>空间中的矢量值，其中n代表维度数。因此，多元高斯的均值向量 μ∈R<sub>n</sub>，协方差矩阵Σ∈R<sub>n x n</sub> ，其中$ \\ Sigma是对称的半正定矩阵。其概率密度函数为：
 
-![image001.png](/images/Generative_Images/image001.png)
+![image001.png](/images/ML_notes/chinese/Generative_Images/image001.png)
 
 如上所述，μ代表期望值。
 
 随机向量Z（或者说，向量化的随机变量Z）的协方差为：
 
-![image003.png](/images/Generative_Images/image003.png)
+![image003.png](/images/ML_notes/chinese/Generative_Images/image003.png)
 
 
 下图显示了几个密度函数，它们的均值均为零，但协方差不同：
 
-![image005.png](/images/Generative_Images/image005.png)
+![image005.png](/images/ML_notes/chinese/Generative_Images/image005.png)
 
 
 上图的协方差为（从左到右）：
 
-![image007.png](/images/Generative_Images/image007.png)
+![image007.png](/images/ML_notes/chinese/Generative_Images/image007.png)
 
 
 
@@ -62,7 +63,7 @@ permalink: /MachineLearning/sv_generative_model_ch/
 
 我们再来谈谈二分类问题，我们可以用多元高斯模型对p(x&#124;y)进行建模。 总的来讲，我们有：
 
-![image009.png](/images/Generative_Images/image009.png)
+![image009.png](/images/ML_notes/chinese/Generative_Images/image009.png)
 
 
 在这里面，我们想要找出的参数φ，μ<sub>0</sub>，μ<sub>1</sub>，和Σ。 请注意，虽然每个类的均值不同，但它们的协方差相同。
@@ -71,60 +72,60 @@ permalink: /MachineLearning/sv_generative_model_ch/
 
 所以，该数据的对数似然函数值为：
 
-![image011.png](/images/Generative_Images/image011.png)
+![image011.png](/images/ML_notes/chinese/Generative_Images/image011.png)
 
 在上面的等式中，我们插入每个分布，但不指明具体这个分布是哪个类，我们仅将它们抽象为k。我们可以得到：
 
-![image013.png](/images/Generative_Images/image013.png)
+![image013.png](/images/ML_notes/chinese/Generative_Images/image013.png)
 
 
 现在，我们需要对每个参数进行取导，然后将它们设为零并找到 argmax（函数值最大时对应的输入值x）。 一些可能对推导有用的公式列举如下：
 
-![image015.png](/images/Generative_Images/image015.png)（如果A是对称的并且与x相互独立）
+![image015.png](/images/ML_notes/chinese/Generative_Images/image015.png)（如果A是对称的并且与x相互独立）
 
 
 
 
-![image017.png](/images/Generative_Images/image017.png)
+![image017.png](/images/ML_notes/chinese/Generative_Images/image017.png)
 
 **证明：**
 矩阵A是对称矩阵，所以 *A*= *A*<sup>T</sup>并假设空间维度为n。
 
-![image019.png](/images/Generative_Images/image019.png)
+![image019.png](/images/ML_notes/chinese/Generative_Images/image019.png)
 
 雅可比公式：
 
-![image021.png](/images/Generative_Images/image021.png)
+![image021.png](/images/ML_notes/chinese/Generative_Images/image021.png)
 
 **证明：**
 
-![image023.png](/images/Generative_Images/image023.png)
+![image023.png](/images/ML_notes/chinese/Generative_Images/image023.png)
 
 **证明：**
 
 这个证明有些复杂。你应该事先了解克罗内克函数和Frobenius内部乘积。对于矩阵X，我们可以写成：
 
-![image025.png](/images/Generative_Images/image025.png)
+![image025.png](/images/ML_notes/chinese/Generative_Images/image025.png)
 
 你可以将H视为Frobenius内积的标识元素。在开始证明之前，让我们准备好去找逆矩阵的导数。也就是说，∂X<sup>-1</sup>/∂X。
 
-![image027.png](/images/Generative_Images/image027.png)
+![image027.png](/images/ML_notes/chinese/Generative_Images/image027.png)
 
 
 
 所以我们可以这么解：
 
-![image029.png](/images/Generative_Images/image029.png)
+![image029.png](/images/ML_notes/chinese/Generative_Images/image029.png)
 
 接着，让我们回到正题：
 
-![image031.png](/images/Generative_Images/image031.png)
+![image031.png](/images/ML_notes/chinese/Generative_Images/image031.png)
 
 其中F表示Frobenius内积。
 
 接着，带回到原始公式：
 
-![image033.png](/images/Generative_Images/image033.png)
+![image033.png](/images/ML_notes/chinese/Generative_Images/image033.png)
 
 
 
@@ -133,22 +134,22 @@ permalink: /MachineLearning/sv_generative_model_ch/
 
 对ϕ取导并设为0：
 
-![image035.png](/images/Generative_Images/image035.png)
+![image035.png](/images/ML_notes/chinese/Generative_Images/image035.png)
 
 
 对 μk取导并设为0：
 
-![image037.png](/images/Generative_Images/image037.png)
+![image037.png](/images/ML_notes/chinese/Generative_Images/image037.png)
 
 
 对 Σ 取导并设为0:
 
-![image039.png](/images/Generative_Images/image039.png)
+![image039.png](/images/ML_notes/chinese/Generative_Images/image039.png)
 
 
 结果如图所示：
 
-![image041.png](/images/Generative_Images/image041.png)
+![image041.png](/images/ML_notes/chinese/Generative_Images/image041.png)
 
 
 请注意，由于有着同样的协方差，因此上图两个轮廓的形状是相同的，然而均值不同。在边界线这条线上（自左上到右下的直线），每个类的概率为50%。
@@ -157,7 +158,7 @@ permalink: /MachineLearning/sv_generative_model_ch/
 
 高斯判别分析又是如何与逻辑回归相关联的呢？我们可以发现如果上述p(x&#124;y) 是具有共同协方差的多元高斯，我们就可以计算p(x&#124;y)并证明它是遵循逻辑函数的。要证明这一点，我们可以：
 
-![image043.png](/images/Generative_Images/image043.png)
+![image043.png](/images/ML_notes/chinese/Generative_Images/image043.png)
 
 
 由于高斯属于指数族，我们最终可以将分母中的比率转换为exp（θ<sup>T</sup>x），其中 θ 是φ，μ<sub>0</sub>，μ<sub>1</sub>，Σ的函数。
@@ -176,26 +177,26 @@ permalink: /MachineLearning/sv_generative_model_ch/
 
 基于给定分类下，每个词彼此间条件独立。
 
-于是，我们有：![image045.png](/images/Generative_Images/image045.png)
+于是，我们有：![image045.png](/images/ML_notes/chinese/Generative_Images/image045.png)
 
 
 我们对第一步应用**概率论中的链式法则**，对第二步应用朴素贝叶斯假设。
 
 找到对数似然函数值的最大值：
 
-![image047.png](/images/Generative_Images/image047.png)
+![image047.png](/images/ML_notes/chinese/Generative_Images/image047.png)
 
 
 其中 ϕ<sub>j&#124;y=1</sub> = P (x<sub>j</sub>=1&#124;y=1)，ϕ <sub>j&#124;y=1</sub> = P(x<sub>j</sub>=1&#124;y=1), ϕ<sub>j&#124;y=0</sub> = P(x<sub>j</sub>=1&#124;y=0) 并且 ϕ<sub>y</sub>= p(y=1)。 这些是我们需要训练的参数。
 
 我们可以对其求导:
 
-![image049.png](/images/Generative_Images/image049.png)
+![image049.png](/images/ML_notes/chinese/Generative_Images/image049.png)
 
 
 为了预测新样本，我们可以使用**贝叶斯法则**来计算P（y = 1 &#124; x）并比较哪个更高。
 
-![image051.png](/images/Generative_Images/image051.png)
+![image051.png](/images/ML_notes/chinese/Generative_Images/image051.png)
 
 
 **延伸**: 在这种情况下，因为y是二进制值（0，1），我们将P（x<sub>i</sub> &#124; y）建模为伯努利分布。 也就是说，它可以是“有那个词”或“没有那个词”。 伯努利将类标签作为输入并对其概率进行建模，前提是它必须是二进制的。 如果是处理非二进制值X<sub>i</sub>，我们可以将其建模为多项式分布，多项式分布可以对多个类进行参数化。
@@ -208,7 +209,7 @@ permalink: /MachineLearning/sv_generative_model_ch/
 
 这时我们则需要另一个解决方案，其名为**拉普拉斯平滑**，它将每个参数设置为：
 
-![image053.png](/images/Generative_Images/image053.png)
+![image053.png](/images/ML_notes/chinese/Generative_Images/image053.png)
 
 
 其中k是类的数量。在实际操作中，拉普拉斯平滑并没有太大的区别，因为我们的模型中通常包含了所有的单词。不过有个Plan B总是极好的~
