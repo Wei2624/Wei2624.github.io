@@ -337,7 +337,10 @@ $$\frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])$$
 
 is a distribution of $\theta_i$. We can further write the objective as:
 
-$$\int q(\theta_i\lvert\psi_i)\ln\frac{\frac{1}{Z}\exp(\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])}{q(\theta_i\lvert\psi_i)} d\theta_i = -KL(q_i\lvert\rvert \frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)]))$$
+$$\begin{align}
+\int q(\theta_i\lvert\psi_i)\ln\frac{\frac{1}{Z}\exp(\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])}{q(\theta_i\lvert\psi_i)} d\theta_i &= \\
+&-KL(q_i\lvert\rvert \frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)]))
+\end{align}$$
 
 When can we get the max value of the above variational objective function? The answer is when those two distributions are the same. Thus, for a particular i, we should set:
 
@@ -375,12 +378,12 @@ $$p(y,w,\alpha\lvert x) = p(\alpha)p(w)\prod_{i=1}^N p(y_i\lvert x_i,w,\alpha)$$
 
 We can approximate the full posterior by picking up:
 
-$$q(\alpha,w) = q(\alpha)q(w) = Gamma(\alpha\lvert a^{\prime,b^\prime})\mathcal{N}(w\lvert\mu^{\prime},\Sigma^{\prime})$$
+$$q(\alpha,w) = q(\alpha)q(w) = Gamma(\alpha\lvert a^{\prime},,b^{\prime})\mathcal{N}(w\lvert\mu^{\prime},\Sigma^{\prime})$$
 
 Then, we can write our varitional objective function as:
 
 $$begin{align}
-\mathcal{L}(a^{\prime},b^{\prime},\mu^{\prime},\Sigma^{\prime}) &= \int_0^{\infty}\int_{\mathbb{R}^d}q(w,\alpha)\ln \frac{p(y,w,\alpha\lvert x)}{q(\alpha,w)}dwd\alpha \\
+\mathcal{L}(a^{\prime},b^{\prime},\mu^{\prime},\Sigma^{\prime}) &= q(w,\alpha)\ln \frac{p(y,w,\alpha\lvert x)}{q(\alpha,w)}dwd\alpha \\
 &= \int q(\alpha)\ln p(\alpha)d\alpha + \int q(w)\ln p(w)dw \\
 & +\sum\limits_{i=1}^N \int\int q(\alpha)q(w)\ln p(y_i\lvert x_i,w,\alpha)dwd\alpha \\
 & -\int q(\alpha)\ln q(\alpha)d\alpha - \int q(w)\ln q(w)dw
