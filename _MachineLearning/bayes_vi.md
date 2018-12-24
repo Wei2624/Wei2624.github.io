@@ -234,7 +234,7 @@ Then, we can handle them one at a time. Note that if w is a vector, we can also 
 
 We will talk about how to define the best optimal one for each of them. The algorithm should still work no matter what distributions we define. In this case, we can define them the same as their priors. 
 
-$$q(\alpha) = Gamma(a^{\ast},b^{\ast}), q(\lambda) = Gamma(e^{\ast},f^{\ast}), q(w) = Normal(\mu^{\ast},\Sigma^{\ast})$$
+$$q(\alpha) = Gamma(a^{\prime},b^{\prime}), q(\lambda) = Gamma(e^{\prime},f^{\prime}), q(w) = Normal(\mu^{\prime},\Sigma^{\prime})$$
 
 We optimize them to be the best values that can make q to be as close as possible to the full posterior by optimizing the variational objective function. 
 
@@ -257,4 +257,34 @@ $$\begin{align}
 
 You can see how complicated this is. Note that the independent assumption that we made has helped us a lot in this case since each expectation is only w.r.t. the variable of itnerest. So we can move expectation inwards to make calculation easier. 
 
-The next step is to take derivative w.r.t. $a^{\ast},b^{\ast},e^{\ast},f^{\ast}, \mu^{\ast},\Sigma^{\ast}$ and use graident descent to optimize them one at a time. 
+The next step is to take derivative w.r.t. $a^{\prime},b^{\prime},e^{\prime},f^{\prime}, \mu^{\prime},\Sigma^{\prime}$ and use graident descent to optimize them one at a time. 
+
+# Variational Inference
+
+We will talk about variational inference formally. Let's define the model variables to be $\theta_1,\theta_2,\dots,\theta_m$ and parameters for those variables to be $\psi_1,\psi_2,\dots,\psi_m$.
+
+## Mean-field Assumption
+
+This is an important assumption to make variational inference work. In mean-field assumption, we split $\theta$ into m different groups. Note that each component can be in different space. Each q distribution can be written as $q(\theta_i\lvert\psi_i)$. So all the $\psi_i$ are the parameters that we need to learn from variational objective function. 
+
+In mean-field assumption, we assume that:
+
+$$q(\theta_1,\theta_2,\dots,\theta_m) = \prod_{i=1}^m q(\theta_i\lvert\psi_i)$$
+
+can approximate the posterior:
+
+$$p(\theta_1,\theta_2,\dots,\theta_m\lvert X)$$
+
+## Variational objective function
+
+With this mean-field definition, we can write variational objective function as:
+
+$$\begin{align}
+\mathcal{L} &= \int (\prod_{i=1}^m q(\theta_i\lvert\psi_i))\ln p(X, \theta_1,\dots,\theta_m) d\theta_1\dots d\theta_m \\
+& - \sum\limits_{i=1}^m \int q(\theta_i\lvert\psi_i)\ln q(\theta_i\lvert\psi_i) d\theta_i
+\end{align}$$
+
+We are trying to optimize all the $\psi_i$. There are two ways to make variational inference work out: direct method and optimal method. We will see how direct method works and appareciate the effectiveness of optimal method. 
+
+## Direct Method
+

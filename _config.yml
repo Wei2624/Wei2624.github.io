@@ -152,6 +152,7 @@ include:
   - .htaccess
   - _pages
   - _MachineLearning
+  - _MachineLearning/chinese_version
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
