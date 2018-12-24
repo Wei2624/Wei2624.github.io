@@ -383,10 +383,8 @@ $$q(\alpha,w) = q(\alpha)q(w) = Gamma(\alpha\lvert a^{\prime},,b^{\prime})\mathc
 Then, we can write our varitional objective function as:
 
 $$begin{align}
-\mathcal{L}(a^{\prime},b^{\prime},\mu^{\prime},\Sigma^{\prime}) &= q(w,\alpha)\ln \frac{p(y,w,\alpha\lvert x)}{q(\alpha,w)}dwd\alpha \\
-&= \int q(\alpha)\ln p(\alpha)d\alpha + \int q(w)\ln p(w)dw \\
-& +\sum\limits_{i=1}^N \int\int q(\alpha)q(w)\ln p(y_i\lvert x_i,w,\alpha)dwd\alpha \\
-& -\int q(\alpha)\ln q(\alpha)d\alpha - \int q(w)\ln q(w)dw
+\mathcal{L}(a^{\prime},b^{\prime},\mu^{\prime},\Sigma^{\prime}) &= \int_0^{\infty}\int_{\mathbb{R}^d} q(w,\alpha)\ln \frac{p(y,w,\alpha\lvert x)}{q(\alpha,w)}dwd\alpha \\
+&= \int q(\alpha)\ln p(\alpha)d\alpha + \int q(w)\ln p(w)dw 
 \end{align}$$
 
 You can realize how complicated it has been and how complex it will be after we plug everyting in. 
