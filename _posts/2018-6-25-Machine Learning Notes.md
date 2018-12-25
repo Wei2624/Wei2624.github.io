@@ -14,7 +14,7 @@ sidebar:
 
 Note: viewing this page on mobile phone might hurt your experience.
 
-Note: Chinese version of each section is coming soon. 
+Note: Chinese version of each section is coming. 
 
 # Chinese Versions
 
@@ -22,10 +22,16 @@ Note: Chinese version of each section is coming soon.
 
 # Coming:
 
-1 More is coming for Variational Inference. 
+1 More is coming for [VI Algorithm](https://wei2624.github.io/MachineLearning/bayes_vi/). 
 
 
 # Recently updated:
+
+**2018-12-24**:
+
+[VI Algorithm](https://wei2624.github.io/MachineLearning/bayes_vi/): More contents are added. 
+
+**Older**:
 
 1 [Discriminative Algorithm](https://wei2624.github.io/MachineLearning/sv_discriminative_model/): More proofs before Least Square revisited
 
@@ -36,10 +42,6 @@ Note: Chinese version of each section is coming soon.
 4 [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/): Add more intuitions for Naive Bayes
 
 5 [EM Algorithm](https://wei2624.github.io/MachineLearning/usv_em/): More contents on EM and exmaple as well. 
-
-6 [VI Algorithm](https://wei2624.github.io/MachineLearning/bayes_vi/): Transition from EM to VI
-
-
 
 # What is this post?
 

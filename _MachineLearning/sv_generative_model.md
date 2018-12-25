@@ -13,7 +13,7 @@ sidebar:
   nav: "MachineLearning"
 ---
 
-A Chinese version can be found at [link-1](https://wei2624.github.io/MachineLearning/sv_generative_model_ch/). The update-to-date Chinese version of this post can be found at [link-2](https://air-yan.github.io/machine%20learning/Generative-Learning-Algorithm/). Please use link-2 for the up-to-date contents and link-1 as back up. 
+A Chinese version of this section is available. Thanks Zishi Yan for the effort on translation. It can be found [here](https://air-yan.github.io/machine%20learning/Generative-Learning-Algorithm/). The Chinese version will be synced periodically with English version. If the page is not working, you can check out a back-up link [here](https://wei2624.github.io/MachineLearning/sv_generative_model_ch/).
 
 # 1 Discriminative Model
 

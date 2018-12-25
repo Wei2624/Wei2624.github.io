@@ -253,8 +253,8 @@ Then, we should calulcate the objective function:
 $$\begin{align}
 \mathcal{L} &= \mathbb{E}_q [\ln p(y,w,\alpha,\lambda\lvert x)] - \mathbb{E}_q [\ln q(\alpha,\lambda,w)] \\
 & = \frac{\mathbb{E}_q [\alpha]}{2}\sum\limits_{i=1}^N \mathbb{E}_q [(y_i-x_i^Tw)^2] + \frac{1}{2}\mathbb{E}_q [\ln \alpha] - \frac{\mathbb{E}_q[\lambda]}{2}\mathbb{E}_q[w^Tw] \\
-& + \frac{d}{2}\mathbb{E}_q [\ln\lambda] + (a-1)\mathbb{E}_q[\ln\alpha] - b\mathbb{E}_q[\alpha] + (e-1)\mathbb{E}_q[\ln\lambda]-f\mathbb{E}_q [\lambda] \\
-& -\mathbb{E}_q [\ln q(\alpha)] -\mathbb{E}_q [\ln q(\lambda)] - \mathbb{E}_q [\ln q(w)] + \text{const.}
+& + \frac{d}{2}\mathbb{E}_q [\ln\lambda] + (a-1)\mathbb{E}_q[\ln\alpha] - b\mathbb{E}_q[\alpha] + (e-1)\mathbb{E}_q[\ln\lambda] \\
+& -f\mathbb{E}_q [\lambda]-\mathbb{E}_q [\ln q(\alpha)] -\mathbb{E}_q [\ln q(\lambda)] - \mathbb{E}_q [\ln q(w)] + \text{const.}
 \end{align}$$
 
 You can see how complicated this is. Note that the independent assumption that we made has helped us a lot in this case since each expectation is only w.r.t. the variable of itnerest. So we can move expectation inwards to make calculation easier. 
@@ -337,10 +337,12 @@ $$\frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])$$
 
 is a distribution of $\theta_i$. We can further write the objective as:
 
-$$\begin{align}
-\int q(\theta_i\lvert\psi_i)\ln\frac{\frac{1}{Z}\exp(\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])}{q(\theta_i\lvert\psi_i)} d\theta_i &= \\
-&-KL(q_i\lvert\rvert \frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)]))
+$$\int q(\theta_i\lvert\psi_i)\ln\frac{\frac{1}{Z}\exp(\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)])}{q(\theta_i\lvert\psi_i)} d\theta_i = $$
+
+$$-KL(q_i\lvert\rvert \frac{1}{Z}\exp (\mathbb{E}_{q_{j\neq i}}[\ln p(X,\theta_1,\dots,\theta_m)]))
 \end{align}$$
+
+
 
 When can we get the max value of the above variational objective function? The answer is when those two distributions are the same. Thus, for a particular i, we should set:
 
@@ -394,7 +396,8 @@ You can realize how complicated it has been and how complex it will be after we 
 $$\begin{align}
 \mathcal{L}(a^{\prime},b^{\prime},\mu^{\prime},\Sigma^{\prime}) &= (a-1)(\psi(a^{\prime}) - \ln b^{\prime}) - b\frac{a^{\prime}}{b^{\prime}} + \text{const.} \\
 & -\frac{\lambda}{2}(\mu^{\prime T}\mu^{\prime} + tr(\Sigma^{\prime})) + \text{const.} \\
-& +\frac{N}{2}(\psi(a^{\prime})-\ln b^{\prime}) - \sum\limits_{i=1}^N \frac{a^{\prime}}{2b^{\prime}}((y_i - x_i^T\mu^{\prime})^2+x_i^T\Sigma^{\prime}x_i) + \text{const.} \\
+& +\frac{N}{2}(\psi(a^{\prime})-\ln b^{\prime}) - \sum\limits_{i=1}^N \frac{a^{\prime}}{2b^{\prime}}((y_i - x_i^T\mu^{\prime})^2 \\
+& + x_i^T\Sigma^{\prime}x_i) + \text{const.} \\
 & +a^{\prime} - \ln b^{\prime} + \ln\Gamma(a^{\prime}) + (1 - a^{\prime})\psi(a^{\prime}) \\
 & +\frac{1}{2}\ln\lvert\Sigma^{\prime}\lvert + \text{const.}
 \end{align}$$
