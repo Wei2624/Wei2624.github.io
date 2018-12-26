@@ -33,7 +33,7 @@ Gaussian discriminant analysis (GDA) model is a generative model where $p(x\lver
 
 ## 3.1 The Multivariate Normal Distribution
 
-In multivariate normal distribution, a random variable is vector-valued in $\mathbb{R}^n$ where n is the number of dimensionality. Thus, multivariate Gaussian has mean vector $\mu\in \mathbb{R}^n$ and covariance matrix $\Sigma\in\mathbb{R}^{n\times n}$ where $\Sigma is sysmetric and postive semi-definite. The density is:
+In multivariate normal distribution, a random variable is vector-valued in $\mathbb{R}^n$ where n is the number of dimensionality. Thus, multivariate Gaussian has mean vector $\mu\in \mathbb{R}^n$ and covariance matrix $\Sigma\in\mathbb{R}^{n\times n}$ where $\Sigma$ is sysmetric and postive semi-definite. The density is:
 
 $$p(x;\mu,\Sigma) = \frac{1}{(2\pi)^{n/2}\lvert \Sigma\rvert^{1/2}}\exp\bigg(-\frac{1}{2}(x - \mu)^T\Sigma^{-1}(x - \mu)\bigg)$$
 
