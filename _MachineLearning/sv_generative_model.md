@@ -121,7 +121,7 @@ $$\begin{align}
 &= X^{-T} \blacksquare
 \end{align}$$
 
-$$\frac{\partial a^TX^{-1}b}{\partial X} = -X^{-1}ab^TX^{-1}$$
+$$\frac{\partial a^TX^{-1}b}{\partial X} = -X^{-T}ab^TX^{-T}$$
 
 **Proof**:
 
