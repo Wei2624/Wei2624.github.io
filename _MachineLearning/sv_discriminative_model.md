@@ -331,7 +331,7 @@ $$f^{\prime}(x_0) = \frac{f(x_0)}{\Delta} \Rightarrow \Delta = \frac{f(x_0)}{f^{
 
 Derived from this idea, we can let $f(x) = L^{\prime}(\theta)$. Going this way, we can find max of objective function faster. For finding min, it is similar. 
 
-If $\theta$ is vector-valued, we need to use Hessian in the updating. More details about Hession can be found in [the other post](https://wei2624.github.io/Useful-Formulas-for-Math/). In short, to update, we have:
+If $\theta$ is vector-valued, we need to use Hessian in the updating. More details about Hession can be found in [the other post](https://wei2624.github.io/math/Useful-Formulas-for-Math/). In short, to update, we have:
 
 $$\theta = \theta - H^{-1}\triangledown_{\theta}L(\theta)$$
 
