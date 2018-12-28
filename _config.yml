@@ -151,8 +151,9 @@ footer:
 include:
   - .htaccess
   - _pages
-  - _MachineLearning
-  - _MachineLearning/chinese_version
+  - AI_Learning_Hub/machine-learning
+  # - _MachineLearning
+  # - _MachineLearning/chinese_version
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
