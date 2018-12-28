@@ -152,6 +152,7 @@ include:
   - .htaccess
   - _pages
   - AI_Learning_Hub/machine-learning
+  - _research
   # - _MachineLearning
   # - _MachineLearning/chinese_version
 exclude:

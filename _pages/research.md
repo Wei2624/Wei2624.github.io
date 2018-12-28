@@ -28,4 +28,4 @@ Qinghua Shen, **Wei Zhang**, Edrick Wong, Brady Kieffer and Xuemin (Sherman) She
 [PDF](http://sigport.org/1117){: .btn .btn--success .btn--small} 
 
 Xiaosong Lan, Zhiwei Xiong, **Wei Zhang**, Shuxiao Li, Hongxing Chang and Wenjun Zeng, “A Super-Fast Online Face Tracking System for Video Surveillance,” in International Symposium on Circuits and Systems (ISCAS), Montreal, Canada, May 22-26 2016. 
-[PDF](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7538968){: .btn .btn--success .btn--small} 
+[PDF](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7538968){: .btn .btn--success .btn--small} [Details](https://wei2624.github.io/research/face_recog_trk/){: .btn .btn--success .btn--small} 
