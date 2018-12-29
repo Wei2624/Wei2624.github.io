@@ -20,7 +20,9 @@ Photoplethysmography,”(2018)
 # 2017
 
 Xu Zhang, Felix Yu, Svebor Karaman, **Wei Zhang**, Shih-Fu Chang, “Heated-up Softmax Embedding,”(2017) Submitted to International Conference on Learning Representations (ICLR) 
-[PDF](https://arxiv.org/abs/1809.04157){: .btn .btn--success .btn--small}
+[PDF](https://arxiv.org/abs/1809.04157){: .btn .btn--success .btn--small}[Details](https://wei2624.github.io/research/heated_up_softmax_embedding/){: .btn .btn--success .btn--small} [Code](https://github.com/ColumbiaDVMM/Heated_Up_Softmax_Embedding){: .btn .btn--success .btn--small} 
+
+
 
 # 2016
 
