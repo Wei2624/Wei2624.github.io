@@ -23,7 +23,7 @@ In this paper, we propose a novel and practical system for robust online face tr
 
 A real demo with explanation can be viewed below. 
 
-![Framework](/_research/images/face_recog_trk_2.png)
+![demo](/_research/images/face_recog_trk_2.png)
 
 Details can be found in our paper. 
 

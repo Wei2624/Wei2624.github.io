@@ -4,6 +4,7 @@ category: Online Material
 tags: [Latex]
 classes: wide
 title: LaTeX Cheat Sheet
+permalink: /posts/latex-cheat-sheet/
 ---
 I post a LaTeX cheat sheet from online which I found quite useful. You can download it for your own use. 
 

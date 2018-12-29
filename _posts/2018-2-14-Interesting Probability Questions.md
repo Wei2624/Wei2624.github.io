@@ -5,6 +5,7 @@ category: Stats
 tags: [notes,math,interview]
 qr: interesting_probability_questions.png
 title: Interesting Probability Questions
+permalink: /posts/probability-questions/
 ---
 
 In this blog, I will keep updating interesting probability questions as time goes by. The questions listed are likely to apprear in interview. The answers written by me will be given as well. Please be skeptical about the answers. 
