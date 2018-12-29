@@ -24,8 +24,9 @@ Xu Zhang, Felix Yu, Svebor Karaman, **Wei Zhang**, Shih-Fu Chang, “Heated-up S
 
 # 2016
 
-Qinghua Shen, **Wei Zhang**, Edrick Wong, Brady Kieffer and Xuemin (Sherman) Shen, "Report From UW-Engineers For SIGCUP," in IEEE, June, 2016.
-[PDF](http://sigport.org/1117){: .btn .btn--success .btn--small} 
+Qinghua Shen, **Wei Zhang**, Edrick Wong, Brady Kieffer and Xuemin (Sherman) Shen, "Report From UW-Engineers For SIGCUP," in IEEE Signal Processing Cup 2016 Global Competition.
+[NEWS](https://uwaterloo.ca/electrical-computer-engineering/news/uw-student-team-places-top-10-classification-accuracy-2016){: .btn .btn--success .btn--small} [PDF](https://goo.gl/Utrfwu){: .btn .btn--success .btn--small} [Details](https://wei2624.github.io/research/sig_cup_2016/){: .btn .btn--success .btn--small} 
+
 
 Xiaosong Lan, Zhiwei Xiong, **Wei Zhang**, Shuxiao Li, Hongxing Chang and Wenjun Zeng, “A Super-Fast Online Face Tracking System for Video Surveillance,” in International Symposium on Circuits and Systems (ISCAS), Montreal, Canada, May 22-26 2016. 
 [PDF](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7538968){: .btn .btn--success .btn--small} [Details](https://wei2624.github.io/research/face_recog_trk/){: .btn .btn--success .btn--small} 

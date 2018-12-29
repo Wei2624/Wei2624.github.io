@@ -3,6 +3,7 @@ layout: single
 mathjax: true
 toc: true
 toc_sticky: true
+author_profile: true
 title: A Super-Fast Online Face Tracking System for Video Surveillance
 share: false
 permalink: /research/face_recog_trk/
