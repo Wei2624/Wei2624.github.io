@@ -30,3 +30,9 @@ Details can be found in our paper.
 # My Contributions
 
 In this work, I mainly focus on two parts. The first part is face detector. I was responsible for designing an accurate face detector and improving it based on the video surveillance assumption. The second part is merging face tracker with face detector. The resulted pipeline was exported into a public API hosted in Azure. 
+
+
+|:-----:|:-------:|
+|Platform|Ubuntu 14.04, Windows 7|
+|Programming Language|C++,Matlab|
+|Research Area|Computer Vision|

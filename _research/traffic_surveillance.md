@@ -21,15 +21,16 @@ In anomaly detection task, we propose to frist use pretrained VGG-16 network to 
 
 ![Pipeline](/_research/images/traffic_surveillance_2.png)
 
-An video demo can be watched here.
+An video demo can be watched here. In the demo, green box is resulted from tracking algorithm and yellow box is resulted from detection algorithm. 
 
 {% include video id="pMRB7cjQabc" provider="youtube" %}
 
-
 # Contributions
 
-In this paper, I am responsible for implementing Mask-RCNN and the entire pipeline of anomaly detection task, including training and testing. In addition, I am also respobsible for writing the corresponding parts in the pager. 
+In this paper, I am responsible for implementing Mask-RCNN and the entire pipeline of anomaly detection task, including training and testing. In addition, I am also respobsible for writing the corresponding parts in the paper. 
 
 |:-----:|:-------:|
 |Platform|Ubuntu 16.04|
- 
+|Programming Language|C++,Python,Matlab|
+|Deep Learning Framework|Tensorflow|
+|Research Area|Computer Vision|

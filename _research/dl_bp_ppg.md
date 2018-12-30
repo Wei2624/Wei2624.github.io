@@ -24,3 +24,9 @@ The deep convolutional neural network consists of convolutional layer (Conv), lo
 # Contributions
 
 In this work, I am fully responsible for algorithm designing and testing. After dataset cleaning is performed by my colleague, I train the proposed model using 80% of cleaned dataset and test the trained model using the rest 20% of cleaned dataset. In addition, I am also fully responsible for writing the paper. 
+
+|:-----:|:-------:|
+|Platform|Ubuntu 16.04|
+|Programming Language|Python,Matlab|
+|Deep Learning Framework|Tensorflow|
+|Research Area|Bioinformatics, Machine Learning|

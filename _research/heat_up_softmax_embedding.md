@@ -24,3 +24,9 @@ The final framework can be viewed as:
 # Contributions
 
 I joined the project since the beginning. My work mainly focuses on two parts. First of all, I unify the implementation of GoogLeNet V1 to Tensorflow instead of Caffe. To make sure the implementation is consistent, I dived into Caffe and Tensorflow framework and compared input and output of each layer in the model. I learned how different initiailizations, preprocessing, convolutional paddings and normalization would the final performance. Secondly, having implemented the model in Tensorflow, I reproduce the algorithm from the paper "No Fuss Distance Metric Learning using Proxies" and implement new ideas to generate reauls for comparisons. 
+
+|:-----:|:-------:|
+|Platform|Ubuntu 16.04|
+|Programming Language|C++,Python,Matlab|
+|Deep Learning Framework|Caffe, Tensorflow|
+|Research Area|Computer Vision|
