@@ -20,6 +20,10 @@ Note: Chinese version of each section is coming.
 
 1 A Chinese version of [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/) is available online. 
 
+# Open Source of ML notes
+
+I made this notes open source so that everyone can edit and contribute. Github and instructions to contribute can be found [here](https://github.com/Wei2624/AI_Learning_Hub). Welcome to contribute!
+
 # Coming:
 
 1 More is coming for [VI Algorithm](https://wei2624.github.io/MachineLearning/bayes_vi/). 
