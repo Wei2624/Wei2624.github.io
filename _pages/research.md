@@ -12,7 +12,8 @@ I am still building it.
 # 2018
 
 Tingyu Mao, **Wei Zhang**, Haoyu He, Yanjun Lin, Vinay Kale, Alexander Stein, Zoran Kostic “Traffic Surveillance Research,” in NVIDIA Workshop at Computer Vision and Pattern Recognition (CVPR 2018)
-[PDF](http://openaccess.thecvf.com/content_cvpr_2018_workshops/papers/w3/Mao_AIC2018_Report_Traffic_CVPR_2018_paper.pdf){: .btn .btn--success .btn--small} [Poster]({{ site.url }}/download/nvidia-aic2018-workshop.pdf){: .btn .btn--info .btn--small}
+[PDF](http://openaccess.thecvf.com/content_cvpr_2018_workshops/papers/w3/Mao_AIC2018_Report_Traffic_CVPR_2018_paper.pdf){: .btn .btn--success .btn--small} [Poster]({{ site.url }}/download/nvidia-aic2018-workshop.pdf){: .btn .btn--success .btn--small} [Details](https://wei2624.github.io/research/traffic_surveillance/){: .btn .btn--success .btn--small}
+
 
 **Wei Zhang**, Qinghua Shen, “Deep Learning for Blood Pressure from
 Photoplethysmography,”(2018) 
