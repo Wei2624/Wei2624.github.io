@@ -19,9 +19,9 @@ permalink: /data_science/
 	<h2 class="archive__subtitle">2018</h2>
 	<div class="entries-{{ page.entries_layout | default: 'list' }}">
 	    <h2 class="archive__item-title" itemprop="headline">
-	        <a href="https://wei2624.github.io/posts/pointer/" rel="permalink">Pointer</a>
+	        <a href="copy post url here" rel="permalink">Copy page title here</a>
 	    </h2>
-	    <p class="archive__item-excerpt" itemprop="description">{{ "test" | markdownify | strip_html | truncate: 160 }}</p>
+	    <p class="archive__item-excerpt" itemprop="description">{{ "copy excerpt here" | markdownify | strip_html | truncate: 160 }}</p>
 	</div>
 	<a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
 </section>
