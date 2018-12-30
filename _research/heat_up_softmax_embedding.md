@@ -9,6 +9,8 @@ share: false
 permalink: /research/heated_up_softmax_embedding/
 ---
 
+This work is performed at Digital Video Multimedia Lab at Columbia University and is supervised by Professor Shih-Fu Chang. 
+
 # Overview
 
 Metric Learning has become a popular topic in computer vision. In metrical learning, the goal is to learn from examples a similarity function that measures how similar two samples are. Ideally, the resulted algorithm learns such features that samples from the same class are placed as close as possible while samples from different classes are placed as far as possible. An example of such a pipeline can be viewed below. 

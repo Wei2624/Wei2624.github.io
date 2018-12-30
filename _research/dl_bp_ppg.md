@@ -9,6 +9,8 @@ share: false
 permalink: /research/dl_bp_ppg/
 ---
 
+This work is performed remote with Professor Chi-Ming Chow at University of Toronto and Dr. Qinghua Shen from University of Waterloo. 
+
 # Overview
 
 In medical field, blood pressure is a crucial indicator for fatal diseases such as heart disease and stroke. Continuous blood pressure measurement is also found to be an informative measurement for chronic disease. To measure blood pressure, an operator using sphygmomanometer is usually required. This traditional method is time-consuming and cannot continuously montior blood pressure of a patient. Thus, a pressure-cuff-free and operator-free method for blood pressure measurement is desired. 

@@ -9,6 +9,8 @@ share: false
 permalink: /research/traffic_surveillance/
 ---
 
+This work is completed for NVIDIA AI Smart City Competition 2018. 
+
 # Overview
 
 Traffic surveillance system has been one of the most intriguing aspects of smart city application. In the context of smart city management, it is important to monitor traffic situations using advanced algorithm. In particular, we are interested in traffic speed estimation and traffic anomaly detection such as the event of car stopping. 
@@ -23,7 +25,7 @@ In anomaly detection task, we propose to frist use pretrained VGG-16 network to 
 
 An video demo can be watched here. In the demo, green box is resulted from tracking algorithm and yellow box is resulted from detection algorithm. 
 
-{% include video id="pMRB7cjQabc" provider="youtube" %}
+{% include video id="T7zllZbtm2A" provider="youtube" %}
 
 # Contributions
 
