@@ -69,7 +69,7 @@ It is recommended that you have some basic knowledge about probability, linear a
 
 One way is that you can bookmark this page. I will update this page to show where I have made changes of the notes and what might be coming next. 
 
-The other way is that you can follow my github. I will give formal comments in push when I made some important changes to this post. 
+The other way is that you can follow my github and click watch button for the repo named wei2624.github.io. I will give formal comments in push when I made some important changes to this post. 
 
 # Found error or interested in other topics?
 
