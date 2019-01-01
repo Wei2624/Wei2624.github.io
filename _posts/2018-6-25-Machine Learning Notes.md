@@ -28,12 +28,15 @@ I made this notes open source so that everyone can edit and contribute. Github a
 
 1 More is coming for [VI Algorithm](https://wei2624.github.io/MachineLearning/bayes_vi/). 
 
-
 # Recently updated:
+
+**2019-01-01**:
+
+[SVM](https://wei2624.github.io/MachineLearning/sv_svm/): Rewrite explanation of SVM section
 
 **2018-12-24**:
 
-[VI Algorithm](https://wei2624.github.io/MachineLearning/bayes_vi/): More contents are added. 
+[VI Algorithm](https://wei2624.github.io/MachineLearning/bayes_vi/): More contents are added
 
 **Older**:
 
