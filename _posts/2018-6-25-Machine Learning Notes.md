@@ -18,7 +18,7 @@ Note: Chinese version of each section is coming.
 
 # Chinese Versions
 
-1 A Chinese version of [Support Vector Machine](https://air-yan.github.io//MachineLearning/sv_svm_ch/) is available online. 
+1 A Chinese version of [Support Vector Machine](https://wei2624.github.io/MachineLearning/sv_svm/) is available online. 
 
 2 A Chinese version of [Discriminative Algorithm](https://wei2624.github.io/MachineLearning/sv_discriminative_model/) is available online. 
 
