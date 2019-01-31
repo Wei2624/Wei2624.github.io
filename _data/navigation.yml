@@ -35,19 +35,21 @@ MachineLearning:
         url: /MachineLearning/sv_regularization_model_selection/
       - title: "Online Learning and Perceptron"
         url: /MachineLearning/sv_online_learning_perceptron/
+      - title: "Decision Trees"
+        url: /MachineLearning/sv_trees/
   - title: Deep Learning
-    children: 
+    children:
       - title: "Neural Networks"
         url: /MachineLearning/dl_neural_network/
       - title: "Backpropagation"
         url: /MachineLearning/dl_propagtion/
   - title: Unsupervised Learning
-    children: 
+    children:
       - title: "K-means Clustering"
         url: /MachineLearning/usv_kmeans/
       - title: "EM Algorithm"
         url: /MachineLearning/usv_em/
-  - title: Bayesian Model 
-    children: 
+  - title: Bayesian Model
+    children:
       - title: "Variational Inference"
         url: /MachineLearning/bayes_vi/
