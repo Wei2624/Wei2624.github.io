@@ -37,6 +37,8 @@ MachineLearning:
         url: /MachineLearning/sv_online_learning_perceptron/
       - title: "Decision Trees"
         url: /MachineLearning/sv_trees/
+      - title: "Boosting"
+        url: /MachineLearning/sv_boost/
   - title: Deep Learning
     children:
       - title: "Neural Networks"
