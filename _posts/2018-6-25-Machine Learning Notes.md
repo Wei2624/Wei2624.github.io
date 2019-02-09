@@ -38,6 +38,10 @@ I made this notes open source so that everyone can edit and contribute. Github a
 
 # Recently updated:
 
+**2019-02-08**:
+
+[Decision Trees](https://wei2624.github.io/MachineLearning/sv_boost/): New topic about boosting
+
 **2019-01-31**:
 
 [Decision Trees](https://wei2624.github.io/MachineLearning/sv_trees/): New topic about decision tree
