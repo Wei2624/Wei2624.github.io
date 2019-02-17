@@ -18,15 +18,17 @@ Note: Chinese version of each section is coming.
 
 # Chinese Versions
 
-1 A Chinese version of [Bias-Varaince and Error Analysis](https://wei2624.github.io/MachineLearning/sv_bias_variance_tradeoff/) is available online.
+1 2 A Chinese version of [Decision Tree](https://wei2624.github.io/MachineLearning/sv_trees/) is available online.
 
-2 A Chinese version of [Regularization and Model Selection](https://wei2624.github.io/MachineLearning/sv_regularization_model_selection/) is available online.
+2 A Chinese version of [Bias-Varaince and Error Analysis](https://wei2624.github.io/MachineLearning/sv_bias_variance_tradeoff/) is available online.
 
-3 A Chinese version of [Support Vector Machine](https://wei2624.github.io/MachineLearning/sv_svm/) is available online.
+3 A Chinese version of [Regularization and Model Selection](https://wei2624.github.io/MachineLearning/sv_regularization_model_selection/) is available online.
 
-4 A Chinese version of [Discriminative Algorithm](https://wei2624.github.io/MachineLearning/sv_discriminative_model/) is available online.
+4 A Chinese version of [Support Vector Machine](https://wei2624.github.io/MachineLearning/sv_svm/) is available online.
 
-5 A Chinese version of [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/) is available online.
+5 A Chinese version of [Discriminative Algorithm](https://wei2624.github.io/MachineLearning/sv_discriminative_model/) is available online.
+
+6 A Chinese version of [Generative Algorithm](https://wei2624.github.io/MachineLearning/sv_generative_model/) is available online.
 
 # Open Source of ML notes
 
