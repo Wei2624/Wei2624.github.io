@@ -18,7 +18,7 @@ Note: Chinese version of each section is coming.
 
 # Chinese Versions
 
-1 A Chinese version of [Bias-Varaince and Error Analysis](https://wei2624.github.io/MachineLearning/sv_bias_variance_tradeoff/) is available online.
+1 A Chinese version of [Bias-Varaince and Error Analysis](https://wei2624.github.io/MachineLearning/sv_bias_variance_tradeoff/) is available online
 
 2 A Chinese version of [Regularization and Model Selection](https://wei2624.github.io/MachineLearning/sv_regularization_model_selection/) is available online.
 
