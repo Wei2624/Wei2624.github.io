@@ -18,7 +18,7 @@ Note: Chinese version of each section is coming.
 
 # Chinese Versions
 
-All the Chinese translations are credited to [Yanzi Shi](https://air-yan.github.io/) and [Xiaoxiao Lei](https://dark417.github.io/). 
+All the Chinese translations are credited to [Zishi Shi](https://air-yan.github.io/) and [Xiaoxiao Lei](https://dark417.github.io/). 
 
 1 A Chinese version of [Decision Tree](https://wei2624.github.io/MachineLearning/sv_trees/) is available online.
 
