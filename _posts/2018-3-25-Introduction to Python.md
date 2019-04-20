@@ -348,3 +348,10 @@ a = 10
 def welcome():
 	print 'hello world'
 {% endhighlight %}
+
+
+## Fifth Class(2018-4-19)
+
+The slides presented in class can be found [here][5]
+
+[5]:{{ site.url }}/download/Python和人工智能基础课程(第五课).pdf
