@@ -6,9 +6,10 @@ classes: wide
 permalink: /
 ---
 
-My name is Wei Zhang. I am a graduate student at Columbia University. I have spent wonderful 5 years at University of Waterloo for my undergrad study. 
+My name is Wei Zhang. I am a graduate student at Columbia University, working with Professor [John Paisley](http://www.columbia.edu/~jwp2128/). I received my B.S. in Electrical Engineering of Honours, Co-operative Program from University of Waterloo in Canada, where I worked with Professor [Xueming(Sherman) Shen](http://bbcr.uwaterloo.ca/~xshen/).
 
-My research interests are machine learning, robot learning, computer vision and precision medicine. I am still building my homepage. 
+My research interests are Bayesian machine learning and deep learning, robot learning, computer vision and precision medicine. 
+
 
 ### News
 
@@ -19,9 +20,9 @@ My research interests are machine learning, robot learning, computer vision and 
 
 I write a tech blog [Machine Learning notes](https://wei2624.github.io/machine%20learning/Machine-Learning-Notes/). I summarize what I have learned in several machine learning classes. 
 
-### Additional information about myself
+### Other information about me
 
-I love to play basketball with friends during weekeneds. I also work out in order to improve my basketball skills. My favorite basketball player is Kobe Bryant. In fact, I love playing sports such as soccer, skiing and etc. 
+* I love to play basketball with friends during weekeneds. I also work out in order to improve my basketball skills. My favorite basketball player is Kobe Bryant. In fact, I love playing sports such as soccer, skiing and etc. 
 
 Other than sports, I also love reading autobiography like Steve Jobs. 
 
