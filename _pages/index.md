@@ -22,9 +22,13 @@ I write a tech blog [Machine Learning notes](https://wei2624.github.io/machine%2
 
 ### Other information about me
 
-* I love to play basketball with friends during weekeneds. I also work out in order to improve my basketball skills. My favorite basketball player is Kobe Bryant. In fact, I love playing sports such as soccer, skiing and etc. 
+* I love to play basketball with friends during weekeneds. I also work out in order to improve my basketball skills. 
 
-Other than sports, I also love reading autobiography like Steve Jobs. 
+* My favorite basketball player is Kobe Bryant. 
+
+* Some other sports that I play: skiing, badminton,soccer. 
+
+* I love reading autobiography like Steve Jobs and Ang Lee. 
 
 ### About my homepage
 
