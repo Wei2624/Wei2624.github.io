@@ -6,7 +6,7 @@ classes: wide
 permalink: /
 ---
 
-My name is Wei Zhang. I am a graduate student at Columbia University, working with Professor [John Paisley](http://www.columbia.edu/~jwp2128/). I received my B.S. in Electrical Engineering of Honours, Co-operative Program from University of Waterloo in Canada, where I worked with Professor [Xueming(Sherman) Shen](http://bbcr.uwaterloo.ca/~xshen/).
+My name is Wei Zhang. I am a graduate student at Columbia University, working with Professor [John Paisley](http://www.columbia.edu/~jwp2128/). I obtained my B.S. in Electrical Engineering of Honours, Co-operative Program from University of Waterloo in Canada, where I worked with Professor [Xueming(Sherman) Shen](http://bbcr.uwaterloo.ca/~xshen/). I then obtained my M.S. in Electrical Engineering of Honors Program from Columbia University, where I worked with Professor [Shih-Fu Chang](http://www.ee.columbia.edu/~sfchang/) and Professor [Peter Allen](https://www.cs.columbia.edu/~allen/). 
 
 My research interests are Bayesian machine learning and deep learning, robot learning, computer vision and precision medicine. 
 
