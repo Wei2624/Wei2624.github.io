@@ -60,7 +60,7 @@ $1 + x + x^2 + \dots + x^n = \frac{1-x^{n+1}}{1-x}$ for $x\neq 1$
 
 $1 + x + x^2 +\dots = \frac{1}{1-x}$ for $\lvert x\rvert <1$
 
-## Harmonic Series Series
+## Harmonic Series
 
 $\sum\limits_{i=1}^{n} \frac{1}{i} = \ln{n} + \gamma + \frac{1}{2n} - \frac{1}{12n^2}$ is the best approximation for the series. 
 
@@ -89,6 +89,10 @@ It says that for any given A with n by n and U with n by k and C with k by k and
 $$(A + UCV)^{-1} = A{^-1} - A^{-1}U(C^{-1} + VA^{-1}U)^{-1}VA$$
 
 Proof can be found on Wiki easily. 
+
+## Some useful approximations
+
+* $(1 - \frac{\lambda}{n})^n \approx e^{\lambda}$
 
 ## Vector Calculus
 
@@ -146,4 +150,4 @@ In general, we have:
 
 $$(\sum\limits_{i=1}^n x_i)(\sum\limits_{j=1}^m y_j) = \sum\limits_{i,j}^{n,m} x_i y_j$$
 
-It cannot be recersed. 
+It cannot be reversed. 
