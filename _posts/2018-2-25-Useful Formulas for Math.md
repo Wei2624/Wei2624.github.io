@@ -92,7 +92,7 @@ Proof can be found on Wiki easily.
 
 ## Some useful approximations
 
-* $(1 - \frac{\lambda}{n})^n \approx e^{\lambda}$
+* $(1 - \frac{\lambda}{n})^n \approx e^{\lambda}$ where $\frac{\lambda}{n} < 1$
 
 ## Vector Calculus
 

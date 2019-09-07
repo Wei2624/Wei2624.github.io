@@ -10,11 +10,11 @@ In this post, I wll mainly post the supplementary materials for the class I am t
 
 ## First Class(2018-3-26)
 
-The slides presented in class can be found [here][4]
+The slides presented in class can be found [here][4].
 
 [4]:{{ site.url }}/download/Python和人工智能基础课程(第一课).pdf
 
-1 By using {% highlight python %}cd{% endhighlight %} command in both Wdinows and Mac, one can switch path. 
+1 By using {% highlight python %}cd{% endhighlight %} command in both Wdinows and Mac, you can change the system path from where you were to where you want. 
 
 2 "Hello World" example:
 
@@ -39,7 +39,7 @@ print "Your age is:" + age
 
 ## Second Class(2018-4-01)
 
-The slides presented in class can be found [here][1]
+The slides presented in class can be found [here][1].
 
 [1]:{{ site.url }}/download/Python基础和人工智能课程(第二讲).pdf
 
@@ -131,7 +131,7 @@ print a and b
 {% endhighlight %}
 
 ## Third Class(2018-4-05)
-The slides presented in class can be found [here][2]
+The slides presented in class can be found [here][2].
 
 [2]:{{ site.url }}/download/Python和人工智能基础课程(第三课).pdf
 
@@ -255,7 +255,7 @@ a = 'abcsdadhe'
 
 ## Fourth Class(2018-4-15)
 
-The slides presented in class can be found [here][3]
+The slides presented in class can be found [here][3].
 
 [3]:{{ site.url }}/download/Python和人工智能基础课程(第四课).pdf
 
@@ -352,6 +352,6 @@ def welcome():
 
 ## Fifth Class(2018-4-19)
 
-The slides presented in class can be found [here][5]
+The slides presented in class can be found [here][5].
 
 [5]:{{ site.url }}/download/Python和人工智能基础课程(第五课).pdf
