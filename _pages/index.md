@@ -20,7 +20,7 @@ My research interests are Bayesian machine learning and deep learning, robot lea
 
 ### Blog
 
-I write a tech blog [Machine Learning notes](https://wei2624.github.io/machine%20learning/Machine-Learning-Notes/). I summarize what I have learned in several machine learning classes. 
+I write a tech blog [Machine Learning notes](https://wei2624.github.io/machine%20learning/Machine-Learning-Notes/). I summarize what I have learned in several machine learning courses. 
 
 ### Other information about me
 
@@ -28,7 +28,7 @@ I write a tech blog [Machine Learning notes](https://wei2624.github.io/machine%2
 
 * My favorite basketball player is Kobe Bryant. 
 
-* Some other sports that I play: skiing, badminton,soccer. 
+* Some other sports that I play: skiing,badminton,soccer. 
 
 * I love reading autobiography like Steve Jobs and Ang Lee. 
 
