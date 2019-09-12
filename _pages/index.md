@@ -16,8 +16,8 @@ My research interests are Bayesian machine learning and deep learning, robot lea
 ### News
 
 [2018](#link){: .btn .btn--success .btn--small} My [Machine Learning notes](https://wei2624.github.io/machine%20learning/Machine-Learning-Notes/) is reported on the Chinese AI media: [Synced](https://syncedreview.com/about-us/). [Link](https://mp.weixin.qq.com/s/gVu3rXId5nEzJ_ZDRzAUJQ){: .btn .btn--info .btn--small}  
-[2018](#link){: .btn .btn--success .btn--small} I did a presentation of a poster titled "Enhanced Recurrent Neural Network Semantic Labeling with Point Cloud Processing" at Northeast Robotics Colloquium (NERC) 2018. [Poster]({{ site.url }}/download/Enhanced Recurrent Neural Network Semantic Labeling with Point Cloud Processing.pdf){: .btn .btn--info .btn--small}
-[Demo](https://www.youtube.com/watch?v=T7zllZbtm2A){: .btn .btn--info .btn--small}
+[2018](#link){: .btn .btn--success .btn--small} I did a presentation of a poster titled "Enhanced Recurrent Neural Network Semantic Labeling with Point Cloud Processing" at Northeast Robotics Colloquium (NERC) 2018. [Poster]({{ site.url }}/download/Enhanced Recurrent Neural Network Semantic Labeling with Point Cloud Processing.pdf){: .btn .btn--info .btn--small}[Demo](https://www.youtube.com/watch?v=T7zllZbtm2A){: .btn .btn--info .btn--small}  
+[2018](#link){: .btn .btn--success .btn--small}Homepage Online!
 
 ### Blog
 
