@@ -94,6 +94,14 @@ Proof can be found on Wiki easily.
 
 * $(1 - \frac{\lambda}{n})^n \approx e^{\lambda}$ where $\frac{\lambda}{n} < 1$
 
+* Binomial approximation: $(1+x)^{\alpha} \approx 1 + \alpha x$ when $\lvert x\rvert <1$ and $\lvert \alpha x\rvert \ll 1$. 
+
+## Maclaurin series
+
+* $\ln(1-x) = -\sum\limits_{n=1}^{\infty} \frac{x^n}{n}$ when $\lvert x\rvert < 1$ or $x=-1$
+
+* $\ln(1+x) = -\sum\limits_{n=1}^{\infty} (-1)^{n+1} \frac{x^n}{n}$ when $\lvert x\rvert < 1$ or $x=1$
+
 ## Vector Calculus
 
 ### Gradient - Vector in, Scalar out
