@@ -21,7 +21,7 @@ In speed estimation task, we propose to first use Mask-RCNN to generate bounding
 
 In anomaly detection task, we propose to frist use pretrained VGG-16 network to extract visual features. In parallel with feature extraction, we also extract temporal visual features by implementing improved dense trajectory algorithm. Then, we encode both extracted features into lower dimension space and concatenate into one single vector. Last but not least, we train a support vector machine model with such a vector resulted from last step. The full pipeline can be viewed below. 
 
-![Pipeline](/_research/images/traffic_surveillance_2.pdf)
+![Pipeline](/_research/images/traffic_surveillance_2.png)
 
 An video demo can be watched here. In the demo, green box is resulted from tracking algorithm and yellow box is resulted from detection algorithm. 
 
