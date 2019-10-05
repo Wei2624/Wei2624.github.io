@@ -97,7 +97,7 @@ Proof can be found on Wiki easily.
 
 * Binomial approximation: $(1+x)^{\alpha} \approx 1 + \alpha x$ when $\lvert x\rvert <1$ and $\lvert \alpha x\rvert \ll 1$. 
 
-* Euler related: $\sum\limits_{n=1}^{infty} n^{-2} = \frac{\pi^2}{6}$
+* Euler related: $\sum\limits_{n=1}^{\infty} n^{-2} = \frac{\pi^2}{6}$
 
 ## Maclaurin series
 
