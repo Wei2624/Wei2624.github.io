@@ -119,7 +119,7 @@ author:
       # url: "/images/WechatID.jpeg"
     - label: "Zhihu"
       icon: "fab fa-zhihu"
-      url: "/images/zhihu_qr.jpeg"
+      # url: "/images/zhihu_qr.jpeg"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
