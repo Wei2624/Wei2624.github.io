@@ -8,7 +8,7 @@ permalink: /
 
 My name is Wei Zhang(in Chinese: 张威). I am a graduate student at [Columbia University](https://www.columbia.edu/), working with Professor [John Paisley](http://www.columbia.edu/~jwp2128/). I am also a member of [Data Science Institute](https://datascience.columbia.edu/) at Columbia University. I obtained my B.S. in Electrical Engineering of Honours, Co-operative Program from [University of Waterloo](https://uwaterloo.ca/) in Canada, where I worked with Professor [Xuemin(Sherman) Shen](http://bbcr.uwaterloo.ca/~xshen/). I then obtained my M.S. in Electrical Engineering of Honors Program from Columbia University, where I worked with Professor [Shih-Fu Chang](http://www.ee.columbia.edu/~sfchang/) and Professor [Peter Allen](https://www.cs.columbia.edu/~allen/). 
 
-My research interests are Bayesian machine learning and deep learning, robot learning, computer vision and precision medicine. **Feel free to contact me for collaboration opportunity if you are also interested in those fields.** 
+My research interests are causal inference, counterfactual analysis and Bayesian machine learning and their applications in robot learning, computer vision and precision medicine. **Feel free to contact me for collaboration opportunity if you are also interested in those fields.** 
 
 **Email:** wz2363(at)columbia.edu.
 
@@ -32,6 +32,8 @@ I write a tech blog [Machine Learning notes](https://wei2624.github.io/machine%2
 * Some other sports that I play: skiing,badminton,soccer. 
 
 * I love reading autobiography like Steve Jobs and Ang Lee. 
+
+* I play guitar. Demos are can be found [here](https://www.bilibili.com/video/BV1164y1U7Bu#reply4331688940).
 
 ### About my homepage
 
