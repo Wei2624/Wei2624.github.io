@@ -8,7 +8,7 @@ permalink: /
 
 My name is Wei Zhang(in Chinese: 张威). I am a graduate student at [Columbia University](https://www.columbia.edu/), working with Professor [John Paisley](http://www.columbia.edu/~jwp2128/). I am also a member of [Data Science Institute](https://datascience.columbia.edu/) at Columbia University. I obtained my B.S. in Electrical Engineering of Honours, Co-operative Program from [University of Waterloo](https://uwaterloo.ca/) in Canada, where I worked with Professor [Xuemin(Sherman) Shen](http://bbcr.uwaterloo.ca/~xshen/). I then obtained my M.S. in Electrical Engineering of Honors Program from Columbia University, where I worked with Professor [Shih-Fu Chang](http://www.ee.columbia.edu/~sfchang/) and Professor [Peter Allen](https://www.cs.columbia.edu/~allen/). 
 
-My research interests are causal inference, counterfactual analysis and Bayesian machine learning and their applications in robot learning, computer vision and precision medicine. **Feel free to contact me for collaboration opportunity if you are also interested in those fields.** 
+My research interests are causal inference, counterfactual analysis and Bayesian machine learning and their applications in robot learning, computer vision and precision medicine. **Feel free to contact me for collaboration opportunities if you are also interested in these fields.** 
 
 **Email:** wz2363(at)columbia.edu.
 
@@ -25,7 +25,7 @@ I write a tech blog [Machine Learning notes](https://wei2624.github.io/machine%2
 
 ### Other information about me
 
-* I love to play basketball with friends during weekeneds. I also work out in order to improve my basketball skills. 
+* I love to play basketball with friends during weekends. I also work out to improve my basketball skills. 
 
 * My favorite basketball player is Kobe Bryant. 
 
@@ -37,4 +37,4 @@ I write a tech blog [Machine Learning notes](https://wei2624.github.io/machine%2
 
 ### About my homepage
 
-I love to write blogs on technical contents. I will mainly post tech summary in my Blog section. The best way to keep track with my update is to subscribe it. Please feel free to comment at the bottom or use it for your need. But please cite it when you distribute it.
+I love to write blogs on technical contents. I will mainly post tech summary in my Blog section. The best way to keep track of my update is to subscribe it. Please feel free to comment at the bottom or use it for your need. But please cite it when you distribute it.
