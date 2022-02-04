@@ -33,7 +33,7 @@ I write a tech blog [Machine Learning notes](https://wei2624.github.io/machine%2
 
 * I love reading autobiography like Steve Jobs and Ang Lee. 
 
-* I play guitar. Demos are can be found [here](https://www.bilibili.com/video/BV1164y1U7Bu#reply4331688940).
+* I play guitar. Demos can be found [here](https://www.bilibili.com/video/BV1164y1U7Bu#reply4331688940).
 
 ### About my homepage
 
